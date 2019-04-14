@@ -36,7 +36,9 @@ class JournalPageViewController: UIViewController {
     @IBOutlet weak var focus_field_1: UITextField!
     @IBOutlet weak var focus_field_2: UITextField!
     
-    //
+    // buttons
+    @IBOutlet weak var left_arrow: UIButton!
+    @IBOutlet weak var right_arrow: UIButton!
     
     
     // CLASS METHODS
@@ -54,7 +56,8 @@ class JournalPageViewController: UIViewController {
         self.focus_field_1.tag = 4;
         self.focus_field_2.tag = 5;
         
-        self.current_page_index_shown = 0;
+        self.current_page_index_shown = Journal.count;
+        self.displayJournalPage();
         
         // update date
         let date = Date();
@@ -147,6 +150,71 @@ class JournalPageViewController: UIViewController {
             self.displayJournalPage();
         }
     }
+    
+    // Right arrow clicked action method
+    @IBAction func right_arrowPushed (sender: UIButton) {
+        
+        // if the element requested is within array range
+        if ((current_page_index_shown + 1) < Journal.count) {
+            
+            current_page_index_shown += 1;
+            self.displayJournalPage();
+            
+            // update arrow appearance
+            self.updateArrowAppearance();
+
+        }
+    }
+    
+    // Left arrow clicked action method
+    @IBAction func left_arrowPushed (sender: UIButton) {
+        
+        // if the element requested is within array range
+        if ((current_page_index_shown - 1) >= 0) {
+            current_page_index_shown -= 1;
+            self.displayJournalPage();
+            
+            // update arrow appearance
+            self.updateArrowAppearance();
+            
+        }
+    }
+    
+    func updateArrowAppearance() {
+        
+        // if there is only one student in the gradebook
+        if (Journal.count == 1) {
+            right_arrow.isHidden = true;
+            left_arrow.isHidden = true;
+        }
+            // if the student to be shown is at the gradebook head
+        else if (current_page_index_shown == 0) {
+            right_arrow.isHidden = false;
+            left_arrow.isHidden = true;
+        }
+            // if the student to be shown is at the gradebook tail
+        else if (current_page_index_shown == (Journal.count - 1)) {
+            right_arrow.isHidden = true;
+            left_arrow.isHidden = false;
+        }
+            // if the gradebook has 3 or more students and the student to be shown is inside the gradebook
+        else {
+            right_arrow.isHidden = false;
+            left_arrow.isHidden = false;
+        }
+        
+        // extract current page shown
+        let journal_page = self.Journal.object(at: current_page_index_shown) as! JournalPage;
+        
+        // enable/disable text fields according to the current page shown
+        if (journal_page.day == current_date) {
+            enableTextFields(b: true);
+        } else {
+            enableTextFields(b: false);
+        }
+    }
+    
+    
     
 
     func createUserMessage(message: String, title: String, buttonText: String) {
