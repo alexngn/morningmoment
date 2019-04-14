@@ -141,14 +141,6 @@
                                 <color key="minimumTrackTintColor" red="0.28867519520000001" green="0.32667750629999998" blue="0.2187130256" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <color key="maximumTrackTintColor" red="0.72896228360000004" green="0.82247382609999997" blue="0.54155508860000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             </slider>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qk3-a1-Vug">
-                                <rect key="frame" x="337" y="810" width="41" height="35"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="SinhalaSangamMN" family="Sinhala Sangam MN" pointSize="17"/>
-                                <state key="normal" title="menu">
-                                    <color key="titleColor" red="0.28867519520000001" green="0.32667750629999998" blue="0.2187130256" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                </state>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="mm/dd/yyyy" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mdq-sC-LdS">
                                 <rect key="frame" x="283" y="67" width="87" height="23"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -158,19 +150,19 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hws-IV-zrX">
-                                <rect key="frame" x="149" y="758" width="35" height="50"/>
+                                <rect key="frame" x="149" y="718" width="35" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button" image="leftArrow"/>
                                 <connections>
-                                    <action selector="left_arrowPushedWithSender:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Ob4-Zz-9Ij"/>
+                                    <action selector="leftArrowPushedWithSender:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Ob4-Zz-9Ij"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k45-YL-wPK">
-                                <rect key="frame" x="230" y="758" width="35" height="50"/>
+                                <rect key="frame" x="230" y="718" width="35" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button" image="rightArrow"/>
                                 <connections>
-                                    <action selector="right_arrowPushedWithSender:" destination="BYZ-38-t0r" eventType="touchUpInside" id="OHf-NR-NHk"/>
+                                    <action selector="rightArrowPushedWithSender:" destination="BYZ-38-t0r" eventType="touchUpInside" id="OHf-NR-NHk"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UWF-1s-fsU">
@@ -186,6 +178,33 @@
                                     <action selector="submitButtonPushedWithSender:" destination="BYZ-38-t0r" eventType="touchUpInside" id="A5M-tc-euc"/>
                                 </connections>
                             </button>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="fxp-lp-luh">
+                                <rect key="frame" x="38" y="785" width="332" height="29"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <segments>
+                                    <segment title="journal"/>
+                                    <segment title="TODAY"/>
+                                    <segment title="menu"/>
+                                </segments>
+                                <color key="tintColor" red="0.0" green="0.32852089410000002" blue="0.35998769079999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <connections>
+                                    <action selector="segmentedControlValueChangedWithSender:" destination="BYZ-38-t0r" eventType="valueChanged" id="vUb-qP-CDr"/>
+                                </connections>
+                            </segmentedControl>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Take a morning moment and add your first journal entry!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WUi-6z-AQO">
+                                <rect key="frame" x="81" y="402" width="253" height="108"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="SinhalaSangamMN" family="Sinhala Sangam MN" pointSize="24"/>
+                                <color key="textColor" red="0.0" green="0.32852089410000002" blue="0.35998769079999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="JOURNAL IS EMPTY" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DUr-AY-2mY">
+                                <rect key="frame" x="38" y="347" width="338" height="47"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="SinhalaSangamMN-Bold" family="Sinhala Sangam MN" pointSize="35"/>
+                                <color key="textColor" red="0.0" green="0.32852089410000002" blue="0.35998769079999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.79980000000000007" green="0.93000000000000005" blue="0.90395999999999999" alpha="1" colorSpace="calibratedRGB"/>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -204,10 +223,13 @@
                         <outlet property="grateful_field_2" destination="VhL-Bn-Uju" id="hXB-O8-2cN"/>
                         <outlet property="grateful_field_3" destination="wnB-r8-7DM" id="rj4-3b-4gW"/>
                         <outlet property="grateful_label" destination="BYr-GQ-utt" id="in0-YZ-81I"/>
+                        <outlet property="journal_empty_label" destination="DUr-AY-2mY" id="Z6r-TV-cAS"/>
+                        <outlet property="journal_empty_label_2" destination="WUi-6z-AQO" id="8N3-ZC-7tU"/>
                         <outlet property="left_arrow" destination="hws-IV-zrX" id="M4a-8L-pH9"/>
                         <outlet property="let_go_field" destination="JJZ-dC-AyN" id="7fc-fM-jUW"/>
                         <outlet property="let_go_label" destination="hI8-le-iu6" id="HDK-xc-Qsg"/>
                         <outlet property="right_arrow" destination="k45-YL-wPK" id="4yd-iX-1Ig"/>
+                        <outlet property="segmentedControl" destination="fxp-lp-luh" id="LiM-Re-SoS"/>
                         <outlet property="submit_button" destination="UWF-1s-fsU" id="7Lt-Sx-fsr"/>
                     </connections>
                 </viewController>

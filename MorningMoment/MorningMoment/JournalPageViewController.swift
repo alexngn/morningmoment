@@ -14,6 +14,7 @@ class JournalPageViewController: UIViewController {
     var Journal: NSMutableArray = [JournalPage()];
     var current_page_index_shown = 0;
     var current_date: String!
+    var segmentedControlIndex = 1;
     
     // labels
     @IBOutlet weak var let_go_label: UILabel!
@@ -25,6 +26,8 @@ class JournalPageViewController: UIViewController {
     @IBOutlet weak var bul21_label: UILabel!
     @IBOutlet weak var bul22_label: UILabel!
     @IBOutlet weak var date_label: UILabel!
+    @IBOutlet weak var journal_empty_label: UILabel!
+    @IBOutlet weak var journal_empty_label_2: UILabel!
     
     
     // textfields
@@ -40,10 +43,15 @@ class JournalPageViewController: UIViewController {
     @IBOutlet weak var right_arrow: UIButton!
     @IBOutlet weak var submit_button: UIButton!
     
+    @IBOutlet weak var segmentedControl: UISegmentedControl!
+    
+    
     
     // CLASS METHODS
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        Journal.removeAllObjects();
         
         // set textfield tags
         self.let_go_field.tag = 0;
@@ -53,31 +61,70 @@ class JournalPageViewController: UIViewController {
         self.focus_field_1.tag = 4;
         self.focus_field_2.tag = 5;
         
-        if (Journal.count != 0) {
-            current_page_index_shown = Journal.count - 1;
-        }
-        
-        self.displayJournalPage();
-        
         // update date
         let date = Date();
         let dateFormatter = DateFormatter();
         dateFormatter.dateFormat = "MM/dd/yyyy"
         self.current_date = dateFormatter.string(from: date);
+        print(current_date ?? "");
         
+        // add 3 hardcoded journal entries
+        self.hardCodeJournalEntries();
+        
+        // set initial segmented control
+        segmentedControl.selectedSegmentIndex = 1;
+        self.segmentedControlValueChanged(sender: segmentedControl);
+    }
+    
+    func displayTemplatePage () {
+        
+        clearTextFields();
+        enableTextFields(b: true);
+        submit_button.isHidden = false;
+        submit_button.isEnabled = true;
+        left_arrow.isHidden = true;
+        left_arrow.isEnabled = false;
+        right_arrow.isHidden = true;
+        right_arrow.isEnabled = false;
+        date_label.isHidden = true;
+        journal_empty_label.isHidden = true;
+        journal_empty_label_2.isHidden = true;
+    }
+    
+    func displayTodaysPage () {
+        
+        current_page_index_shown = Journal.count - 1;
+        
+        let journal_page = self.Journal.object(at: current_page_index_shown) as! JournalPage;
+        
+        let_go_field.text = journal_page.let_go_text;
+        grateful_field_1.text = journal_page.grateful_1_text;
+        grateful_field_2.text = journal_page.grateful_2_text;
+        grateful_field_3.text = journal_page.grateful_3_text;
+        focus_field_1.text = journal_page.focus_1_text;
+        focus_field_2.text = journal_page.focus_2_text;
+        date_label.text = current_date;
+        
+        submit_button.isHidden = false;
+        submit_button.isEnabled = true;
+        left_arrow.isHidden = true;
+        left_arrow.isEnabled = false;
+        right_arrow.isHidden = true;
+        right_arrow.isEnabled = false;
+        date_label.isHidden = false;
+        journal_empty_label.isHidden = true;
+        journal_empty_label_2.isHidden = true;
         
     }
     
-    func displayJournalPage () {
+    func displayJournal () {
         
-        // if journal is empty
         if (Journal.count == 0) {
-            clearTextFields();
-            enableTextFields(b: true);
+            self.displayEmptyJournalPage(b: true);
         }
         
-        // if journal is not empty
         else {
+            
             // extract current page shown
             let journal_page = self.Journal.object(at: current_page_index_shown) as! JournalPage;
             
@@ -87,16 +134,20 @@ class JournalPageViewController: UIViewController {
             grateful_field_3.text = journal_page.grateful_3_text;
             focus_field_1.text = journal_page.focus_1_text;
             focus_field_2.text = journal_page.focus_2_text;
-            date_label.text = current_date;
+            date_label.text = journal_page.day;
             
-            // enable/disable text fields according to the current page shown
-            if (journal_page.day == current_date) {
-                enableTextFields(b: true);
-            } else {
-                //enableTextFields(b: false);
-            }
+            submit_button.isHidden = true;
+            submit_button.isEnabled = false;
+            left_arrow.isHidden = false;
+            left_arrow.isEnabled = true;
+            right_arrow.isHidden = false;
+            right_arrow.isEnabled = true;
+            date_label.isHidden = false;
+            journal_empty_label.isHidden = true;
+            journal_empty_label_2.isHidden = true;
+            
+            updateArrowAppearance();
         }
-        
     }
     
     func clearTextFields () {
@@ -136,55 +187,116 @@ class JournalPageViewController: UIViewController {
         
         createUserMessage(message: "", title: "Page successfully added to journal", buttonText: "Okay")
         
-        displayJournalPage();
-        
-        if (Journal.count == 1) {
-            current_page_index_shown = 0;
-        }
-    
+        submit_button.isEnabled = false;
+        submit_button.isHidden = true;
     }
     
+
     
     @IBAction func pageTextFieldsEdited (sender: AnyObject) {
         
         if (Journal.count != 0) {
-        
-            // extract current page shown
-            let journal_page = self.Journal.object(at: current_page_index_shown) as! JournalPage;
             
-            // if the journal page shown has the current date => make edit possible
-            if (journal_page.day == current_date) {
+            // extract newest journal entry
+            let newest_journal_page = self.Journal.object(at: Journal.count - 1) as! JournalPage;
+            
+            // if "TODAY" has been pushed and today's entry has already been made
+            if (segmentedControlIndex == 1 && newest_journal_page.day == current_date) {
                 
                 switch (sender.tag) {
-                    case 0:
-                        journal_page.let_go_text = let_go_field.text ?? ""; break;
-                    case 1:
-                        journal_page.grateful_1_text = grateful_field_1.text ?? ""; break;
-                    case 2:
-                        journal_page.grateful_2_text = grateful_field_2.text ?? ""; break;
-                    case 3:
-                        journal_page.grateful_3_text = grateful_field_3.text ?? ""; break;
-                    case 4:
-                        journal_page.focus_1_text = focus_field_1.text ?? ""; break;
-                    case 5:
-                        journal_page.focus_2_text = focus_field_2.text ?? ""; break;
-                    default: break;
-                }
-                
-                Journal.replaceObject(at: current_page_index_shown, with: journal_page);
-                self.displayJournalPage();
+                    
+                case 0:
+                    newest_journal_page.let_go_text = let_go_field.text ?? ""; break;
+                case 1:
+                    newest_journal_page.grateful_1_text = grateful_field_1.text ?? ""; break;
+                case 2:
+                    newest_journal_page.grateful_2_text = grateful_field_2.text ?? ""; break;
+                case 3:
+                    newest_journal_page.grateful_3_text = grateful_field_3.text ?? ""; break;
+                case 4:
+                    newest_journal_page.focus_1_text = focus_field_1.text ?? ""; break;
+                case 5:
+                    newest_journal_page.focus_2_text = focus_field_2.text ?? ""; break;
+                default: break;
+            
+            }
+                // update today's entry
+                Journal.replaceObject(at: Journal.count - 1, with: newest_journal_page);
             }
         }
     }
     
+    @IBAction func segmentedControlValueChanged (sender: UISegmentedControl) {
+        
+        
+        segmentedControlIndex = sender.selectedSegmentIndex;
+        
+        // JOURNAL
+        if (segmentedControlIndex == 0) {
+            
+            if (Journal.count == 0) {
+                displayEmptyJournalPage(b: true);
+            }
+            else {
+                current_page_index_shown = Journal.count - 1;
+                displayJournal();
+                enableTextFields(b: false);
+            }
+        }
+            
+        // TODAY
+        else if (segmentedControlIndex == 1) {
+            
+            displayEmptyJournalPage(b: false);
+            
+            // if today's entry have been submitted => enable editing
+            if (Journal.count != 0) {
+                
+                // extract newest journal entry
+                let newest_journal_page = self.Journal.object(at: Journal.count - 1) as! JournalPage;
+                
+                if (newest_journal_page.day == current_date) {
+                    
+                    createUserMessage(message: "You can edit your page until the end of the day", title: "You have already taken today's morning moment", buttonText: "Got it");
+                    
+                    displayTodaysPage();
+                    enableTextFields(b: true);
+                    submit_button.isEnabled = false;
+                    submit_button.isHidden = true;
+                }
+                
+                else {
+                    displayTemplatePage();
+                    enableTextFields(b: true);
+                }
+            }
+            // otherwise enable template
+            else {
+                
+                displayTemplatePage();
+                enableTextFields(b: true);
+            }
+        }
+            
+        // MENU
+        else {
+            
+            displayEmptyJournalPage(b: false);
+            
+        }
+    }
+    
+    
+    
+    
     // Right arrow clicked action method
-    @IBAction func right_arrowPushed (sender: UIButton) {
+    @IBAction func rightArrowPushed (sender: UIButton) {
         
         // if the element requested is within array range
         if ((current_page_index_shown + 1) < Journal.count) {
             
             current_page_index_shown += 1;
-            self.displayJournalPage();
+            self.displayJournal();
             
             // update arrow appearance
             self.updateArrowAppearance();
@@ -193,12 +305,12 @@ class JournalPageViewController: UIViewController {
     }
     
     // Left arrow clicked action method
-    @IBAction func left_arrowPushed (sender: UIButton) {
+    @IBAction func leftArrowPushed (sender: UIButton) {
         
         // if the element requested is within array range
         if ((current_page_index_shown - 1) >= 0) {
             current_page_index_shown -= 1;
-            self.displayJournalPage();
+            self.displayJournal();
             
             // update arrow appearance
             self.updateArrowAppearance();
@@ -229,8 +341,6 @@ class JournalPageViewController: UIViewController {
             left_arrow.isHidden = false;
         }
         
-        self.displayJournalPage();
-        
     }
     
     
@@ -246,6 +356,85 @@ class JournalPageViewController: UIViewController {
         
     }
     
-
+    
+    func hardCodeJournalEntries () {
+        
+        let journal_page_1 = JournalPage();
+    
+        journal_page_1.let_go_text = "What Kevin said to me yesterday about capitalism";
+        journal_page_1.grateful_1_text = "The sun";
+        journal_page_1.grateful_2_text = "Walking";
+        journal_page_1.grateful_3_text = "Blossoming trees";
+        journal_page_1.focus_1_text = "Believing in myself";
+        journal_page_1.focus_2_text = "Finishing math assignment 8";
+        journal_page_1.day = "04/5/2019";
+        
+        Journal.add(journal_page_1);
+        
+        let journal_page_2 = JournalPage();
+        
+        journal_page_2.let_go_text = "My diet";
+        journal_page_2.grateful_1_text = "Parties on Thompson Street";
+        journal_page_2.grateful_2_text = "Mary and Jen";
+        journal_page_2.grateful_3_text = "The Joe Rogan Experience";
+        journal_page_2.focus_1_text = "Enjoying cheesecake";
+        journal_page_2.focus_2_text = "Breathing";
+        journal_page_2.day = "04/10/2019";
+        
+        Journal.add(journal_page_2);
+        
+        let journal_page_3 = JournalPage();
+        
+        journal_page_3.let_go_text = "My roomate's mess";
+        journal_page_3.grateful_1_text = "That time she made me a brownie";
+        journal_page_3.grateful_2_text = "The floor being visible still";
+        journal_page_3.grateful_3_text = "The man who sang \"Ain't no sunshine\" on the subway last night";
+        journal_page_3.focus_1_text = "Letting the mess go";
+        journal_page_3.focus_2_text = "Appreciate her person";
+        journal_page_3.day = "04/11/2019";
+        
+        Journal.add(journal_page_3);
+        
+    }
+    
+    
+    func displayEmptyJournalPage (b: Bool) {
+        
+        journal_empty_label.isHidden = !b;
+        journal_empty_label.isEnabled = b;
+        journal_empty_label_2.isHidden = !b;
+        journal_empty_label_2.isEnabled = b;
+        
+        submit_button.isHidden = b;
+        submit_button.isEnabled = !b;
+        left_arrow.isHidden = b;
+        left_arrow.isEnabled = !b;
+        right_arrow.isHidden = b;
+        right_arrow.isEnabled = !b;
+        date_label.isHidden = b;
+        
+        let_go_field.isHidden = b;
+        let_go_field.isEnabled = !b;
+        grateful_field_1.isHidden = b;
+        grateful_field_1.isEnabled = !b;
+        grateful_field_2.isHidden = b;
+        grateful_field_2.isEnabled = !b;
+        grateful_field_3.isHidden = b;
+        grateful_field_3.isEnabled = !b;
+        focus_field_1.isHidden = b;
+        focus_field_1.isEnabled = !b;
+        focus_field_2.isHidden = b;
+        focus_field_2.isEnabled = !b;
+        
+        let_go_label.isHidden = b;
+        grateful_label.isHidden = b;
+        bul11_label.isHidden = b;
+        bul12_label.isHidden = b;
+        bul13_label.isHidden = b;
+        focus_label.isHidden = b;
+        bul21_label.isHidden = b;
+        bul22_label.isHidden = b;
+    }
+    
 }
 
