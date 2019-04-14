@@ -12,7 +12,6 @@ class JournalPageViewController: UIViewController {
 
     // CLASS PROPERTIES
     var Journal: NSMutableArray = [JournalPage()];
-    let pageColour = UIColor.init(red: 0.202, green: 0.238, blue: 0.229, alpha: 1.0);
     var current_page_index_shown = 0;
     var current_date: String!
     
@@ -39,14 +38,12 @@ class JournalPageViewController: UIViewController {
     // buttons
     @IBOutlet weak var left_arrow: UIButton!
     @IBOutlet weak var right_arrow: UIButton!
+    @IBOutlet weak var submit_button: UIButton!
     
     
     // CLASS METHODS
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // set background color
-        view.backgroundColor = pageColour;
         
         // set textfield tags
         self.let_go_field.tag = 0;
@@ -56,7 +53,10 @@ class JournalPageViewController: UIViewController {
         self.focus_field_1.tag = 4;
         self.focus_field_2.tag = 5;
         
-        self.current_page_index_shown = 0;
+        if (Journal.count != 0) {
+            current_page_index_shown = Journal.count - 1;
+        }
+        
         self.displayJournalPage();
         
         // update date
@@ -64,6 +64,7 @@ class JournalPageViewController: UIViewController {
         let dateFormatter = DateFormatter();
         dateFormatter.dateFormat = "MM/dd/yyyy"
         self.current_date = dateFormatter.string(from: date);
+        
         
     }
     
@@ -92,7 +93,7 @@ class JournalPageViewController: UIViewController {
             if (journal_page.day == current_date) {
                 enableTextFields(b: true);
             } else {
-                enableTextFields(b: false);
+                //enableTextFields(b: false);
             }
         }
         
@@ -134,6 +135,12 @@ class JournalPageViewController: UIViewController {
         Journal.add(journal_page);
         
         createUserMessage(message: "", title: "Page successfully added to journal", buttonText: "Okay")
+        
+        displayJournalPage();
+        
+        if (Journal.count == 1) {
+            current_page_index_shown = 0;
+        }
     
     }
     
