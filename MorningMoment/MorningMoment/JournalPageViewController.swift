@@ -56,7 +56,7 @@ class JournalPageViewController: UIViewController {
         self.focus_field_1.tag = 4;
         self.focus_field_2.tag = 5;
         
-        self.current_page_index_shown = Journal.count;
+        self.current_page_index_shown = 0;
         self.displayJournalPage();
         
         // update date
@@ -69,16 +69,32 @@ class JournalPageViewController: UIViewController {
     
     func displayJournalPage () {
         
-        // extract current page shown
-        let journal_page = self.Journal.object(at: current_page_index_shown) as! JournalPage;
+        // if journal is empty
+        if (Journal.count == 0) {
+            clearTextFields();
+            enableTextFields(b: true);
+        }
         
-        let_go_field.text = journal_page.let_go_text;
-        grateful_field_1.text = journal_page.grateful_1_text;
-        grateful_field_2.text = journal_page.grateful_2_text;
-        grateful_field_3.text = journal_page.grateful_3_text;
-        focus_field_1.text = journal_page.focus_1_text;
-        focus_field_2.text = journal_page.focus_2_text;
-        date_label.text = current_date;
+        // if journal is not empty
+        else {
+            // extract current page shown
+            let journal_page = self.Journal.object(at: current_page_index_shown) as! JournalPage;
+            
+            let_go_field.text = journal_page.let_go_text;
+            grateful_field_1.text = journal_page.grateful_1_text;
+            grateful_field_2.text = journal_page.grateful_2_text;
+            grateful_field_3.text = journal_page.grateful_3_text;
+            focus_field_1.text = journal_page.focus_1_text;
+            focus_field_2.text = journal_page.focus_2_text;
+            date_label.text = current_date;
+            
+            // enable/disable text fields according to the current page shown
+            if (journal_page.day == current_date) {
+                enableTextFields(b: true);
+            } else {
+                enableTextFields(b: false);
+            }
+        }
         
     }
     
@@ -124,30 +140,33 @@ class JournalPageViewController: UIViewController {
     
     @IBAction func pageTextFieldsEdited (sender: AnyObject) {
         
-        // extract current page shown
-        let journal_page = self.Journal.object(at: current_page_index_shown) as! JournalPage;
+        if (Journal.count != 0) {
         
-        // if the journal page shown has the current date => make edit possible
-        if (journal_page.day == current_date) {
+            // extract current page shown
+            let journal_page = self.Journal.object(at: current_page_index_shown) as! JournalPage;
             
-            switch (sender.tag) {
-                case 0:
-                    journal_page.let_go_text = let_go_field.text ?? ""; break;
-                case 1:
-                    journal_page.grateful_1_text = grateful_field_1.text ?? ""; break;
-                case 2:
-                    journal_page.grateful_2_text = grateful_field_2.text ?? ""; break;
-                case 3:
-                    journal_page.grateful_3_text = grateful_field_3.text ?? ""; break;
-                case 4:
-                    journal_page.focus_1_text = focus_field_1.text ?? ""; break;
-                case 5:
-                    journal_page.focus_2_text = focus_field_2.text ?? ""; break;
-                default: break;
+            // if the journal page shown has the current date => make edit possible
+            if (journal_page.day == current_date) {
+                
+                switch (sender.tag) {
+                    case 0:
+                        journal_page.let_go_text = let_go_field.text ?? ""; break;
+                    case 1:
+                        journal_page.grateful_1_text = grateful_field_1.text ?? ""; break;
+                    case 2:
+                        journal_page.grateful_2_text = grateful_field_2.text ?? ""; break;
+                    case 3:
+                        journal_page.grateful_3_text = grateful_field_3.text ?? ""; break;
+                    case 4:
+                        journal_page.focus_1_text = focus_field_1.text ?? ""; break;
+                    case 5:
+                        journal_page.focus_2_text = focus_field_2.text ?? ""; break;
+                    default: break;
+                }
+                
+                Journal.replaceObject(at: current_page_index_shown, with: journal_page);
+                self.displayJournalPage();
             }
-            
-            Journal.replaceObject(at: current_page_index_shown, with: journal_page);
-            self.displayJournalPage();
         }
     }
     
@@ -203,15 +222,8 @@ class JournalPageViewController: UIViewController {
             left_arrow.isHidden = false;
         }
         
-        // extract current page shown
-        let journal_page = self.Journal.object(at: current_page_index_shown) as! JournalPage;
+        self.displayJournalPage();
         
-        // enable/disable text fields according to the current page shown
-        if (journal_page.day == current_date) {
-            enableTextFields(b: true);
-        } else {
-            enableTextFields(b: false);
-        }
     }
     
     
