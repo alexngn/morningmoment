@@ -12,6 +12,8 @@ class JournalPageViewController: UIViewController {
 
     // CLASS PROPERTIES
     var Journal: NSMutableArray = [JournalPage()];
+    var journal_color: UIColor = UIColor.init(red: 0.8, green: 0.930, blue: 0.904, alpha: 1);
+    var today_color: UIColor = UIColor.init(red: 0.938, green: 0.822, blue: 0.882, alpha: 1);
     var current_page_index_shown = 0;
     var current_date: String!
     var segmentedControlIndex = 1;
@@ -29,7 +31,6 @@ class JournalPageViewController: UIViewController {
     @IBOutlet weak var journal_empty_label: UILabel!
     @IBOutlet weak var journal_empty_label_2: UILabel!
     
-    
     // textfields
     @IBOutlet weak var let_go_field: UITextField!
     @IBOutlet weak var grateful_field_1: UITextField!
@@ -43,7 +44,11 @@ class JournalPageViewController: UIViewController {
     @IBOutlet weak var right_arrow: UIButton!
     @IBOutlet weak var submit_button: UIButton!
     
+    // segmented controllers
     @IBOutlet weak var segmentedControl: UISegmentedControl!
+    
+    // images
+    @IBOutlet weak var animatedArrow: UIImageView!
     
     
     
@@ -69,7 +74,7 @@ class JournalPageViewController: UIViewController {
         print(current_date ?? "");
         
         // add 3 hardcoded journal entries
-        self.hardCodeJournalEntries();
+        //self.hardCodeJournalEntries();
         
         // set initial segmented control
         segmentedControl.selectedSegmentIndex = 1;
@@ -89,6 +94,7 @@ class JournalPageViewController: UIViewController {
         date_label.isHidden = true;
         journal_empty_label.isHidden = true;
         journal_empty_label_2.isHidden = true;
+        animatedArrow.isHidden = true;
     }
     
     func displayTodaysPage () {
@@ -114,10 +120,13 @@ class JournalPageViewController: UIViewController {
         date_label.isHidden = false;
         journal_empty_label.isHidden = true;
         journal_empty_label_2.isHidden = true;
+        animatedArrow.isHidden = true;
         
     }
     
     func displayJournal () {
+        
+        animatedArrow.isHidden = true;
         
         if (Journal.count == 0) {
             self.displayEmptyJournalPage(b: true);
@@ -234,6 +243,8 @@ class JournalPageViewController: UIViewController {
         // JOURNAL
         if (segmentedControlIndex == 0) {
             
+            view.backgroundColor = journal_color;
+            
             if (Journal.count == 0) {
                 displayEmptyJournalPage(b: true);
             }
@@ -246,6 +257,8 @@ class JournalPageViewController: UIViewController {
             
         // TODAY
         else if (segmentedControlIndex == 1) {
+            
+            view.backgroundColor = today_color;
             
             displayEmptyJournalPage(b: false);
             
@@ -399,6 +412,12 @@ class JournalPageViewController: UIViewController {
     
     
     func displayEmptyJournalPage (b: Bool) {
+        
+        // show animated arrow
+        animatedArrow.isHidden = false;
+        
+        UIView.animate(withDuration: 0.5, animations: { self.animatedArrow.frame.origin.y -= 20}) {_ in UIView.animateKeyframes(withDuration: 0.5, delay: 0.25, options: [.autoreverse, .repeat], animations: {self.animatedArrow.frame.origin.y += 20})
+        }
         
         journal_empty_label.isHidden = !b;
         journal_empty_label.isEnabled = b;
