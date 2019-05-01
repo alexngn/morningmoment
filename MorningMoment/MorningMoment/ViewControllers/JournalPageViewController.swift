@@ -210,6 +210,7 @@ class JournalPageViewController: UIViewController {
         journal_page.day = current_date;
         
         CDJournal.append(journal_page);
+        
         PersistanceService.saveContext()
         
         createUserMessage(message: "", title: "Page successfully added to journal", buttonText: "Okay")
@@ -249,7 +250,8 @@ class JournalPageViewController: UIViewController {
             }
                 // update today's entry
                 CDJournal[CDJournal.count - 1] = newest_journal_page
-                //Journal.replaceObject(at: Journal.count - 1, with: newest_journal_page);
+                
+                PersistanceService.saveContext()
             }
         }
     }

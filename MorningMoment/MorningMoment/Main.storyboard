@@ -415,6 +415,7 @@
                                 </state>
                                 <connections>
                                     <action selector="backButtonClickedWithSender:" destination="2fc-pL-cbI" eventType="touchUpInside" id="eBG-PZ-bx6"/>
+                                    <action selector="backButtonClickedWithSender:" destination="9Xm-4a-SwS" eventType="touchUpInside" id="px8-gO-4lc"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -442,6 +443,7 @@
                                     <color key="titleColor" red="0.28899999999999998" green="0.32700000000000001" blue="0.219" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 </state>
                                 <connections>
+                                    <action selector="backButtonClickedWithSender:" destination="lDS-Gj-hc0" eventType="touchUpInside" id="hbO-t8-JBi"/>
                                     <action selector="backButtonClickedWithSender:" destination="2fc-pL-cbI" eventType="touchUpInside" id="jEm-cW-vaF"/>
                                 </connections>
                             </button>
@@ -499,6 +501,7 @@
                                     <color key="titleColor" red="0.28899999999999998" green="0.32700000000000001" blue="0.219" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 </state>
                                 <connections>
+                                    <action selector="backButtonClickedWithSender:" destination="SFr-j8-V5x" eventType="touchUpInside" id="GQX-P4-DoU"/>
                                     <action selector="backButtonClickedWithSender:" destination="2fc-pL-cbI" eventType="touchUpInside" id="XqL-k1-36L"/>
                                 </connections>
                             </button>
@@ -528,6 +531,7 @@
                                 </state>
                                 <connections>
                                     <action selector="backButtonClickedWithSender:" destination="2fc-pL-cbI" eventType="touchUpInside" id="8Xb-tT-eAg"/>
+                                    <action selector="backButtonClickedWithSender:" destination="yRA-ib-BFe" eventType="touchUpInside" id="xyx-HP-P3Q"/>
                                 </connections>
                             </button>
                         </subviews>

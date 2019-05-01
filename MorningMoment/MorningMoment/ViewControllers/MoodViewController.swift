@@ -17,4 +17,20 @@ protocol MoodViewControllerDelegate: class {
 
 class MoodViewController: UIViewController {
     
+    // CLASS PROPERTIES
+    weak var delegate: MoodViewControllerDelegate?
+    
+    
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
+    
+    @IBAction func backButtonClicked (sender: Any) {
+        
+        // ensure to not rerun viewDidLoad upon return to ViewController
+        self.dismiss(animated: true, completion: self.delegate?.MoodViewControllerDidBack);
+        
+    }
+    
 }
