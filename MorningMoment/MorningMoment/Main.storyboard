@@ -386,6 +386,7 @@
                                 </state>
                                 <connections>
                                     <action selector="backButtonClickedWithSender:" destination="2fc-pL-cbI" eventType="touchUpInside" id="3r5-JY-3Um"/>
+                                    <action selector="backButtonClickedWithSender:" destination="oC5-MM-wGz" eventType="touchUpInside" id="RD0-Mp-lLx"/>
                                 </connections>
                             </button>
                         </subviews>

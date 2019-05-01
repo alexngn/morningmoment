@@ -17,4 +17,21 @@ protocol SettingsViewControllerDelegate: class {
 
 class SettingsViewController: UIViewController {
     
+    // CLASS PROPERTIES
+    weak var delegate: SettingsViewControllerDelegate?
+    
+    
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
+    
+    
+    @IBAction func backButtonClicked (sender: Any) {
+        
+        // ensure to not rerun viewDidLoad upon return to ViewController
+        self.dismiss(animated: true, completion: self.delegate?.SettingsViewControllerDidBack);
+        
+    }
+    
 }
