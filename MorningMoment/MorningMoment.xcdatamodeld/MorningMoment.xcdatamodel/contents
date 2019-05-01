@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14490.99" systemVersion="18E226" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <entity name="Entity" representedClassName="Entity" syncable="YES" codeGenerationType="class"/>
-    <entity name="Journal" representedClassName="Journal" syncable="YES" codeGenerationType="class"/>
-    <entity name="JournalPage" representedClassName="JournalPage" syncable="YES">
+    <entity name="CDJournalPage" representedClassName="CDJournalPage" syncable="YES">
         <attribute name="day" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="focus_1_text" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="focus_2_text" optional="YES" attributeType="String" syncable="YES"/>
@@ -12,8 +10,6 @@
         <attribute name="let_go_text" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
-        <element name="JournalPage" positionX="-63" positionY="-18" width="128" height="150"/>
-        <element name="Journal" positionX="-54" positionY="45" width="128" height="45"/>
-        <element name="Entity" positionX="-36" positionY="54" width="128" height="45"/>
+        <element name="CDJournalPage" positionX="-63" positionY="-18" width="128" height="150"/>
     </elements>
 </model>

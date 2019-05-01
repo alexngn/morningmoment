@@ -7,10 +7,22 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0B16F686227918C900F0E51A /* Base.lproj in Resources */ = {isa = PBXBuildFile; fileRef = 0B16F685227918C900F0E51A /* Base.lproj */; };
 		0B4E55292262A81E0013CA39 /* JournalPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B4E55282262A81E0013CA39 /* JournalPage.swift */; };
+		0B60CC5B22791477004EC525 /* MorningMoment.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0B60CC5922791477004EC525 /* MorningMoment.xcdatamodeld */; };
+		0B6A1816227926C50099C22F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0B6A1815227926B90099C22F /* Main.storyboard */; };
+		0B6A18182279EF400099C22F /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B6A18172279EF400099C22F /* MenuViewController.swift */; };
+		0B6A181A2279FD450099C22F /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B6A18192279FD450099C22F /* AboutViewController.swift */; };
+		0B6A181C2279FD570099C22F /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B6A181B2279FD570099C22F /* ShareViewController.swift */; };
+		0B6A181E2279FD640099C22F /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B6A181D2279FD640099C22F /* SettingsViewController.swift */; };
+		0B6A18202279FD760099C22F /* MoodViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B6A181F2279FD760099C22F /* MoodViewController.swift */; };
+		0B6A18222279FD910099C22F /* ActivityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B6A18212279FD910099C22F /* ActivityViewController.swift */; };
+		0B6A18242279FDB00099C22F /* DeletePagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B6A18232279FDB00099C22F /* DeletePagesViewController.swift */; };
+		0B9A43E82277C2AB00288875 /* PersistanceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B9A43E72277C2AB00288875 /* PersistanceService.swift */; };
+		0B9A43EB2277C41200288875 /* CDJournalPage+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B9A43E92277C41200288875 /* CDJournalPage+CoreDataClass.swift */; };
+		0B9A43EC2277C41200288875 /* CDJournalPage+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B9A43EA2277C41200288875 /* CDJournalPage+CoreDataProperties.swift */; };
 		0BAF7723225EB24100384645 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BAF7722225EB24100384645 /* AppDelegate.swift */; };
 		0BAF7725225EB24100384645 /* JournalPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BAF7724225EB24100384645 /* JournalPageViewController.swift */; };
-		0BAF7728225EB24100384645 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0BAF7726225EB24100384645 /* Main.storyboard */; };
 		0BAF772A225EB24200384645 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0BAF7729225EB24200384645 /* Assets.xcassets */; };
 		0BAF7738225EB24200384645 /* MorningMomentUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BAF7737225EB24200384645 /* MorningMomentUITests.swift */; };
 /* End PBXBuildFile section */
@@ -26,13 +38,25 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		0B4E55282262A81E0013CA39 /* JournalPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalPage.swift; sourceTree = "<group>"; };
+		0B16F685227918C900F0E51A /* Base.lproj */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Base.lproj; sourceTree = SOURCE_ROOT; };
+		0B4E55282262A81E0013CA39 /* JournalPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = JournalPage.swift; path = ../JournalPage.swift; sourceTree = "<group>"; };
+		0B60CC5A22791477004EC525 /* MorningMoment.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MorningMoment.xcdatamodel; sourceTree = "<group>"; };
+		0B6A1815227926B90099C22F /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		0B6A18172279EF400099C22F /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
+		0B6A18192279FD450099C22F /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
+		0B6A181B2279FD570099C22F /* ShareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareViewController.swift; sourceTree = "<group>"; };
+		0B6A181D2279FD640099C22F /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		0B6A181F2279FD760099C22F /* MoodViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodViewController.swift; sourceTree = "<group>"; };
+		0B6A18212279FD910099C22F /* ActivityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityViewController.swift; sourceTree = "<group>"; };
+		0B6A18232279FDB00099C22F /* DeletePagesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeletePagesViewController.swift; sourceTree = "<group>"; };
+		0B9A43E72277C2AB00288875 /* PersistanceService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistanceService.swift; sourceTree = "<group>"; };
+		0B9A43E92277C41200288875 /* CDJournalPage+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "CDJournalPage+CoreDataClass.swift"; path = "../CDJournalPage+CoreDataClass.swift"; sourceTree = "<group>"; };
+		0B9A43EA2277C41200288875 /* CDJournalPage+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "CDJournalPage+CoreDataProperties.swift"; path = "../CDJournalPage+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		0BAF771F225EB24100384645 /* MorningMoment.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MorningMoment.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		0BAF7722225EB24100384645 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		0BAF7722225EB24100384645 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = ../AppDelegate.swift; sourceTree = "<group>"; };
 		0BAF7724225EB24100384645 /* JournalPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalPageViewController.swift; sourceTree = "<group>"; };
-		0BAF7727225EB24100384645 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		0BAF7729225EB24200384645 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		0BAF772E225EB24200384645 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0BAF7729225EB24200384645 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ../Assets.xcassets; sourceTree = "<group>"; };
+		0BAF772E225EB24200384645 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = ../Info.plist; sourceTree = "<group>"; };
 		0BAF7733225EB24200384645 /* MorningMomentUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MorningMomentUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0BAF7737225EB24200384645 /* MorningMomentUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MorningMomentUITests.swift; sourceTree = "<group>"; };
 		0BAF7739225EB24200384645 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -56,6 +80,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0B6A18252279FDCD0099C22F /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				0BAF7724225EB24100384645 /* JournalPageViewController.swift */,
+				0B6A18172279EF400099C22F /* MenuViewController.swift */,
+				0B6A181B2279FD570099C22F /* ShareViewController.swift */,
+				0B6A181D2279FD640099C22F /* SettingsViewController.swift */,
+				0B6A181F2279FD760099C22F /* MoodViewController.swift */,
+				0B6A18212279FD910099C22F /* ActivityViewController.swift */,
+				0B6A18232279FDB00099C22F /* DeletePagesViewController.swift */,
+				0B6A18192279FD450099C22F /* AboutViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
 		0BAF7716225EB24100384645 = {
 			isa = PBXGroup;
 			children = (
@@ -77,10 +116,15 @@
 		0BAF7721225EB24100384645 /* MorningMoment */ = {
 			isa = PBXGroup;
 			children = (
+				0B6A18252279FDCD0099C22F /* ViewControllers */,
+				0B9A43E92277C41200288875 /* CDJournalPage+CoreDataClass.swift */,
+				0B9A43EA2277C41200288875 /* CDJournalPage+CoreDataProperties.swift */,
+				0B9A43E72277C2AB00288875 /* PersistanceService.swift */,
 				0BAF7722225EB24100384645 /* AppDelegate.swift */,
-				0BAF7724225EB24100384645 /* JournalPageViewController.swift */,
-				0BAF7726225EB24100384645 /* Main.storyboard */,
+				0B60CC5922791477004EC525 /* MorningMoment.xcdatamodeld */,
 				0BAF7729225EB24200384645 /* Assets.xcassets */,
+				0B6A1815227926B90099C22F /* Main.storyboard */,
+				0B16F685227918C900F0E51A /* Base.lproj */,
 				0BAF772E225EB24200384645 /* Info.plist */,
 				0B4E55282262A81E0013CA39 /* JournalPage.swift */,
 			);
@@ -177,8 +221,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0B6A1816227926C50099C22F /* Main.storyboard in Resources */,
 				0BAF772A225EB24200384645 /* Assets.xcassets in Resources */,
-				0BAF7728225EB24100384645 /* Main.storyboard in Resources */,
+				0B16F686227918C900F0E51A /* Base.lproj in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -198,7 +243,18 @@
 			files = (
 				0B4E55292262A81E0013CA39 /* JournalPage.swift in Sources */,
 				0BAF7725225EB24100384645 /* JournalPageViewController.swift in Sources */,
+				0B6A181E2279FD640099C22F /* SettingsViewController.swift in Sources */,
+				0B6A181C2279FD570099C22F /* ShareViewController.swift in Sources */,
 				0BAF7723225EB24100384645 /* AppDelegate.swift in Sources */,
+				0B6A18202279FD760099C22F /* MoodViewController.swift in Sources */,
+				0B6A181A2279FD450099C22F /* AboutViewController.swift in Sources */,
+				0B9A43EC2277C41200288875 /* CDJournalPage+CoreDataProperties.swift in Sources */,
+				0B6A18222279FD910099C22F /* ActivityViewController.swift in Sources */,
+				0B9A43E82277C2AB00288875 /* PersistanceService.swift in Sources */,
+				0B9A43EB2277C41200288875 /* CDJournalPage+CoreDataClass.swift in Sources */,
+				0B60CC5B22791477004EC525 /* MorningMoment.xcdatamodeld in Sources */,
+				0B6A18242279FDB00099C22F /* DeletePagesViewController.swift in Sources */,
+				0B6A18182279EF400099C22F /* MenuViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -219,17 +275,6 @@
 			targetProxy = 0BAF7734225EB24200384645 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
-
-/* Begin PBXVariantGroup section */
-		0BAF7726225EB24100384645 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				0BAF7727225EB24100384645 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		0BAF773A225EB24200384645 /* Debug */ = {
@@ -354,7 +399,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = F3524534FX;
-				INFOPLIST_FILE = MorningMoment/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -372,7 +417,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = F3524534FX;
-				INFOPLIST_FILE = MorningMoment/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -455,6 +500,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		0B60CC5922791477004EC525 /* MorningMoment.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				0B60CC5A22791477004EC525 /* MorningMoment.xcdatamodel */,
+			);
+			currentVersion = 0B60CC5A22791477004EC525 /* MorningMoment.xcdatamodel */;
+			path = MorningMoment.xcdatamodeld;
+			sourceTree = SOURCE_ROOT;
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 0BAF7717225EB24100384645 /* Project object */;
 }

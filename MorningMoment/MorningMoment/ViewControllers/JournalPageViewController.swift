@@ -7,11 +7,15 @@
 //
 
 import UIKit
+import CoreData
 
 class JournalPageViewController: UIViewController {
 
     // CLASS PROPERTIES
-    var Journal: NSMutableArray = [JournalPage()];
+    //var Journal: NSMutableArray = [JournalPage()];
+    //var CDJournal: NSMutableArray = [CDJournalPage()];
+    var CDJournal: [CDJournalPage]!
+    
     var journal_color: UIColor = UIColor.init(red: 0.8, green: 0.930, blue: 0.904, alpha: 1);
     var today_color: UIColor = UIColor.init(red: 0.938, green: 0.822, blue: 0.882, alpha: 1);
     var current_page_index_shown = 0;
@@ -51,12 +55,17 @@ class JournalPageViewController: UIViewController {
     @IBOutlet weak var animatedArrow: UIImageView!
     
     
-    
     // CLASS METHODS
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        Journal.removeAllObjects();
+        
+        // set up CoreData: Create array of CoreData journal pages
+        let fetchRequest: NSFetchRequest<CDJournalPage> = CDJournalPage.fetchRequest()
+        
+        do {
+            let CDJournal = try PersistanceService.context.fetch(fetchRequest)
+            self.CDJournal = CDJournal //as! NSMutableArray
+        } catch{}
         
         // set textfield tags
         self.let_go_field.tag = 0;
@@ -74,12 +83,18 @@ class JournalPageViewController: UIViewController {
         print(current_date ?? "");
         
         // add 3 hardcoded journal entries
-        //self.hardCodeJournalEntries();
+        // self.hardCodeJournalEntries();
         
         // set initial segmented control
         segmentedControl.selectedSegmentIndex = 1;
         self.segmentedControlValueChanged(sender: segmentedControl);
     }
+    
+    /*
+    // clear CoreData
+    override func viewDidAppear(_ animated: Bool) {
+        self.deleteAllData("CDJournalPage")
+    }*/
     
     func displayTemplatePage () {
         
@@ -99,9 +114,11 @@ class JournalPageViewController: UIViewController {
     
     func displayTodaysPage () {
         
-        current_page_index_shown = Journal.count - 1;
+        current_page_index_shown = CDJournal.count - 1;
         
-        let journal_page = self.Journal.object(at: current_page_index_shown) as! JournalPage;
+        let journal_page = CDJournal[current_page_index_shown]
+        
+        //let journal_page = self.CDJournal.object(at: current_page_index_shown) as! JournalPage;
         
         let_go_field.text = journal_page.let_go_text;
         grateful_field_1.text = journal_page.grateful_1_text;
@@ -128,14 +145,14 @@ class JournalPageViewController: UIViewController {
         
         animatedArrow.isHidden = true;
         
-        if (Journal.count == 0) {
+        if (CDJournal.count == 0) {
             self.displayEmptyJournalPage(b: true);
         }
         
         else {
             
             // extract current page shown
-            let journal_page = self.Journal.object(at: current_page_index_shown) as! JournalPage;
+            let journal_page = CDJournal[current_page_index_shown]
             
             let_go_field.text = journal_page.let_go_text;
             grateful_field_1.text = journal_page.grateful_1_text;
@@ -182,7 +199,7 @@ class JournalPageViewController: UIViewController {
     
     @IBAction func submitButtonPushed (sender: Any) {
         
-        let journal_page = JournalPage();
+        let journal_page = CDJournalPage(context: PersistanceService.context)
         
         journal_page.let_go_text = let_go_field.text ?? "";
         journal_page.grateful_1_text = grateful_field_1.text ?? "";
@@ -192,7 +209,8 @@ class JournalPageViewController: UIViewController {
         journal_page.focus_2_text = focus_field_2.text ?? "";
         journal_page.day = current_date;
         
-        Journal.add(journal_page);
+        CDJournal.append(journal_page);
+        PersistanceService.saveContext()
         
         createUserMessage(message: "", title: "Page successfully added to journal", buttonText: "Okay")
         
@@ -204,10 +222,10 @@ class JournalPageViewController: UIViewController {
     
     @IBAction func pageTextFieldsEdited (sender: AnyObject) {
         
-        if (Journal.count != 0) {
+        if (CDJournal.count != 0) {
             
             // extract newest journal entry
-            let newest_journal_page = self.Journal.object(at: Journal.count - 1) as! JournalPage;
+            let newest_journal_page = CDJournal[CDJournal.count - 1]
             
             // if "TODAY" has been pushed and today's entry has already been made
             if (segmentedControlIndex == 1 && newest_journal_page.day == current_date) {
@@ -230,7 +248,8 @@ class JournalPageViewController: UIViewController {
             
             }
                 // update today's entry
-                Journal.replaceObject(at: Journal.count - 1, with: newest_journal_page);
+                CDJournal[CDJournal.count - 1] = newest_journal_page
+                //Journal.replaceObject(at: Journal.count - 1, with: newest_journal_page);
             }
         }
     }
@@ -245,11 +264,11 @@ class JournalPageViewController: UIViewController {
             
             view.backgroundColor = journal_color;
             
-            if (Journal.count == 0) {
+            if (CDJournal.count == 0) {
                 displayEmptyJournalPage(b: true);
             }
             else {
-                current_page_index_shown = Journal.count - 1;
+                current_page_index_shown = CDJournal.count - 1;
                 displayJournal();
                 enableTextFields(b: false);
             }
@@ -263,10 +282,10 @@ class JournalPageViewController: UIViewController {
             displayEmptyJournalPage(b: false);
             
             // if today's entry have been submitted => enable editing
-            if (Journal.count != 0) {
+            if (CDJournal.count != 0) {
                 
                 // extract newest journal entry
-                let newest_journal_page = self.Journal.object(at: Journal.count - 1) as! JournalPage;
+                let newest_journal_page = CDJournal[CDJournal.count - 1]
                 
                 if (newest_journal_page.day == current_date) {
                     
@@ -285,7 +304,6 @@ class JournalPageViewController: UIViewController {
             }
             // otherwise enable template
             else {
-                
                 displayTemplatePage();
                 enableTextFields(b: true);
             }
@@ -294,7 +312,8 @@ class JournalPageViewController: UIViewController {
         // MENU
         else {
             
-            displayEmptyJournalPage(b: false);
+			performSegue(withIdentifier: "JournalToMenuSegue", sender:self)
+            sender.selectedSegmentIndex = 1
             
         }
     }
@@ -306,7 +325,7 @@ class JournalPageViewController: UIViewController {
     @IBAction func rightArrowPushed (sender: UIButton) {
         
         // if the element requested is within array range
-        if ((current_page_index_shown + 1) < Journal.count) {
+        if ((current_page_index_shown + 1) < CDJournal.count) {
             
             current_page_index_shown += 1;
             self.displayJournal();
@@ -334,7 +353,7 @@ class JournalPageViewController: UIViewController {
     func updateArrowAppearance() {
         
         // if there is only one student in the gradebook
-        if (Journal.count == 1) {
+        if (CDJournal.count == 1) {
             right_arrow.isHidden = true;
             left_arrow.isHidden = true;
         }
@@ -344,7 +363,7 @@ class JournalPageViewController: UIViewController {
             left_arrow.isHidden = true;
         }
             // if the student to be shown is at the gradebook tail
-        else if (current_page_index_shown == (Journal.count - 1)) {
+        else if (current_page_index_shown == (CDJournal.count - 1)) {
             right_arrow.isHidden = true;
             left_arrow.isHidden = false;
         }
@@ -372,7 +391,7 @@ class JournalPageViewController: UIViewController {
     
     func hardCodeJournalEntries () {
         
-        let journal_page_1 = JournalPage();
+        let journal_page_1 = CDJournalPage(context: PersistanceService.context)
     
         journal_page_1.let_go_text = "What Kevin said to me yesterday about capitalism";
         journal_page_1.grateful_1_text = "The sun";
@@ -382,9 +401,9 @@ class JournalPageViewController: UIViewController {
         journal_page_1.focus_2_text = "Finishing math assignment 8";
         journal_page_1.day = "04/5/2019";
         
-        Journal.add(journal_page_1);
+        CDJournal.append(journal_page_1);
         
-        let journal_page_2 = JournalPage();
+        let journal_page_2 = CDJournalPage(context: PersistanceService.context)
         
         journal_page_2.let_go_text = "My diet";
         journal_page_2.grateful_1_text = "Parties on Thompson Street";
@@ -394,9 +413,9 @@ class JournalPageViewController: UIViewController {
         journal_page_2.focus_2_text = "Breathing";
         journal_page_2.day = "04/10/2019";
         
-        Journal.add(journal_page_2);
+        CDJournal.append(journal_page_2);
         
-        let journal_page_3 = JournalPage();
+        let journal_page_3 = CDJournalPage(context: PersistanceService.context)
         
         journal_page_3.let_go_text = "My roomate's mess";
         journal_page_3.grateful_1_text = "That time she made me a brownie";
@@ -406,8 +425,10 @@ class JournalPageViewController: UIViewController {
         journal_page_3.focus_2_text = "Appreciate her person";
         journal_page_3.day = "04/11/2019";
         
-        Journal.add(journal_page_3);
+        CDJournal.append(journal_page_3);
         
+        //PersistanceService.saveContext()
+    
     }
     
     
@@ -455,5 +476,28 @@ class JournalPageViewController: UIViewController {
         bul22_label.isHidden = b;
     }
     
+    func deleteAllData(_ entity:String) {
+        
+        let managedContext =  PersistanceService.context.persistentStoreCoordinator
+        let context = PersistanceService.context
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: entity)
+        let batchDeleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
+        do {
+            try managedContext?.execute(batchDeleteRequest, with: context)
+        }
+        catch {
+            print(error)
+        }
+    }
+    
+    /*
+    // Prepare for segway to SecondViewController
+    public override func prepare(for segue: UIStoryboardSegue, sender: (Any)?) {
+        
+        let destination = segue.destination as? MenuViewController
+        
+    }*/
+    
 }
+
 
