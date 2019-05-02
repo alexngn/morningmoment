@@ -20,8 +20,6 @@ class ShareViewController: UIViewController {
     // CLASS PROPERTIES
     weak var delegate: ShareViewControllerDelegate?
     
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
     }

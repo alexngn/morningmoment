@@ -18,9 +18,9 @@
 		0B6A18202279FD760099C22F /* MoodViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B6A181F2279FD760099C22F /* MoodViewController.swift */; };
 		0B6A18222279FD910099C22F /* ActivityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B6A18212279FD910099C22F /* ActivityViewController.swift */; };
 		0B6A18242279FDB00099C22F /* DeletePagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B6A18232279FDB00099C22F /* DeletePagesViewController.swift */; };
+		0B6A1829227A70AE0099C22F /* CDJournalPage+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B6A1828227A70AE0099C22F /* CDJournalPage+CoreDataProperties.swift */; };
 		0B9A43E82277C2AB00288875 /* PersistanceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B9A43E72277C2AB00288875 /* PersistanceService.swift */; };
 		0B9A43EB2277C41200288875 /* CDJournalPage+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B9A43E92277C41200288875 /* CDJournalPage+CoreDataClass.swift */; };
-		0B9A43EC2277C41200288875 /* CDJournalPage+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B9A43EA2277C41200288875 /* CDJournalPage+CoreDataProperties.swift */; };
 		0BAF7723225EB24100384645 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BAF7722225EB24100384645 /* AppDelegate.swift */; };
 		0BAF7725225EB24100384645 /* JournalPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BAF7724225EB24100384645 /* JournalPageViewController.swift */; };
 		0BAF772A225EB24200384645 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0BAF7729225EB24200384645 /* Assets.xcassets */; };
@@ -49,9 +49,9 @@
 		0B6A181F2279FD760099C22F /* MoodViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodViewController.swift; sourceTree = "<group>"; };
 		0B6A18212279FD910099C22F /* ActivityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityViewController.swift; sourceTree = "<group>"; };
 		0B6A18232279FDB00099C22F /* DeletePagesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeletePagesViewController.swift; sourceTree = "<group>"; };
+		0B6A1828227A70AE0099C22F /* CDJournalPage+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CDJournalPage+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		0B9A43E72277C2AB00288875 /* PersistanceService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistanceService.swift; sourceTree = "<group>"; };
 		0B9A43E92277C41200288875 /* CDJournalPage+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "CDJournalPage+CoreDataClass.swift"; path = "../CDJournalPage+CoreDataClass.swift"; sourceTree = "<group>"; };
-		0B9A43EA2277C41200288875 /* CDJournalPage+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "CDJournalPage+CoreDataProperties.swift"; path = "../CDJournalPage+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		0BAF771F225EB24100384645 /* MorningMoment.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MorningMoment.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0BAF7722225EB24100384645 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = ../AppDelegate.swift; sourceTree = "<group>"; };
 		0BAF7724225EB24100384645 /* JournalPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalPageViewController.swift; sourceTree = "<group>"; };
@@ -118,7 +118,7 @@
 			children = (
 				0B6A18252279FDCD0099C22F /* ViewControllers */,
 				0B9A43E92277C41200288875 /* CDJournalPage+CoreDataClass.swift */,
-				0B9A43EA2277C41200288875 /* CDJournalPage+CoreDataProperties.swift */,
+				0B6A1828227A70AE0099C22F /* CDJournalPage+CoreDataProperties.swift */,
 				0B9A43E72277C2AB00288875 /* PersistanceService.swift */,
 				0BAF7722225EB24100384645 /* AppDelegate.swift */,
 				0B60CC5922791477004EC525 /* MorningMoment.xcdatamodeld */,
@@ -242,13 +242,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				0B4E55292262A81E0013CA39 /* JournalPage.swift in Sources */,
+				0B6A1829227A70AE0099C22F /* CDJournalPage+CoreDataProperties.swift in Sources */,
 				0BAF7725225EB24100384645 /* JournalPageViewController.swift in Sources */,
 				0B6A181E2279FD640099C22F /* SettingsViewController.swift in Sources */,
 				0B6A181C2279FD570099C22F /* ShareViewController.swift in Sources */,
 				0BAF7723225EB24100384645 /* AppDelegate.swift in Sources */,
 				0B6A18202279FD760099C22F /* MoodViewController.swift in Sources */,
 				0B6A181A2279FD450099C22F /* AboutViewController.swift in Sources */,
-				0B9A43EC2277C41200288875 /* CDJournalPage+CoreDataProperties.swift in Sources */,
 				0B6A18222279FD910099C22F /* ActivityViewController.swift in Sources */,
 				0B9A43E82277C2AB00288875 /* PersistanceService.swift in Sources */,
 				0B9A43EB2277C41200288875 /* CDJournalPage+CoreDataClass.swift in Sources */,

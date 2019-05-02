@@ -8,8 +8,9 @@
         <attribute name="grateful_2_text" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="grateful_3_text" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="let_go_text" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="mood" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
     </entity>
     <elements>
-        <element name="CDJournalPage" positionX="-63" positionY="-18" width="128" height="150"/>
+        <element name="CDJournalPage" positionX="-63" positionY="-18" width="128" height="165"/>
     </elements>
 </model>

@@ -12,10 +12,7 @@ import CoreData
 class JournalPageViewController: UIViewController {
 
     // CLASS PROPERTIES
-    //var Journal: NSMutableArray = [JournalPage()];
-    //var CDJournal: NSMutableArray = [CDJournalPage()];
     var CDJournal: [CDJournalPage]!
-    
     var journal_color: UIColor = UIColor.init(red: 0.8, green: 0.930, blue: 0.904, alpha: 1);
     var today_color: UIColor = UIColor.init(red: 0.938, green: 0.822, blue: 0.882, alpha: 1);
     var current_page_index_shown = 0;
@@ -34,6 +31,7 @@ class JournalPageViewController: UIViewController {
     @IBOutlet weak var date_label: UILabel!
     @IBOutlet weak var journal_empty_label: UILabel!
     @IBOutlet weak var journal_empty_label_2: UILabel!
+    @IBOutlet weak var current_mood_label: UILabel!
     
     // textfields
     @IBOutlet weak var let_go_field: UITextField!
@@ -48,11 +46,22 @@ class JournalPageViewController: UIViewController {
     @IBOutlet weak var right_arrow: UIButton!
     @IBOutlet weak var submit_button: UIButton!
     
-    // segmented controllers
+    // segmented controller, slider
     @IBOutlet weak var segmentedControl: UISegmentedControl!
+    @IBOutlet weak var moodSlider: UISlider!
     
     // images
     @IBOutlet weak var animatedArrow: UIImageView!
+    @IBOutlet weak var emoji_0: UIImageView!
+    @IBOutlet weak var emoji_1: UIImageView!
+    @IBOutlet weak var emoji_2: UIImageView!
+    @IBOutlet weak var emoji_3: UIImageView!
+    @IBOutlet weak var emoji_4: UIImageView!
+    @IBOutlet weak var emoji_5: UIImageView!
+    @IBOutlet weak var emoji_6: UIImageView!
+    @IBOutlet weak var emoji_7: UIImageView!
+    @IBOutlet weak var emoji_8: UIImageView!
+    @IBOutlet weak var display_mood_emoji: UIImageView!
     
     
     // CLASS METHODS
@@ -82,12 +91,18 @@ class JournalPageViewController: UIViewController {
         self.current_date = dateFormatter.string(from: date);
         print(current_date ?? "");
         
-        // add 3 hardcoded journal entries
-        // self.hardCodeJournalEntries();
-        
         // set initial segmented control
         segmentedControl.selectedSegmentIndex = 1;
         self.segmentedControlValueChanged(sender: segmentedControl);
+        
+        // set slider properties
+        moodSlider.minimumValue = 0;
+        moodSlider.maximumValue = 8;
+        moodSlider.value = Float(CDJournal[current_page_index_shown].mood)
+        
+        // add 3 hardcoded journal entries
+        // self.hardCodeJournalEntries();
+ 
     }
     
     /*
@@ -96,8 +111,12 @@ class JournalPageViewController: UIViewController {
         self.deleteAllData("CDJournalPage")
     }*/
     
+    // TODAY's journal entry has not yet been made
     func displayTemplatePage () {
         
+        self.hideEmojis()
+        moodSlider.isHidden = false;
+        self.showEmojiWithNumber(number: 4)
         clearTextFields();
         enableTextFields(b: true);
         submit_button.isHidden = false;
@@ -110,8 +129,11 @@ class JournalPageViewController: UIViewController {
         journal_empty_label.isHidden = true;
         journal_empty_label_2.isHidden = true;
         animatedArrow.isHidden = true;
+        display_mood_emoji.isHidden = true;
+        current_mood_label.isHidden = false;
     }
     
+    // TODAY's journal entry has been made
     func displayTodaysPage () {
         
         current_page_index_shown = CDJournal.count - 1;
@@ -139,11 +161,18 @@ class JournalPageViewController: UIViewController {
         journal_empty_label_2.isHidden = true;
         animatedArrow.isHidden = true;
         
+        self.hideEmojis()
+        moodSlider.isHidden = false;
+        display_mood_emoji.isHidden = true;
+        self.showEmojiWithNumber(number: Int(journal_page.mood))
+        moodSlider.value = Float(journal_page.mood)
     }
     
     func displayJournal () {
         
         animatedArrow.isHidden = true;
+        self.hideEmojis()
+        moodSlider.isHidden = true;
         
         if (CDJournal.count == 0) {
             self.displayEmptyJournalPage(b: true);
@@ -171,10 +200,15 @@ class JournalPageViewController: UIViewController {
             date_label.isHidden = false;
             journal_empty_label.isHidden = true;
             journal_empty_label_2.isHidden = true;
+            display_mood_emoji.isHidden = false;
+            current_mood_label.isHidden = false;
             
             updateArrowAppearance();
+            displayMoodEmojiWithNumber(number: Int(journal_page.mood))
         }
     }
+    
+    
     
     func clearTextFields () {
         
@@ -208,6 +242,7 @@ class JournalPageViewController: UIViewController {
         journal_page.focus_1_text = focus_field_1.text ?? "";
         journal_page.focus_2_text = focus_field_2.text ?? "";
         journal_page.day = current_date;
+        journal_page.mood = Int16(moodSlider.value)
         
         CDJournal.append(journal_page);
         
@@ -391,6 +426,37 @@ class JournalPageViewController: UIViewController {
     }
     
     
+    @IBAction func sliderPulled(_ sender: UISlider) {
+        
+        if (segmentedControlIndex == 1) {
+            
+            let slider_value = Int(sender.value)
+            
+            // show emojis according to slider position
+            self.hideEmojis()
+            self.showEmojiWithNumber(number: slider_value)
+            
+            // update mood for TODAY's journal entry if applicable
+            if (CDJournal.count != 0) {
+                
+                // extract newest journal entry
+                let newest_journal_page = CDJournal[CDJournal.count - 1]
+                
+                // if "TODAY" has been pushed and today's entry has already been made => update page mood
+                if (newest_journal_page.day == current_date) {
+                    
+                    newest_journal_page.mood = Int16(slider_value)
+                    
+                    // update today's entry
+                    CDJournal[CDJournal.count - 1] = newest_journal_page
+                    
+                    PersistanceService.saveContext()
+                }
+            }
+        }
+    }
+    
+    
     func hardCodeJournalEntries () {
         
         let journal_page_1 = CDJournalPage(context: PersistanceService.context)
@@ -431,6 +497,54 @@ class JournalPageViewController: UIViewController {
         
         //PersistanceService.saveContext()
     
+    }
+    
+    func showEmojiWithNumber(number: Int) {
+        
+        switch (number) {
+            case 0: emoji_0.isHidden = false; break;
+            case 1: emoji_1.isHidden = false; break;
+            case 2: emoji_2.isHidden = false; break;
+            case 3: emoji_3.isHidden = false; break;
+            case 4: emoji_4.isHidden = false; break;
+            case 5: emoji_5.isHidden = false; break;
+            case 6: emoji_6.isHidden = false; break;
+            case 7: emoji_7.isHidden = false; break;
+            case 8: emoji_8.isHidden = false; break;
+            default: break;
+        }
+    }
+
+    
+    func hideEmojis() {
+        emoji_0.isHidden = true;
+        emoji_1.isHidden = true;
+        emoji_2.isHidden = true;
+        emoji_3.isHidden = true;
+        emoji_4.isHidden = true;
+        emoji_5.isHidden = true;
+        emoji_6.isHidden = true;
+        emoji_7.isHidden = true;
+        emoji_8.isHidden = true;
+    }
+    
+    func displayMoodEmojiWithNumber(number: Int) {
+        
+        var image = UIImage(named: "0_emoji");
+        
+        switch (number) {
+            case 1: image = UIImage(named: "1_emoji"); break;
+            case 2: image = UIImage(named: "2_emoji"); break;
+            case 3: image = UIImage(named: "3_emoji"); break;
+            case 4: image = UIImage(named: "4_emoji"); break;
+            case 5: image = UIImage(named: "5_emoji"); break;
+            case 6: image = UIImage(named: "6_emoji"); break;
+            case 7: image = UIImage(named: "7_emoji"); break;
+            case 8: image = UIImage(named: "8_emoji"); break;
+            default: break;
+        }
+        
+        self.display_mood_emoji.image = image;
     }
     
     
@@ -476,6 +590,11 @@ class JournalPageViewController: UIViewController {
         focus_label.isHidden = b;
         bul21_label.isHidden = b;
         bul22_label.isHidden = b;
+        current_mood_label.isHidden = b;
+        
+        self.hideEmojis()
+        moodSlider.isHidden = b;
+        display_mood_emoji.isHidden = b;
     }
     
     func deleteAllData(_ entity:String) {
