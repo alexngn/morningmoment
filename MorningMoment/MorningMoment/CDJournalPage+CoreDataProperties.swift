@@ -24,5 +24,6 @@ extension CDJournalPage {
     @NSManaged public var focus_1_text: String?
     @NSManaged public var focus_2_text: String?
     @NSManaged public var day: String?
+    @NSManaged public var mood: Int16
 
 }
