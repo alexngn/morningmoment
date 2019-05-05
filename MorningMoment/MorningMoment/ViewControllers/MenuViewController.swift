@@ -15,7 +15,7 @@ protocol MenuViewControllerDelegate: class {
 }
 
 
-class MenuViewController: UIViewController{
+public class MenuViewController: UIViewController{
     
     // CLASS PROPERTIES
     weak var delegate: MenuViewControllerDelegate?
@@ -24,14 +24,13 @@ class MenuViewController: UIViewController{
     @IBOutlet weak var share_journal_button: UIButton!
     @IBOutlet weak var explore_mood_button: UIButton!
     @IBOutlet weak var explore_activity_button: UIButton!
-    
     @IBOutlet weak var delete_pages_button: UIButton!
     @IBOutlet weak var about_button: UIButton!
     @IBOutlet weak var settings_button: UIButton!
+    var CDJournal: [CDJournalPage]!
     
     
-    
-    override func viewDidLoad() {
+    override public func viewDidLoad() {
         super.viewDidLoad()
         menu_label.numberOfLines = 0
         menu_label.text = "Morning\nMoment";
@@ -59,23 +58,38 @@ class MenuViewController: UIViewController{
         
         switch (sender.tag) {
             
-            case 0: performSegue(withIdentifier: "ShareJournalSegue", sender: self)
-                break;
-            case 1: performSegue(withIdentifier: "ExploreMoodSegue", sender: self)
-                break;
-            case 2: performSegue(withIdentifier: "ExploreActivitySegue", sender: self)
-                break;
-            case 3: performSegue(withIdentifier: "DeletePagesSegue", sender: self)
-                break;
-            case 4: performSegue(withIdentifier: "AboutSegue", sender: self)
-                break;
-            case 5: performSegue(withIdentifier: "SettingsSegue", sender: self)
-                break;
-            default: break;
+        case 0: performSegue(withIdentifier: "ShareJournalSegue", sender: self)
+        break;
+        case 1: performSegue(withIdentifier: "ExploreMoodSegue", sender: self)
+        break;
+        case 2: performSegue(withIdentifier: "ExploreActivitySegue", sender: self)
+        break;
+        case 3: performSegue(withIdentifier: "DeletePagesSegue", sender: self)
+        break;
+        case 4: performSegue(withIdentifier: "AboutSegue", sender: self)
+        break;
+        case 5: performSegue(withIdentifier: "SettingsSegue", sender: self)
+        break;
+        default: break;
         }
         
         
     }
     
+    override public func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "ShareJournalSegue"{
+            let ShareJournalMC = segue.destination as! ShareViewController
+            ShareJournalMC.CDJournal = self.CDJournal
+        }
+        else if segue.identifier == "DeletePagesSegue"{
+            let DeletePageMC = segue.destination as! DeleteViewController
+            DeletePageMC.CDJournal = self.CDJournal
+        }
+        else if segue.identifier == "ExploreMoodSegue"{
+            let destination = segue.destination as? MoodViewController
+            destination?.CDJournal = self.CDJournal
+        }
+    }
     
 }
+

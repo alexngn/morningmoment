@@ -13,174 +13,167 @@
         <!--Journal Page View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="JournalPageViewController" customModule="MorningMoment" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="JournalPageViewController" customModule="MorningMoment" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="drawnArrow" translatesAutoresizingMaskIntoConstraints="NO" id="4ES-7y-kaJ">
-                                <rect key="frame" x="84" y="656" width="240" height="128"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="drawnArrow" translatesAutoresizingMaskIntoConstraints="NO" id="X90-ag-K4l">
+                                <rect key="frame" x="84" y="670" width="240" height="128"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UWF-1s-fsU">
-                                <rect key="frame" x="96" y="703" width="222" height="35"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ga4-hu-Qnl">
+                                <rect key="frame" x="96" y="759" width="222" height="35"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.21791311094080179" green="0.54196539409816946" blue="0.56396306797360407" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="backgroundColor" red="0.21791311090000001" green="0.5419653941" blue="0.56396306799999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <fontDescription key="fontDescription" name="SinhalaSangamMN" family="Sinhala Sangam MN" pointSize="16"/>
-                                <color key="tintColor" red="0.28713898545779076" green="0.10667790489726396" blue="0.32667750630304571" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="tintColor" red="0.2871389855" green="0.1066779049" blue="0.32667750629999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <state key="normal" title="ADD DAY TO MY JOURNAL">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <action selector="submitButtonPushedWithSender:" destination="BYZ-38-t0r" eventType="touchUpInside" id="A5M-tc-euc"/>
+                                    <action selector="submitButtonPushedWithSender:" destination="BYZ-38-t0r" eventType="touchUpInside" id="dKs-iA-fPn"/>
                                 </connections>
                             </button>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="0_emoji" translatesAutoresizingMaskIntoConstraints="NO" id="CAS-Cv-nEV">
-                                <rect key="frame" x="38" y="686" width="40" height="40"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="0_emoji" translatesAutoresizingMaskIntoConstraints="NO" id="zzD-yv-akl">
+                                <rect key="frame" x="121" y="658" width="40" height="40"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Take a morning moment and add your first journal entry!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WUi-6z-AQO">
-                                <rect key="frame" x="81" y="346" width="253" height="108"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="SinhalaSangamMN" family="Sinhala Sangam MN" pointSize="24"/>
-                                <color key="textColor" red="0.0" green="0.32852089410000002" blue="0.35998769079999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="JOURNAL IS EMPTY" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DUr-AY-2mY">
-                                <rect key="frame" x="38" y="341" width="336" height="47"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="JOURNAL IS EMPTY" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9mY-Pu-3lW">
+                                <rect key="frame" x="40" y="309" width="336" height="47"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="SinhalaSangamMN-Bold" family="Sinhala Sangam MN" pointSize="35"/>
-                                <color key="textColor" red="0.0" green="0.32852089410000002" blue="0.35998769079999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="textColor" red="0.0" green="0.3294117647" blue="0.36078431370000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="I AM GRATEFUL FOR..." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BYr-GQ-utt">
-                                <rect key="frame" x="38" y="253" width="338" height="28"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="I AM GRATEFUL FOR..." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DOi-NT-SQ3">
+                                <rect key="frame" x="38" y="230" width="338" height="28"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="SinhalaSangamMN" family="Sinhala Sangam MN" pointSize="21"/>
                                 <color key="textColor" red="0.1828506453" green="0.44308723779999998" blue="0.46107204639999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i43-kS-mcI">
-                                <rect key="frame" x="38" y="297" width="36" height="30"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kg4-ja-2c8">
+                                <rect key="frame" x="38" y="274" width="36" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="SinhalaSangamMN" family="Sinhala Sangam MN" pointSize="21"/>
                                 <color key="textColor" red="0.1828506453" green="0.44308723779999998" blue="0.46107204639999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hGn-61-m6V">
-                                <rect key="frame" x="80" y="297" width="294" height="30"/>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="FdU-zq-WWa">
+                                <rect key="frame" x="80" y="274" width="294" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
-                                    <action selector="pageTextFieldsEditedWithSender:" destination="BYZ-38-t0r" eventType="editingChanged" id="Q1D-iy-Klq"/>
+                                    <action selector="pageTextFieldsEditedWithSender:" destination="BYZ-38-t0r" eventType="editingDidEnd" id="tNv-2J-aKN"/>
                                 </connections>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="2" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OFu-Pb-w4S">
-                                <rect key="frame" x="38" y="343" width="36" height="30"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="2" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tvJ-nG-TSZ">
+                                <rect key="frame" x="38" y="320" width="36" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="SinhalaSangamMN" family="Sinhala Sangam MN" pointSize="21"/>
                                 <color key="textColor" red="0.1828506453" green="0.44308723779999998" blue="0.46107204639999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="VhL-Bn-Uju">
-                                <rect key="frame" x="80" y="343" width="294" height="30"/>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="GKs-zb-umQ">
+                                <rect key="frame" x="80" y="320" width="294" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
-                                    <action selector="pageTextFieldsEditedWithSender:" destination="BYZ-38-t0r" eventType="editingChanged" id="ARX-xa-IqW"/>
+                                    <action selector="pageTextFieldsEditedWithSender:" destination="BYZ-38-t0r" eventType="editingDidEnd" id="h1a-ww-Web"/>
                                 </connections>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="I WILL FOCUS ON..." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JUr-tH-cJp">
-                                <rect key="frame" x="38" y="472" width="338" height="28"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="I WILL FOCUS ON..." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ru2-jD-ZNt">
+                                <rect key="frame" x="38" y="449" width="338" height="28"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="SinhalaSangamMN" family="Sinhala Sangam MN" pointSize="21"/>
                                 <color key="textColor" red="0.1828506453" green="0.44308723779999998" blue="0.46107204639999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="MY MOOD IS..." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QWV-XH-IEj">
-                                <rect key="frame" x="38" y="644" width="338" height="29"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="MY MOOD IS..." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P4s-dy-1oR">
+                                <rect key="frame" x="38" y="621" width="338" height="29"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="SinhalaSangamMN" family="Sinhala Sangam MN" pointSize="21"/>
                                 <color key="textColor" red="0.1828506453" green="0.44308723779999998" blue="0.46107204639999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s3A-wW-Mn9">
-                                <rect key="frame" x="38" y="516" width="36" height="30"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jL0-2u-WFY">
+                                <rect key="frame" x="38" y="493" width="36" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="SinhalaSangamMN" family="Sinhala Sangam MN" pointSize="21"/>
                                 <color key="textColor" red="0.1828506453" green="0.44308723779999998" blue="0.46107204639999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
                                 <size key="shadowOffset" width="0.0" height="0.0"/>
                             </label>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="LEN-T8-adB">
-                                <rect key="frame" x="81" y="516" width="294" height="30"/>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="aLa-Sh-yVE">
+                                <rect key="frame" x="81" y="493" width="294" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
-                                    <action selector="pageTextFieldsEditedWithSender:" destination="BYZ-38-t0r" eventType="editingChanged" id="LAM-CX-M5e"/>
+                                    <action selector="pageTextFieldsEditedWithSender:" destination="BYZ-38-t0r" eventType="editingDidEnd" id="HjQ-c5-16r"/>
                                 </connections>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="2" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sth-vI-i4c">
-                                <rect key="frame" x="38" y="562" width="36" height="30"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="2" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wqK-Vb-4Dp">
+                                <rect key="frame" x="38" y="539" width="36" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="SinhalaSangamMN" family="Sinhala Sangam MN" pointSize="21"/>
                                 <color key="textColor" red="0.1828506453" green="0.44308723779999998" blue="0.46107204639999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
                                 <size key="shadowOffset" width="0.0" height="0.0"/>
                             </label>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="E3b-ge-az7">
-                                <rect key="frame" x="81" y="562" width="294" height="30"/>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="172-Ms-4xG">
+                                <rect key="frame" x="81" y="539" width="294" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
-                                    <action selector="pageTextFieldsEditedWithSender:" destination="BYZ-38-t0r" eventType="editingChanged" id="Uru-D6-DvV"/>
+                                    <action selector="pageTextFieldsEditedWithSender:" destination="BYZ-38-t0r" eventType="editingDidEnd" id="DnH-XI-nK2"/>
                                 </connections>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wnB-r8-7DM">
-                                <rect key="frame" x="80" y="389" width="294" height="30"/>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="T81-HV-jNj">
+                                <rect key="frame" x="80" y="366" width="294" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
-                                    <action selector="pageTextFieldsEditedWithSender:" destination="BYZ-38-t0r" eventType="editingChanged" id="YmI-KR-QtC"/>
+                                    <action selector="pageTextFieldsEditedWithSender:" destination="BYZ-38-t0r" eventType="editingDidEnd" id="VaY-ic-jFt"/>
                                 </connections>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="I WILL LET GO OF..." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hI8-le-iu6">
-                                <rect key="frame" x="38" y="128" width="338" height="24"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="I WILL LET GO OF..." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rdY-0v-OaX">
+                                <rect key="frame" x="38" y="105" width="338" height="24"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="SinhalaSangamMN" family="Sinhala Sangam MN" pointSize="21"/>
-                                <color key="textColor" red="0.18285064533096429" green="0.44308723775164549" blue="0.46107204644208022" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="textColor" red="0.1828506453" green="0.44308723779999998" blue="0.46107204639999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JJZ-dC-AyN">
-                                <rect key="frame" x="38" y="170" width="338" height="30"/>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="Hcg-rj-LKz">
+                                <rect key="frame" x="38" y="147" width="338" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
-                                    <action selector="pageTextFieldsEditedWithSender:" destination="BYZ-38-t0r" eventType="editingChanged" id="A7m-iP-qFV"/>
+                                    <action selector="pageTextFieldsEditedWithSender:" destination="BYZ-38-t0r" eventType="editingDidEnd" id="Elg-rn-jhn"/>
                                 </connections>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="mm/dd/yyyy" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mdq-sC-LdS">
-                                <rect key="frame" x="283" y="67" width="87" height="23"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="mm/dd/yyyy" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ykj-Pb-XxA">
+                                <rect key="frame" x="283" y="66" width="87" height="23"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="tintColor" red="0.28867519520000001" green="0.32667750629999998" blue="0.2187130256" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <fontDescription key="fontDescription" name="SinhalaSangamMN" family="Sinhala Sangam MN" pointSize="17"/>
                                 <color key="textColor" red="0.28867519520000001" green="0.32667750629999998" blue="0.2187130256" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="fxp-lp-luh">
-                                <rect key="frame" x="38" y="785" width="338" height="29"/>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="3F6-hr-1nk">
+                                <rect key="frame" x="38" y="814" width="338" height="29"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <segments>
@@ -190,124 +183,131 @@
                                 </segments>
                                 <color key="tintColor" red="0.0" green="0.32852089410000002" blue="0.35998769079999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
-                                    <action selector="segmentedControlValueChangedWithSender:" destination="BYZ-38-t0r" eventType="valueChanged" id="vUb-qP-CDr"/>
+                                    <action selector="segmentedControlValueChangedWithSender:" destination="BYZ-38-t0r" eventType="valueChanged" id="mKF-9F-19j"/>
                                 </connections>
                             </segmentedControl>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="3" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Hf-SI-xd6">
-                                <rect key="frame" x="38" y="389" width="36" height="30"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="3" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7XF-6F-ndJ">
+                                <rect key="frame" x="38" y="366" width="36" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="SinhalaSangamMN" family="Sinhala Sangam MN" pointSize="21"/>
                                 <color key="textColor" red="0.1828506453" green="0.44308723779999998" blue="0.46107204639999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="1_emoji" translatesAutoresizingMaskIntoConstraints="NO" id="Gcr-d3-OlO">
-                                <rect key="frame" x="54" y="686" width="40" height="40"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="1_emoji" translatesAutoresizingMaskIntoConstraints="NO" id="aCe-So-fpW">
+                                <rect key="frame" x="137" y="658" width="40" height="40"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="2_emoji" translatesAutoresizingMaskIntoConstraints="NO" id="dUH-ED-a8U">
-                                <rect key="frame" x="68" y="686" width="40" height="40"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="2_emoji" translatesAutoresizingMaskIntoConstraints="NO" id="hgI-Pe-YXn">
+                                <rect key="frame" x="151" y="658" width="40" height="40"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="3_emoji" translatesAutoresizingMaskIntoConstraints="NO" id="dKH-Q4-P1q">
-                                <rect key="frame" x="88" y="686" width="40" height="40"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="3_emoji" translatesAutoresizingMaskIntoConstraints="NO" id="7Th-qL-W8q">
+                                <rect key="frame" x="171" y="658" width="40" height="40"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="4_emoji" translatesAutoresizingMaskIntoConstraints="NO" id="xpY-pd-JhN">
-                                <rect key="frame" x="104" y="686" width="40" height="40"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="4_emoji" translatesAutoresizingMaskIntoConstraints="NO" id="j7q-K6-2VC">
+                                <rect key="frame" x="187" y="658" width="40" height="40"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="5_emoji" translatesAutoresizingMaskIntoConstraints="NO" id="RnR-nh-2id">
-                                <rect key="frame" x="119" y="686" width="40" height="40"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="5_emoji" translatesAutoresizingMaskIntoConstraints="NO" id="vCb-p1-CrV">
+                                <rect key="frame" x="202" y="658" width="40" height="40"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="6_emoji" translatesAutoresizingMaskIntoConstraints="NO" id="glV-7B-RY6">
-                                <rect key="frame" x="135" y="686" width="40" height="40"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="6_emoji" translatesAutoresizingMaskIntoConstraints="NO" id="llf-im-YHM">
+                                <rect key="frame" x="218" y="658" width="40" height="40"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="7_emoji" translatesAutoresizingMaskIntoConstraints="NO" id="5y7-St-oWG">
-                                <rect key="frame" x="148" y="686" width="40" height="40"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="7_emoji" translatesAutoresizingMaskIntoConstraints="NO" id="rHf-BO-VGb">
+                                <rect key="frame" x="231" y="658" width="40" height="40"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="8_emoji" translatesAutoresizingMaskIntoConstraints="NO" id="Pda-CD-XiB">
-                                <rect key="frame" x="164" y="686" width="40" height="40"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="8_emoji" translatesAutoresizingMaskIntoConstraints="NO" id="I31-T5-u2m">
+                                <rect key="frame" x="247" y="658" width="40" height="40"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Jf0-d0-g6y">
-                                <rect key="frame" x="38" y="686" width="40" height="40"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
-                            <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="CSX-qR-nVk">
-                                <rect key="frame" x="38" y="737" width="149" height="30"/>
+                            <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="SOk-uu-Shm">
+                                <rect key="frame" x="130" y="708" width="149" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="tintColor" red="0.28867519520000001" green="0.32667750629999998" blue="0.2187130256" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <color key="minimumTrackTintColor" red="0.28867519520000001" green="0.32667750629999998" blue="0.2187130256" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <color key="maximumTrackTintColor" red="0.72896228360000004" green="0.82247382609999997" blue="0.54155508860000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <connections>
-                                    <action selector="sliderPulled:" destination="BYZ-38-t0r" eventType="valueChanged" id="61W-Wn-7Gb"/>
+                                    <action selector="sliderPulled:" destination="BYZ-38-t0r" eventType="valueChanged" id="6R3-N2-Mg8"/>
                                 </connections>
                             </slider>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hws-IV-zrX">
-                                <rect key="frame" x="270" y="712" width="35" height="50"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YCy-ir-NMq">
+                                <rect key="frame" x="270" y="740" width="35" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button" image="leftArrow"/>
                                 <connections>
-                                    <action selector="leftArrowPushedWithSender:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Ob4-Zz-9Ij"/>
+                                    <action selector="leftArrowPushedWithSender:" destination="BYZ-38-t0r" eventType="touchUpInside" id="KoC-vt-ftI"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k45-YL-wPK">
-                                <rect key="frame" x="341" y="712" width="35" height="50"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SjU-bZ-yIs">
+                                <rect key="frame" x="341" y="740" width="35" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button" image="rightArrow"/>
                                 <connections>
-                                    <action selector="rightArrowPushedWithSender:" destination="BYZ-38-t0r" eventType="touchUpInside" id="OHf-NR-NHk"/>
+                                    <action selector="rightArrowPushedWithSender:" destination="BYZ-38-t0r" eventType="touchUpInside" id="74z-Eh-UXE"/>
                                 </connections>
                             </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LZG-NW-CXU">
+                                <rect key="frame" x="38" y="658" width="40" height="40"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Take a morning moment and add your first journal entry!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VHq-nD-fwF">
+                                <rect key="frame" x="81" y="360" width="253" height="108"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="SinhalaSangamMN" family="Sinhala Sangam MN" pointSize="24"/>
+                                <color key="textColor" red="0.0" green="0.32852089410000002" blue="0.35998769079999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.79980000000000007" green="0.93000000000000005" blue="0.90395999999999999" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="tintColor" red="0.93816930055618286" green="0.82225678857030871" blue="0.8822096336367321" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
-                        <outlet property="animatedArrow" destination="4ES-7y-kaJ" id="CA9-s7-VfW"/>
-                        <outlet property="bul11_label" destination="i43-kS-mcI" id="ldd-1x-nFs"/>
-                        <outlet property="bul12_label" destination="OFu-Pb-w4S" id="0Zb-Ru-N2k"/>
-                        <outlet property="bul13_label" destination="3Hf-SI-xd6" id="qIQ-zR-y1i"/>
-                        <outlet property="bul21_label" destination="s3A-wW-Mn9" id="1Jr-gO-N27"/>
-                        <outlet property="bul22_label" destination="Sth-vI-i4c" id="LoC-jU-EDd"/>
-                        <outlet property="current_mood_label" destination="QWV-XH-IEj" id="9Uf-PD-NFh"/>
-                        <outlet property="date_label" destination="Mdq-sC-LdS" id="jZ0-5S-0Mc"/>
-                        <outlet property="display_mood_emoji" destination="Jf0-d0-g6y" id="krC-1M-rvh"/>
-                        <outlet property="emoji_0" destination="CAS-Cv-nEV" id="7ea-cX-J5q"/>
-                        <outlet property="emoji_1" destination="Gcr-d3-OlO" id="HxS-Oo-62F"/>
-                        <outlet property="emoji_2" destination="dUH-ED-a8U" id="sDB-gp-b1y"/>
-                        <outlet property="emoji_3" destination="dKH-Q4-P1q" id="OXT-OT-jz6"/>
-                        <outlet property="emoji_4" destination="xpY-pd-JhN" id="eqf-Qd-ABz"/>
-                        <outlet property="emoji_5" destination="RnR-nh-2id" id="0DK-LB-q1C"/>
-                        <outlet property="emoji_6" destination="glV-7B-RY6" id="LmG-4l-eOx"/>
-                        <outlet property="emoji_7" destination="5y7-St-oWG" id="cXo-Hm-IXe"/>
-                        <outlet property="emoji_8" destination="Pda-CD-XiB" id="aDD-IE-SFz"/>
-                        <outlet property="focus_field_1" destination="LEN-T8-adB" id="JdU-dx-Str"/>
-                        <outlet property="focus_field_2" destination="E3b-ge-az7" id="1s2-sh-pSC"/>
-                        <outlet property="focus_label" destination="JUr-tH-cJp" id="1Rp-X3-aqg"/>
-                        <outlet property="grateful_field_1" destination="hGn-61-m6V" id="H8P-zW-9XI"/>
-                        <outlet property="grateful_field_2" destination="VhL-Bn-Uju" id="hXB-O8-2cN"/>
-                        <outlet property="grateful_field_3" destination="wnB-r8-7DM" id="rj4-3b-4gW"/>
-                        <outlet property="grateful_label" destination="BYr-GQ-utt" id="in0-YZ-81I"/>
-                        <outlet property="journal_empty_label" destination="DUr-AY-2mY" id="Z6r-TV-cAS"/>
-                        <outlet property="journal_empty_label_2" destination="WUi-6z-AQO" id="8N3-ZC-7tU"/>
-                        <outlet property="left_arrow" destination="hws-IV-zrX" id="M4a-8L-pH9"/>
-                        <outlet property="let_go_field" destination="JJZ-dC-AyN" id="7fc-fM-jUW"/>
-                        <outlet property="let_go_label" destination="hI8-le-iu6" id="HDK-xc-Qsg"/>
-                        <outlet property="moodSlider" destination="CSX-qR-nVk" id="FVF-6Y-R67"/>
-                        <outlet property="right_arrow" destination="k45-YL-wPK" id="4yd-iX-1Ig"/>
-                        <outlet property="segmentedControl" destination="fxp-lp-luh" id="LiM-Re-SoS"/>
-                        <outlet property="submit_button" destination="UWF-1s-fsU" id="7Lt-Sx-fsr"/>
+                        <outlet property="animatedArrow" destination="X90-ag-K4l" id="lNy-ZC-4nL"/>
+                        <outlet property="bul11_label" destination="kg4-ja-2c8" id="5UY-Km-Lia"/>
+                        <outlet property="bul12_label" destination="tvJ-nG-TSZ" id="uo7-VS-5bT"/>
+                        <outlet property="bul13_label" destination="7XF-6F-ndJ" id="TQd-6a-Luh"/>
+                        <outlet property="bul21_label" destination="jL0-2u-WFY" id="5Yq-dN-28o"/>
+                        <outlet property="bul22_label" destination="wqK-Vb-4Dp" id="rjO-II-OZ4"/>
+                        <outlet property="current_mood_label" destination="P4s-dy-1oR" id="Mdv-g7-KRt"/>
+                        <outlet property="date_label" destination="Ykj-Pb-XxA" id="bJw-pT-ogL"/>
+                        <outlet property="display_mood_emoji" destination="LZG-NW-CXU" id="Ma1-eM-gvr"/>
+                        <outlet property="emoji_0" destination="zzD-yv-akl" id="dWH-iG-YQV"/>
+                        <outlet property="emoji_1" destination="aCe-So-fpW" id="vr8-yc-XPn"/>
+                        <outlet property="emoji_2" destination="hgI-Pe-YXn" id="GHq-cv-REU"/>
+                        <outlet property="emoji_3" destination="7Th-qL-W8q" id="cv5-oh-WZT"/>
+                        <outlet property="emoji_4" destination="j7q-K6-2VC" id="fd0-Td-HyY"/>
+                        <outlet property="emoji_5" destination="vCb-p1-CrV" id="Ktl-fk-tiz"/>
+                        <outlet property="emoji_6" destination="llf-im-YHM" id="EZq-gG-8N4"/>
+                        <outlet property="emoji_7" destination="rHf-BO-VGb" id="fqZ-Fd-L7E"/>
+                        <outlet property="emoji_8" destination="I31-T5-u2m" id="pDF-e0-Qes"/>
+                        <outlet property="focus_field_1" destination="aLa-Sh-yVE" id="w63-kn-LJo"/>
+                        <outlet property="focus_field_2" destination="172-Ms-4xG" id="8jr-Dn-ftJ"/>
+                        <outlet property="focus_label" destination="Ru2-jD-ZNt" id="Nvr-gs-fee"/>
+                        <outlet property="grateful_field_1" destination="FdU-zq-WWa" id="4L9-bK-hBQ"/>
+                        <outlet property="grateful_field_2" destination="GKs-zb-umQ" id="sdg-KX-XqJ"/>
+                        <outlet property="grateful_field_3" destination="T81-HV-jNj" id="o7p-qi-7cX"/>
+                        <outlet property="grateful_label" destination="DOi-NT-SQ3" id="mwT-zj-dTm"/>
+                        <outlet property="journal_empty_label" destination="9mY-Pu-3lW" id="WIe-8f-Ft4"/>
+                        <outlet property="journal_empty_label_2" destination="VHq-nD-fwF" id="nXg-8g-Ql1"/>
+                        <outlet property="left_arrow" destination="YCy-ir-NMq" id="boe-2f-hUh"/>
+                        <outlet property="let_go_field" destination="Hcg-rj-LKz" id="guR-7S-XyM"/>
+                        <outlet property="let_go_label" destination="rdY-0v-OaX" id="nTv-Tq-Bfd"/>
+                        <outlet property="moodSlider" destination="SOk-uu-Shm" id="jOn-Yi-nXy"/>
+                        <outlet property="right_arrow" destination="SjU-bZ-yIs" id="YBS-S2-f7f"/>
+                        <outlet property="segmentedControl" destination="3F6-hr-1nk" id="y7Q-fh-iHR"/>
+                        <outlet property="submit_button" destination="ga4-hu-Qnl" id="kt0-Ah-yuP"/>
                         <segue destination="2fc-pL-cbI" kind="show" identifier="JournalToMenuSegue" id="dbr-zf-kv3"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="137.68115942028987" y="109.82142857142857"/>
+            <point key="canvasLocation" x="193" y="110"/>
         </scene>
         <!--Title-->
         <scene sceneID="USe-V8-UCm">
@@ -317,18 +317,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NPF-Cl-kVu">
-                                <rect key="frame" x="82" y="356" width="251" height="56"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.72533153348329948" green="0.75135373255939086" blue="0.63286725384819942" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <fontDescription key="fontDescription" name="SinhalaSangamMN" family="Sinhala Sangam MN" pointSize="20"/>
-                                <state key="normal" title="Share journal">
-                                    <color key="titleColor" red="0.19025372021371637" green="0.21407566624365471" blue="0.1454826838702325" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                </state>
-                                <connections>
-                                    <action selector="menuOptionClicked:" destination="2fc-pL-cbI" eventType="touchUpInside" id="7N4-zd-q1u"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eoI-e2-EJu">
                                 <rect key="frame" x="82" y="645" width="251" height="56"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -410,6 +398,18 @@
                                     <action selector="backButtonClickedWithSender:" destination="2fc-pL-cbI" eventType="touchUpInside" id="gTg-ny-Oyq"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NPF-Cl-kVu">
+                                <rect key="frame" x="82" y="347" width="251" height="56"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.72533153348329948" green="0.75135373255939086" blue="0.63286725384819942" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <fontDescription key="fontDescription" name="SinhalaSangamMN" family="Sinhala Sangam MN" pointSize="20"/>
+                                <state key="normal" title="Share journal">
+                                    <color key="titleColor" red="0.19025372021371637" green="0.21407566624365471" blue="0.1454826838702325" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                </state>
+                                <connections>
+                                    <action selector="menuOptionClicked:" destination="2fc-pL-cbI" eventType="touchUpInside" id="7N4-zd-q1u"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.96356315033413809" green="1" blue="0.90759811083533248" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <viewLayoutGuide key="safeArea" id="3La-3S-IhJ"/>
@@ -461,7 +461,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZIe-Ir-Paa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="138" y="817"/>
+            <point key="canvasLocation" x="193" y="817"/>
         </scene>
         <!--About View Controller-->
         <scene sceneID="9WQ-zD-3AJ">
@@ -494,7 +494,7 @@
         <!--Delete View Controller-->
         <scene sceneID="iqr-Mb-pBy">
             <objects>
-                <viewController id="lDS-Gj-hc0" customClass="DeleteViewController" customModule="MorningMoment" sceneMemberID="viewController">
+                <viewController id="lDS-Gj-hc0" customClass="DeleteViewController" customModule="MorningMoment" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="TkQ-80-M8Q">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -510,14 +510,32 @@
                                     <action selector="backButtonClickedWithSender:" destination="2fc-pL-cbI" eventType="touchUpInside" id="jEm-cW-vaF"/>
                                 </connections>
                             </button>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="rvY-A3-uh6">
+                                <rect key="frame" x="0.0" y="173" width="423" height="715"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" id="Z44-j6-1sl">
+                                        <rect key="frame" x="0.0" y="28" width="423" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Z44-j6-1sl" id="Nwu-2w-8qb">
+                                            <rect key="frame" x="0.0" y="0.0" width="423" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="SqD-bJ-tf5"/>
                     </view>
+                    <connections>
+                        <outlet property="table" destination="rvY-A3-uh6" id="vJY-Nk-GFz"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bfz-9C-ZKo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1680" y="817"/>
+            <point key="canvasLocation" x="1643" y="817"/>
         </scene>
         <!--Share View Controller-->
         <scene sceneID="Zv0-Z3-sbq">
@@ -527,6 +545,21 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" restorationIdentifier="table" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ohy-vT-gBz">
+                                <rect key="frame" x="0.0" y="150" width="423" height="746"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" id="4Dy-Vc-EbK">
+                                        <rect key="frame" x="0.0" y="28" width="423" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="4Dy-Vc-EbK" id="ASD-3j-S4Y">
+                                            <rect key="frame" x="0.0" y="0.0" width="423" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fhS-5f-w1N">
                                 <rect key="frame" x="41" y="77" width="36" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -534,18 +567,22 @@
                                     <color key="titleColor" red="0.28899999999999998" green="0.32700000000000001" blue="0.219" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 </state>
                                 <connections>
+                                    <action selector="backButtonClickedWithSender:" destination="nXk-wM-ETj" eventType="touchUpInside" id="7JA-vv-B73"/>
                                     <action selector="backButtonClickedWithSender:" destination="2fc-pL-cbI" eventType="touchUpInside" id="P7z-T8-rwL"/>
-                                    <action selector="backButtonClickedWithSender:" destination="nXk-wM-ETj" eventType="touchUpInside" id="fKd-ce-Bmk"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="WMF-zS-xHQ"/>
                     </view>
+                    <connections>
+                        <outlet property="table" destination="ohy-vT-gBz" id="mlZ-hj-2i1"/>
+                        <segue destination="lnc-iH-tYT" kind="show" identifier="SharePageSegue" id="aXd-Xl-HAy"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="A5n-vH-XyN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1747" y="-341"/>
+            <point key="canvasLocation" x="1767" y="-91"/>
         </scene>
         <!--Mood View Controller-->
         <scene sceneID="y98-uH-Rd3">
@@ -566,14 +603,78 @@
                                     <action selector="backButtonClickedWithSender:" destination="2fc-pL-cbI" eventType="touchUpInside" id="XqL-k1-36L"/>
                                 </connections>
                             </button>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yuJ-Ww-mmj" customClass="LineChartView" customModule="Charts">
+                                <rect key="frame" x="82" y="212" width="298" height="350"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="1" green="0.82597902680000002" blue="0.82663729809999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GER-H8-e2z" customClass="PieChartView" customModule="Charts">
+                                <rect key="frame" x="41" y="610" width="333" height="252"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="1" green="0.82597902680000002" blue="0.82663729809999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            </view>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="0_emoji" translatesAutoresizingMaskIntoConstraints="NO" id="8ru-kY-92O">
+                                <rect key="frame" x="34" y="529" width="33" height="33"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="1_emoji" translatesAutoresizingMaskIntoConstraints="NO" id="SvN-di-XM8">
+                                <rect key="frame" x="34" y="488" width="33" height="33"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="2_emoji" translatesAutoresizingMaskIntoConstraints="NO" id="BSq-mN-24D">
+                                <rect key="frame" x="34" y="447" width="33" height="33"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="3_emoji" translatesAutoresizingMaskIntoConstraints="NO" id="8Jw-rX-136">
+                                <rect key="frame" x="34" y="406" width="33" height="33"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="4_emoji" translatesAutoresizingMaskIntoConstraints="NO" id="YCh-Gi-gQ6">
+                                <rect key="frame" x="34" y="365" width="33" height="33"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="5_emoji" translatesAutoresizingMaskIntoConstraints="NO" id="MKg-ML-upW">
+                                <rect key="frame" x="34" y="324" width="33" height="33"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="6_emoji" translatesAutoresizingMaskIntoConstraints="NO" id="Ouy-55-bvs">
+                                <rect key="frame" x="34" y="283" width="33" height="33"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="7_emoji" translatesAutoresizingMaskIntoConstraints="NO" id="11T-tw-7jZ">
+                                <rect key="frame" x="34" y="242" width="33" height="33"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="8_emoji" translatesAutoresizingMaskIntoConstraints="NO" id="JRD-Wh-P2f">
+                                <rect key="frame" x="34" y="201" width="33" height="33"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="YOUR MOOD CHANGE OVER TIME (in days)" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fco-Mo-Ibp">
+                                <rect key="frame" x="34" y="164" width="346" height="23"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="SinhalaSangamMN-Bold" family="Sinhala Sangam MN" pointSize="17"/>
+                                <color key="textColor" red="0.1828506453" green="0.44308723779999998" blue="0.46107204639999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="THE DISTRIBUTION OF YOUR MOOD" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XWn-JE-r9Y">
+                                <rect key="frame" x="41" y="586" width="333" height="25"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="SinhalaSangamMN-Bold" family="Sinhala Sangam MN" pointSize="17"/>
+                                <color key="textColor" red="0.1828506453" green="0.44308723779999998" blue="0.46107204639999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="Plj-Oa-9lG"/>
                     </view>
+                    <connections>
+                        <outlet property="lineChartView" destination="yuJ-Ww-mmj" id="hwF-jf-x4s"/>
+                        <outlet property="pieChartView" destination="GER-H8-e2z" id="2ve-B3-bt2"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BWu-eo-Uus" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2467" y="-35"/>
+            <point key="canvasLocation" x="3112" y="817"/>
         </scene>
         <!--Activity View Controller-->
         <scene sceneID="Kaq-lG-527">
@@ -601,7 +702,146 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="t0g-SW-pBd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2467" y="645"/>
+            <point key="canvasLocation" x="2370" y="817"/>
+        </scene>
+        <!--Share Page View Controller-->
+        <scene sceneID="nb9-Tx-tz3">
+            <objects>
+                <viewController storyboardIdentifier="SharePageViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="lnc-iH-tYT" customClass="SharePageViewController" customModule="MorningMoment" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="OcW-mB-LaO">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LEB-h1-v2D">
+                                <rect key="frame" x="34" y="86" width="36" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="backArrow">
+                                    <color key="titleColor" red="0.28899999999999998" green="0.32700000000000001" blue="0.219" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                </state>
+                                <connections>
+                                    <action selector="backButtonClicked:" destination="lnc-iH-tYT" eventType="touchUpInside" id="xrG-As-F8v"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1n3-Kx-m0e">
+                                <rect key="frame" x="94" y="148" width="218" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Zln-Ed-brD">
+                                <rect key="frame" x="94" y="197" width="218" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NQx-Hl-DiA">
+                                <rect key="frame" x="94" y="251" width="218" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fL8-jg-6Js">
+                                <rect key="frame" x="94" y="312" width="218" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3Vc-tb-JXh">
+                                <rect key="frame" x="101" y="373" width="211" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="w3s-4k-r59">
+                                <rect key="frame" x="101" y="433" width="211" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wwg-DC-8qP">
+                                <rect key="frame" x="94" y="61" width="119" height="101"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="screenShotClicked:" destination="lnc-iH-tYT" eventType="touchUpInside" id="G3X-hl-r1p"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="QL8-Dc-ZHy"/>
+                    </view>
+                    <connections>
+                        <outlet property="focus_1" destination="3Vc-tb-JXh" id="M1F-Uh-n9i"/>
+                        <outlet property="focus_2" destination="w3s-4k-r59" id="Z5L-OK-8JX"/>
+                        <outlet property="grateful_1" destination="Zln-Ed-brD" id="5S6-DG-DcB"/>
+                        <outlet property="grateful_2" destination="NQx-Hl-DiA" id="uNd-mn-H4v"/>
+                        <outlet property="grateful_3" destination="fL8-jg-6Js" id="EeA-5c-d5T"/>
+                        <outlet property="let_go" destination="1n3-Kx-m0e" id="ni4-ui-uCv"/>
+                        <segue destination="bcZ-y3-Tyk" kind="show" identifier="contactsSegue" id="KiU-nL-FDc"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Yxp-wY-s3r" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2512" y="-91"/>
+        </scene>
+        <!--Contacts View Controller-->
+        <scene sceneID="z9P-7L-bCa">
+            <objects>
+                <viewController id="bcZ-y3-Tyk" customClass="ContactsViewController" customModule="MorningMoment" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="muS-Sz-Ze0">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="lhm-um-apH">
+                                <rect key="frame" x="0.0" y="151" width="414" height="745"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" id="Dfe-Q0-HL2">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Dfe-Q0-HL2" id="Kzz-Pf-1BZ">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MWD-FZ-AVL">
+                                <rect key="frame" x="39" y="93" width="36" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="backArrow">
+                                    <color key="titleColor" red="0.28899999999999998" green="0.32700000000000001" blue="0.219" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                </state>
+                                <connections>
+                                    <action selector="backButtonClicked:" destination="bcZ-y3-Tyk" eventType="touchUpInside" id="fZh-RB-fyd"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6yl-Xi-CGR">
+                                <rect key="frame" x="340" y="93" width="36" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Send"/>
+                                <connections>
+                                    <action selector="send:" destination="bcZ-y3-Tyk" eventType="touchUpInside" id="6dk-G5-0CR"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="3ZZ-7I-hrN"/>
+                    </view>
+                    <connections>
+                        <outlet property="table" destination="lhm-um-apH" id="aXw-Gh-R6g"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Oyo-g9-PzJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3259" y="-91"/>
         </scene>
     </scenes>
     <resources>

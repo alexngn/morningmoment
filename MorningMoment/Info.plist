@@ -43,5 +43,9 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>Our application needs permission to write photos.</string>
+	<key>NSContactsUsageDescription</key>
+	<string>Our application needs permission to view contacts.</string>
 </dict>
 </plist>

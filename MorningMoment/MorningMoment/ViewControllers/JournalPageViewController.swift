@@ -9,15 +9,16 @@
 import UIKit
 import CoreData
 
-class JournalPageViewController: UIViewController {
-
+class JournalPageViewController: UIViewController, UITextFieldDelegate {
+    
     // CLASS PROPERTIES
     var CDJournal: [CDJournalPage]!
     var journal_color: UIColor = UIColor.init(red: 0.8, green: 0.930, blue: 0.904, alpha: 1);
     var today_color: UIColor = UIColor.init(red: 0.938, green: 0.822, blue: 0.882, alpha: 1);
     var current_page_index_shown = 0;
     var current_date: String!
-    var segmentedControlIndex = 1;
+    var current_segmentedControlIndex = 1;
+    var previous_segmentedControl = 1;
     
     // labels
     @IBOutlet weak var let_go_label: UILabel!
@@ -98,25 +99,28 @@ class JournalPageViewController: UIViewController {
         // set slider properties
         moodSlider.minimumValue = 0;
         moodSlider.maximumValue = 8;
-        moodSlider.value = Float(CDJournal[current_page_index_shown].mood)
+        //moodSlider.value = Float(CDJournal[current_page_index_shown].mood)
         
         // add 3 hardcoded journal entries
         // self.hardCodeJournalEntries();
- 
+        
+        // set TextField limitation properties
+        self.limitTextFieldInputs()
+        
     }
     
+    
     /*
-    // clear CoreData
-    override func viewDidAppear(_ animated: Bool) {
-        self.deleteAllData("CDJournalPage")
-    }*/
+     // clear CoreData
+     override func viewDidAppear(_ animated: Bool) {
+     self.deleteAllData("CDJournalPage")
+     }*/
     
     // TODAY's journal entry has not yet been made
     func displayTemplatePage () {
         
         self.hideEmojis()
         moodSlider.isHidden = false;
-        self.showEmojiWithNumber(number: 4)
         clearTextFields();
         enableTextFields(b: true);
         submit_button.isHidden = false;
@@ -177,7 +181,7 @@ class JournalPageViewController: UIViewController {
         if (CDJournal.count == 0) {
             self.displayEmptyJournalPage(b: true);
         }
-        
+            
         else {
             
             // extract current page shown
@@ -254,7 +258,7 @@ class JournalPageViewController: UIViewController {
         submit_button.isHidden = true;
     }
     
-
+    
     
     @IBAction func pageTextFieldsEdited (sender: AnyObject) {
         
@@ -264,7 +268,7 @@ class JournalPageViewController: UIViewController {
             let newest_journal_page = CDJournal[CDJournal.count - 1]
             
             // if "TODAY" has been pushed and today's entry has already been made
-            if (segmentedControlIndex == 1 && newest_journal_page.day == current_date) {
+            if (current_segmentedControlIndex == 1 && newest_journal_page.day == current_date) {
                 
                 switch (sender.tag) {
                     
@@ -281,8 +285,8 @@ class JournalPageViewController: UIViewController {
                 case 5:
                     newest_journal_page.focus_2_text = focus_field_2.text ?? ""; break;
                 default: break;
-            
-            }
+                    
+                }
                 // update today's entry
                 CDJournal[CDJournal.count - 1] = newest_journal_page
                 
@@ -291,13 +295,12 @@ class JournalPageViewController: UIViewController {
         }
     }
     
-    @IBAction func segmentedControlValueChanged (sender: UISegmentedControl) {
+    func performSegmentWithIndex (index: Int) {
         
-        
-        segmentedControlIndex = sender.selectedSegmentIndex;
+        current_segmentedControlIndex = index
         
         // JOURNAL
-        if (segmentedControlIndex == 0) {
+        if (current_segmentedControlIndex == 0) {
             
             view.backgroundColor = journal_color;
             
@@ -309,10 +312,11 @@ class JournalPageViewController: UIViewController {
                 displayJournal();
                 enableTextFields(b: false);
             }
+            previous_segmentedControl = current_segmentedControlIndex
         }
             
-        // TODAY
-        else if (segmentedControlIndex == 1) {
+            // TODAY
+        else if (current_segmentedControlIndex == 1) {
             
             view.backgroundColor = today_color;
             
@@ -333,30 +337,36 @@ class JournalPageViewController: UIViewController {
                     submit_button.isEnabled = false;
                     submit_button.isHidden = true;
                 }
-                
+                    
                 else {
                     displayTemplatePage();
                     enableTextFields(b: true);
                 }
             }
-            // otherwise enable template
+                // otherwise enable template
             else {
                 displayTemplatePage();
                 enableTextFields(b: true);
             }
+            previous_segmentedControl = current_segmentedControlIndex
         }
             
-        // MENU
+            // MENU
         else {
             
-			performSegue(withIdentifier: "JournalToMenuSegue", sender:self)
-            sender.selectedSegmentIndex = 1
+            performSegue(withIdentifier: "JournalToMenuSegue", sender:self)
+            
+            segmentedControl.selectedSegmentIndex = previous_segmentedControl
+            performSegmentWithIndex(index: previous_segmentedControl)
             
         }
     }
     
     
-    
+    @IBAction func segmentedControlValueChanged (sender: UISegmentedControl) {
+        
+        performSegmentWithIndex(index: sender.selectedSegmentIndex)
+    }
     
     // Right arrow clicked action method
     @IBAction func rightArrowPushed (sender: UIButton) {
@@ -369,7 +379,7 @@ class JournalPageViewController: UIViewController {
             
             // update arrow appearance
             self.updateArrowAppearance();
-
+            
         }
     }
     
@@ -414,7 +424,7 @@ class JournalPageViewController: UIViewController {
     
     
     
-
+    
     func createUserMessage(message: String, title: String, buttonText: String) {
         
         let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert);
@@ -425,10 +435,9 @@ class JournalPageViewController: UIViewController {
         
     }
     
-    
     @IBAction func sliderPulled(_ sender: UISlider) {
-        
-        if (segmentedControlIndex == 1) {
+    
+        if (current_segmentedControlIndex == 1) {
             
             let slider_value = Int(sender.value)
             
@@ -460,7 +469,7 @@ class JournalPageViewController: UIViewController {
     func hardCodeJournalEntries () {
         
         let journal_page_1 = CDJournalPage(context: PersistanceService.context)
-    
+        
         journal_page_1.let_go_text = "What Kevin said to me yesterday about capitalism";
         journal_page_1.grateful_1_text = "The sun";
         journal_page_1.grateful_2_text = "Walking";
@@ -496,25 +505,25 @@ class JournalPageViewController: UIViewController {
         CDJournal.append(journal_page_3);
         
         //PersistanceService.saveContext()
-    
+        
     }
     
     func showEmojiWithNumber(number: Int) {
         
         switch (number) {
-            case 0: emoji_0.isHidden = false; break;
-            case 1: emoji_1.isHidden = false; break;
-            case 2: emoji_2.isHidden = false; break;
-            case 3: emoji_3.isHidden = false; break;
-            case 4: emoji_4.isHidden = false; break;
-            case 5: emoji_5.isHidden = false; break;
-            case 6: emoji_6.isHidden = false; break;
-            case 7: emoji_7.isHidden = false; break;
-            case 8: emoji_8.isHidden = false; break;
-            default: break;
+        case 0: emoji_0.isHidden = false; break;
+        case 1: emoji_1.isHidden = false; break;
+        case 2: emoji_2.isHidden = false; break;
+        case 3: emoji_3.isHidden = false; break;
+        case 4: emoji_4.isHidden = false; break;
+        case 5: emoji_5.isHidden = false; break;
+        case 6: emoji_6.isHidden = false; break;
+        case 7: emoji_7.isHidden = false; break;
+        case 8: emoji_8.isHidden = false; break;
+        default: break;
         }
     }
-
+    
     
     func hideEmojis() {
         emoji_0.isHidden = true;
@@ -533,15 +542,15 @@ class JournalPageViewController: UIViewController {
         var image = UIImage(named: "0_emoji");
         
         switch (number) {
-            case 1: image = UIImage(named: "1_emoji"); break;
-            case 2: image = UIImage(named: "2_emoji"); break;
-            case 3: image = UIImage(named: "3_emoji"); break;
-            case 4: image = UIImage(named: "4_emoji"); break;
-            case 5: image = UIImage(named: "5_emoji"); break;
-            case 6: image = UIImage(named: "6_emoji"); break;
-            case 7: image = UIImage(named: "7_emoji"); break;
-            case 8: image = UIImage(named: "8_emoji"); break;
-            default: break;
+        case 1: image = UIImage(named: "1_emoji"); break;
+        case 2: image = UIImage(named: "2_emoji"); break;
+        case 3: image = UIImage(named: "3_emoji"); break;
+        case 4: image = UIImage(named: "4_emoji"); break;
+        case 5: image = UIImage(named: "5_emoji"); break;
+        case 6: image = UIImage(named: "6_emoji"); break;
+        case 7: image = UIImage(named: "7_emoji"); break;
+        case 8: image = UIImage(named: "8_emoji"); break;
+        default: break;
         }
         
         self.display_mood_emoji.image = image;
@@ -597,6 +606,21 @@ class JournalPageViewController: UIViewController {
         display_mood_emoji.isHidden = b;
     }
     
+    func limitTextFieldInputs() {
+        let_go_field.smartInsertDeleteType = UITextSmartInsertDeleteType.no
+        let_go_field.delegate = self
+        grateful_field_1.smartInsertDeleteType = UITextSmartInsertDeleteType.no
+        grateful_field_1.delegate = self
+        grateful_field_2.smartInsertDeleteType = UITextSmartInsertDeleteType.no
+        grateful_field_2.delegate = self
+        grateful_field_3.smartInsertDeleteType = UITextSmartInsertDeleteType.no
+        grateful_field_3.delegate = self
+        focus_field_1.smartInsertDeleteType = UITextSmartInsertDeleteType.no
+        focus_field_1.delegate = self
+        focus_field_2.smartInsertDeleteType = UITextSmartInsertDeleteType.no
+        focus_field_2.delegate = self
+    }
+    
     func deleteAllData(_ entity:String) {
         
         let managedContext =  PersistanceService.context.persistentStoreCoordinator
@@ -611,14 +635,28 @@ class JournalPageViewController: UIViewController {
         }
     }
     
-    /*
-    // Prepare for segway to SecondViewController
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        guard let textFieldText = textField.text,
+            let rangeOfTextToReplace = Range(range, in: textFieldText) else {
+                return false
+        }
+        let substringToReplace = textFieldText[rangeOfTextToReplace]
+        let count = textFieldText.count - substringToReplace.count + string.count
+        return count <= 61
+    }
+    
     public override func prepare(for segue: UIStoryboardSegue, sender: (Any)?) {
         
         let destination = segue.destination as? MenuViewController
         
-    }*/
+        destination?.CDJournal = self.CDJournal
+        
+    }
     
 }
+
+
+
 
 
