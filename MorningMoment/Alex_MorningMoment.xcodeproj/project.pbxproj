@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		0B16F686227918C900F0E51A /* Base.lproj in Resources */ = {isa = PBXBuildFile; fileRef = 0B16F685227918C900F0E51A /* Base.lproj */; };
-		0B4E55292262A81E0013CA39 /* JournalPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B4E55282262A81E0013CA39 /* JournalPage.swift */; };
 		0B60CC5B22791477004EC525 /* MorningMoment.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0B60CC5922791477004EC525 /* MorningMoment.xcdatamodeld */; };
 		0B6A1816227926C50099C22F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0B6A1815227926B90099C22F /* Main.storyboard */; };
 		0B6A18182279EF400099C22F /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B6A18172279EF400099C22F /* MenuViewController.swift */; };
@@ -43,7 +42,6 @@
 
 /* Begin PBXFileReference section */
 		0B16F685227918C900F0E51A /* Base.lproj */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Base.lproj; sourceTree = SOURCE_ROOT; };
-		0B4E55282262A81E0013CA39 /* JournalPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = JournalPage.swift; path = ../JournalPage.swift; sourceTree = "<group>"; };
 		0B60CC5A22791477004EC525 /* MorningMoment.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MorningMoment.xcdatamodel; sourceTree = "<group>"; };
 		0B6A1815227926B90099C22F /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		0B6A18172279EF400099C22F /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
@@ -146,7 +144,6 @@
 				0B6A1815227926B90099C22F /* Main.storyboard */,
 				0B16F685227918C900F0E51A /* Base.lproj */,
 				0BAF772E225EB24200384645 /* Info.plist */,
-				0B4E55282262A81E0013CA39 /* JournalPage.swift */,
 			);
 			path = MorningMoment;
 			sourceTree = "<group>";
@@ -353,7 +350,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0B4E55292262A81E0013CA39 /* JournalPage.swift in Sources */,
 				0B6A1829227A70AE0099C22F /* CDJournalPage+CoreDataProperties.swift in Sources */,
 				0BAF7725225EB24100384645 /* JournalPageViewController.swift in Sources */,
 				0B6A181E2279FD640099C22F /* SettingsViewController.swift in Sources */,

@@ -21,7 +21,7 @@ public class MoodViewController: UIViewController {
     // CLASS PROPERTIES
     weak var delegate: MoodViewControllerDelegate?
     var CDJournal: [CDJournalPage]!
-    
+    @IBOutlet weak var background_image: UIImageView!
     @IBOutlet weak var lineChartView: LineChartView!
     @IBOutlet weak var pieChartView: PieChartView!
     
@@ -41,6 +41,7 @@ public class MoodViewController: UIViewController {
         // create line and pie chart
         setLineChart(y_values: mood)
         setPieChart(frequencies: mood_frequency)
+        view.sendSubviewToBack(background_image)
     }
     
     
@@ -82,6 +83,7 @@ public class MoodViewController: UIViewController {
         pieChartDataSet.colors = [emoji_8_col, emoji_7_col, emoji_6_col, emoji_5_col, emoji_4_col, emoji_3_col, emoji_2_col, emoji_1_col, emoji_0_col]
         pieChartDataSet.entryLabelColor = UIColor.init(red: 34/255.0, green: 83/255.0, blue: 91/255.0, alpha: 1);
         pieChartDataSet.drawValuesEnabled = false
+        pieChartView.holeColor = UIColor(white: 1, alpha: 0.0)
         pieChartView.chartDescription?.enabled = false
         pieChartView.rotationAngle = 0
         pieChartView.rotationEnabled = false

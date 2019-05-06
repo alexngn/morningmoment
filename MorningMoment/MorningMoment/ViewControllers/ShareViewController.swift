@@ -17,12 +17,9 @@ protocol ShareViewControllerDelegate: class {
 
 class ShareViewController: UIViewController, UITableViewDataSource, UITableViewDelegate{
 
-	
-
+    // CLASS PROPERTIES
 	@IBOutlet weak var table: UITableView!
-	// CLASS PROPERTIES
     weak var delegate: ShareViewControllerDelegate?
-	
 	var JournalPageController: JournalPageViewController!
 	var CDJournal : [CDJournalPage]!
 	var selectedRow: Int = -1

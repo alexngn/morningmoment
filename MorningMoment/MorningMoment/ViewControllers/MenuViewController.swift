@@ -32,8 +32,6 @@ public class MenuViewController: UIViewController{
     
     override public func viewDidLoad() {
         super.viewDidLoad()
-        menu_label.numberOfLines = 0
-        menu_label.text = "Morning\nMoment";
         self.view.backgroundColor = menu_color
         
         // set menu option tags
@@ -49,9 +47,8 @@ public class MenuViewController: UIViewController{
     
     @IBAction func backButtonClicked (sender: Any) {
         
-        // ensure to not rerun viewDidLoad upon return to ViewController
+        // ensure to not rerun viewDidLoad upon return to JournalPageViewController
         self.dismiss(animated: true, completion: self.delegate?.MenuViewControllerDidBack);
-        
     }
     
     @IBAction func menuOptionClicked(_ sender: AnyObject) {

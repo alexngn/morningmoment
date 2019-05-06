@@ -22,7 +22,6 @@ class ContactsViewController: UIViewController, UITableViewDataSource, UITableVi
 	var contacts = [CNContact]()
 	let request = CNContactFetchRequest(keysToFetch: [CNContactIdentifierKey as NSString, CNContactFormatter.descriptorForRequiredKeys(for: .fullName), CNContactPhoneNumbersKey as CNKeyDescriptor])
 	@IBOutlet weak var table: UITableView!
-	
 	@IBAction func send(_ sender: Any) {
 
 		

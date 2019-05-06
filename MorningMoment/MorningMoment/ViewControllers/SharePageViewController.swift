@@ -17,27 +17,18 @@ protocol SharePageViewControllerDelegate: class {
 class SharePageViewController: UIViewController {
 	var CDJournal : [CDJournalPage]!
 	var ShareVC: ShareViewController!
-	var page:CDJournalPage!
+	var page: CDJournalPage!
 	var image:UIImage!
-	@IBAction func backButtonClicked(_ sender: Any) {
-		self.dismiss(animated: true, completion: self.delegate?.SharePageViewControllerDidBack);
-	}
-	
 	weak var delegate: SharePageViewControllerDelegate?
-
-	/*@IBAction func backButtonClicked(_ sender: Any) {
-		self.dismiss(animated: true, completion: self.delegate?.SharePageViewControllerDidBack);
-	}*/
-	
-
 	@IBOutlet weak var let_go: UITextField!
 	@IBOutlet weak var grateful_1: UITextField!
 	@IBOutlet weak var grateful_2: UITextField!
 	@IBOutlet weak var grateful_3: UITextField!
 	@IBOutlet weak var focus_1: UITextField!
 	@IBOutlet weak var focus_2: UITextField!
-	
-	override func viewDidLoad() {
+    @IBOutlet weak var mood_display: UIImageView!
+    
+    override func viewDidLoad() {
         super.viewDidLoad()
 		let_go.isEnabled = false;
 		grateful_1.isEnabled = false;
@@ -45,20 +36,37 @@ class SharePageViewController: UIViewController {
 		grateful_3.isEnabled = false;
 		focus_1.isEnabled = false;
 		focus_2.isEnabled = false;
+        mood_display.isHidden = false;
 		loadPage(p:page)
         // Do any additional setup after loading the view.
     }
 	
-	func setPage(p:CDJournalPage){
-		page = p
-		if isViewLoaded{
+	func setPage(p: CDJournalPage){
+        page = p
+        if isViewLoaded{
 			let_go.text = page.let_go_text
 			grateful_1.text = page.grateful_1_text
 			grateful_2.text = page.grateful_2_text
 			grateful_3.text = page.grateful_3_text
 			focus_1.text = page.focus_1_text
 			focus_2.text = page.focus_2_text
-		}
+            
+            // set mood emoji
+            let mood = Int(page.mood)
+            var image = UIImage(named: "0_emoji");
+            switch (mood) {
+            case 1: image = UIImage(named: "1_emoji"); break;
+            case 2: image = UIImage(named: "2_emoji"); break;
+            case 3: image = UIImage(named: "3_emoji"); break;
+            case 4: image = UIImage(named: "4_emoji"); break;
+            case 5: image = UIImage(named: "5_emoji"); break;
+            case 6: image = UIImage(named: "6_emoji"); break;
+            case 7: image = UIImage(named: "7_emoji"); break;
+            case 8: image = UIImage(named: "8_emoji"); break;
+            default: break;
+            }
+            mood_display.image = image;
+        }
 	}
 	
 	func loadPage(p:CDJournalPage){
@@ -68,6 +76,22 @@ class SharePageViewController: UIViewController {
 		grateful_3.text = p.grateful_3_text
 		focus_1.text = p.focus_1_text
 		focus_2.text = p.focus_2_text
+        
+        // set mood emoji
+        let mood = Int(page.mood)
+        var image = UIImage(named: "0_emoji");
+        switch (mood) {
+            case 1: image = UIImage(named: "1_emoji"); break;
+            case 2: image = UIImage(named: "2_emoji"); break;
+            case 3: image = UIImage(named: "3_emoji"); break;
+            case 4: image = UIImage(named: "4_emoji"); break;
+            case 5: image = UIImage(named: "5_emoji"); break;
+            case 6: image = UIImage(named: "6_emoji"); break;
+            case 7: image = UIImage(named: "7_emoji"); break;
+            case 8: image = UIImage(named: "8_emoji"); break;
+        default: break;
+        }
+        mood_display.image = image;
 	}
 	
 
@@ -111,18 +135,9 @@ class SharePageViewController: UIViewController {
 		let ContactsVC:ContactsViewController = segue.destination as! ContactsViewController
 		ContactsVC.image = image
 	}
-    
-	
-	
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+   
+    @IBAction func backButtonClicked(_ sender: Any) {
+        self.dismiss(animated: true, completion: self.delegate?.SharePageViewControllerDidBack);
     }
-    */
-
 }
 

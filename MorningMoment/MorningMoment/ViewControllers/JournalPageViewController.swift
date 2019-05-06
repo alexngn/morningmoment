@@ -14,9 +14,8 @@ class JournalPageViewController: UIViewController, UITextFieldDelegate {
     // CLASS PROPERTIES
     var CDJournal: [CDJournalPage]!
     var journal_color: UIColor = UIColor.init(red: 0.8, green: 0.930, blue: 0.904, alpha: 1);
-    var today_color: UIColor = UIColor.init(red: 0.938, green: 0.822, blue: 0.882, alpha: 1);
     var current_page_index_shown = 0;
-    var current_date: String!
+    var todays_date: String!
     var current_segmentedControlIndex = 1;
     var previous_segmentedControl = 1;
     
@@ -29,7 +28,9 @@ class JournalPageViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var bul13_label: UILabel!
     @IBOutlet weak var bul21_label: UILabel!
     @IBOutlet weak var bul22_label: UILabel!
-    @IBOutlet weak var date_label: UILabel!
+    @IBOutlet weak var small_date_label: UILabel!
+    
+    @IBOutlet weak var large_date_label: UILabel!
     @IBOutlet weak var journal_empty_label: UILabel!
     @IBOutlet weak var journal_empty_label_2: UILabel!
     @IBOutlet weak var current_mood_label: UILabel!
@@ -89,24 +90,27 @@ class JournalPageViewController: UIViewController, UITextFieldDelegate {
         let date = Date();
         let dateFormatter = DateFormatter();
         dateFormatter.dateFormat = "MM/dd/yyyy"
-        self.current_date = dateFormatter.string(from: date);
-        print(current_date ?? "");
+        self.todays_date = dateFormatter.string(from: date);
         
         // set initial segmented control
         segmentedControl.selectedSegmentIndex = 1;
-        self.segmentedControlValueChanged(sender: segmentedControl);
+        performSegmentWithIndex(index: 1)
+        //self.segmentedControlValueChanged(sender: segmentedControl);
         
         // set slider properties
         moodSlider.minimumValue = 0;
         moodSlider.maximumValue = 8;
-        //moodSlider.value = Float(CDJournal[current_page_index_shown].mood)
+        // if TODAY's journal entry has been made
+        if (CDJournal.count > 0 && CDJournal.last?.day?.elementsEqual(todays_date) ?? false) {
+            let journal_page = CDJournal.last
+            moodSlider.value = Float(Int(journal_page!.mood))
+        // otherwise place slider in center
+        } else {
+            moodSlider.value = 4.0
+            showEmojiWithNumber(number: 4)
+        }
         
-        // add 3 hardcoded journal entries
-        // self.hardCodeJournalEntries();
-        
-        // set TextField limitation properties
         self.limitTextFieldInputs()
-        
     }
     
     
@@ -121,6 +125,8 @@ class JournalPageViewController: UIViewController, UITextFieldDelegate {
         
         self.hideEmojis()
         moodSlider.isHidden = false;
+        moodSlider.value = 4.0
+        showEmojiWithNumber(number: 4)
         clearTextFields();
         enableTextFields(b: true);
         submit_button.isHidden = false;
@@ -129,7 +135,9 @@ class JournalPageViewController: UIViewController, UITextFieldDelegate {
         left_arrow.isEnabled = false;
         right_arrow.isHidden = true;
         right_arrow.isEnabled = false;
-        date_label.isHidden = true;
+        small_date_label.isHidden = true;
+        large_date_label.isHidden = false;
+        large_date_label.text = todays_date;
         journal_empty_label.isHidden = true;
         journal_empty_label_2.isHidden = true;
         animatedArrow.isHidden = true;
@@ -144,15 +152,14 @@ class JournalPageViewController: UIViewController, UITextFieldDelegate {
         
         let journal_page = CDJournal[current_page_index_shown]
         
-        //let journal_page = self.CDJournal.object(at: current_page_index_shown) as! JournalPage;
-        
         let_go_field.text = journal_page.let_go_text;
         grateful_field_1.text = journal_page.grateful_1_text;
         grateful_field_2.text = journal_page.grateful_2_text;
         grateful_field_3.text = journal_page.grateful_3_text;
         focus_field_1.text = journal_page.focus_1_text;
         focus_field_2.text = journal_page.focus_2_text;
-        date_label.text = current_date;
+        small_date_label.text = todays_date;
+        large_date_label.text = todays_date;
         
         submit_button.isHidden = false;
         submit_button.isEnabled = true;
@@ -160,16 +167,18 @@ class JournalPageViewController: UIViewController, UITextFieldDelegate {
         left_arrow.isEnabled = false;
         right_arrow.isHidden = true;
         right_arrow.isEnabled = false;
-        date_label.isHidden = false;
+        small_date_label.isHidden = true;
+        large_date_label.isHidden = false;
         journal_empty_label.isHidden = true;
         journal_empty_label_2.isHidden = true;
         animatedArrow.isHidden = true;
         
         self.hideEmojis()
         moodSlider.isHidden = false;
+        moodSlider.value = Float(journal_page.mood)
         display_mood_emoji.isHidden = true;
         self.showEmojiWithNumber(number: Int(journal_page.mood))
-        moodSlider.value = Float(journal_page.mood)
+        
     }
     
     func displayJournal () {
@@ -193,7 +202,8 @@ class JournalPageViewController: UIViewController, UITextFieldDelegate {
             grateful_field_3.text = journal_page.grateful_3_text;
             focus_field_1.text = journal_page.focus_1_text;
             focus_field_2.text = journal_page.focus_2_text;
-            date_label.text = journal_page.day;
+            small_date_label.text = journal_page.day;
+            large_date_label.text = journal_page.day;
             
             submit_button.isHidden = true;
             submit_button.isEnabled = false;
@@ -201,7 +211,8 @@ class JournalPageViewController: UIViewController, UITextFieldDelegate {
             left_arrow.isEnabled = true;
             right_arrow.isHidden = false;
             right_arrow.isEnabled = true;
-            date_label.isHidden = false;
+            small_date_label.isHidden = false;
+            large_date_label.isHidden = true;
             journal_empty_label.isHidden = true;
             journal_empty_label_2.isHidden = true;
             display_mood_emoji.isHidden = false;
@@ -245,7 +256,7 @@ class JournalPageViewController: UIViewController, UITextFieldDelegate {
         journal_page.grateful_3_text = grateful_field_3.text ?? "";
         journal_page.focus_1_text = focus_field_1.text ?? "";
         journal_page.focus_2_text = focus_field_2.text ?? "";
-        journal_page.day = current_date;
+        journal_page.day = todays_date;
         journal_page.mood = Int16(moodSlider.value)
         
         CDJournal.append(journal_page);
@@ -268,7 +279,7 @@ class JournalPageViewController: UIViewController, UITextFieldDelegate {
             let newest_journal_page = CDJournal[CDJournal.count - 1]
             
             // if "TODAY" has been pushed and today's entry has already been made
-            if (current_segmentedControlIndex == 1 && newest_journal_page.day == current_date) {
+            if (current_segmentedControlIndex == 1 && newest_journal_page.day == todays_date) {
                 
                 switch (sender.tag) {
                     
@@ -302,8 +313,6 @@ class JournalPageViewController: UIViewController, UITextFieldDelegate {
         // JOURNAL
         if (current_segmentedControlIndex == 0) {
             
-            view.backgroundColor = journal_color;
-            
             if (CDJournal.count == 0) {
                 displayEmptyJournalPage(b: true);
             }
@@ -318,8 +327,6 @@ class JournalPageViewController: UIViewController, UITextFieldDelegate {
             // TODAY
         else if (current_segmentedControlIndex == 1) {
             
-            view.backgroundColor = today_color;
-            
             displayEmptyJournalPage(b: false);
             
             // if today's entry have been submitted => enable editing
@@ -328,7 +335,7 @@ class JournalPageViewController: UIViewController, UITextFieldDelegate {
                 // extract newest journal entry
                 let newest_journal_page = CDJournal[CDJournal.count - 1]
                 
-                if (newest_journal_page.day == current_date) {
+                if (newest_journal_page.day == todays_date) {
                     
                     createUserMessage(message: "You can edit your page until the end of the day", title: "You have already taken today's morning moment", buttonText: "Got it");
                     
@@ -452,7 +459,7 @@ class JournalPageViewController: UIViewController, UITextFieldDelegate {
                 let newest_journal_page = CDJournal[CDJournal.count - 1]
                 
                 // if "TODAY" has been pushed and today's entry has already been made => update page mood
-                if (newest_journal_page.day == current_date) {
+                if (newest_journal_page.day == todays_date) {
                     
                     newest_journal_page.mood = Int16(slider_value)
                     
@@ -576,7 +583,8 @@ class JournalPageViewController: UIViewController, UITextFieldDelegate {
         left_arrow.isEnabled = !b;
         right_arrow.isHidden = b;
         right_arrow.isEnabled = !b;
-        date_label.isHidden = b;
+        small_date_label.isHidden = b;
+        large_date_label.isHidden = b;
         
         let_go_field.isHidden = b;
         let_go_field.isEnabled = !b;
@@ -652,6 +660,15 @@ class JournalPageViewController: UIViewController, UITextFieldDelegate {
         
         destination?.CDJournal = self.CDJournal
         
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        let fetchRequest: NSFetchRequest<CDJournalPage> = CDJournalPage.fetchRequest()
+        
+        do {
+            let CDJournal = try PersistanceService.context.fetch(fetchRequest)
+            self.CDJournal = CDJournal //as! NSMutableArray
+        } catch{}
     }
     
 }
