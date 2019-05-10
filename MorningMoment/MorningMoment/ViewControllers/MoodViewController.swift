@@ -67,8 +67,8 @@ public class MoodViewController: UIViewController {
             let mood_freq = frequencies[i]
             var percentage = 100
             
-            if (mood_freq > 0 && CDJournal.count > 1) {
-                percentage = Int(mood_freq/Double(CDJournal.count - 1) * 100.0)
+            if (mood_freq > 0 && CDJournal.count > 0) {
+                percentage = Int(mood_freq/Double(CDJournal.count) * 100.0)
                 dataEntry = PieChartDataEntry(value: mood_freq, label: String(percentage) + "%")
             } else {
                 dataEntry = PieChartDataEntry(value: mood_freq, label: "")
@@ -107,14 +107,17 @@ public class MoodViewController: UIViewController {
         
         // set chart layout
         lineChartView.data = lineChartData
+        lineChartView.rightAxis.axisMinimum = 0
+        lineChartView.rightAxis.axisMaximum = 8
+        lineChartView.rightAxis.drawGridLinesEnabled = true
+        lineChartView.rightAxis.labelCount = 8
+        lineChartView.rightAxis.drawLabelsEnabled = false
         lineChartView.leftAxis.axisMinimum = 0
         lineChartView.leftAxis.axisMaximum = 8
-        lineChartView.leftAxis.labelCount = 1
-        lineChartView.notifyDataSetChanged()
+        lineChartView.leftAxis.labelCount = 8
+        lineChartView.leftAxis.drawLabelsEnabled = false
         lineChartView.pinchZoomEnabled = false
         lineChartView.doubleTapToZoomEnabled = false
-        lineChartView.leftAxis.drawLabelsEnabled = false
-        lineChartView.rightAxis.drawLabelsEnabled = false
         lineChartView.xAxis.drawLabelsEnabled = false
         lineChartView.lineData?.setDrawValues(false)
         lineChartView.legend.enabled = false
@@ -122,6 +125,7 @@ public class MoodViewController: UIViewController {
         lineChartView.xAxis.drawGridLinesEnabled = false
         lineChartView.drawBordersEnabled = true
         lineChartView.borderColor =  UIColor.init(red: 169/255.0, green: 169/255.0, blue: 169/255.0, alpha: 1);
+        lineChartView.notifyDataSetChanged()
     }
     
     @IBAction func backButtonClicked (sender: Any) {

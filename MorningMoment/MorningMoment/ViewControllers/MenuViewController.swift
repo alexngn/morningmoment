@@ -10,7 +10,6 @@ import Foundation
 import UIKit
 
 protocol MenuViewControllerDelegate: class {
-    
     func MenuViewControllerDidBack();
 }
 
@@ -20,6 +19,7 @@ public class MenuViewController: UIViewController{
     // CLASS PROPERTIES
     weak var delegate: MenuViewControllerDelegate?
     var menu_color = UIColor.init(red: 0.964, green: 1, blue: 0.908, alpha: 1);
+    var JournalPageVC: JournalPageViewController!
     @IBOutlet weak var menu_label: UILabel!
     @IBOutlet weak var share_journal_button: UIButton!
     @IBOutlet weak var explore_mood_button: UIButton!
@@ -28,7 +28,7 @@ public class MenuViewController: UIViewController{
     @IBOutlet weak var about_button: UIButton!
     @IBOutlet weak var settings_button: UIButton!
     var CDJournal: [CDJournalPage]!
-    
+    var journal_theme: Int!
     
     override public func viewDidLoad() {
         super.viewDidLoad()
@@ -47,7 +47,6 @@ public class MenuViewController: UIViewController{
     
     @IBAction func backButtonClicked (sender: Any) {
         
-        // ensure to not rerun viewDidLoad upon return to JournalPageViewController
         self.dismiss(animated: true, completion: self.delegate?.MenuViewControllerDidBack);
     }
     
@@ -86,7 +85,15 @@ public class MenuViewController: UIViewController{
             let destination = segue.destination as? MoodViewController
             destination?.CDJournal = self.CDJournal
         }
+        else if segue.identifier == "ExploreActivitySegue"{
+            let destination = segue.destination as? ActivityViewController
+            destination?.CDJournal = self.CDJournal
+        }
+        else if segue.identifier == "SettingsSegue"{
+            let SettingsMC = segue.destination as! SettingsViewController
+            SettingsMC.journal_theme = self.journal_theme
+            SettingsMC.JournalPageVC = self.JournalPageVC
+        }
     }
-    
 }
 

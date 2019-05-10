@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workspace
+   version = "1.0">
+   <FileRef
+      location = "group:MorningMoment/CDTheme+CoreDataClass.swift">
+   </FileRef>
+   <FileRef
+      location = "group:MorningMoment/CDTheme+CoreDataProperties.swift">
+   </FileRef>
+   <FileRef
+      location = "group:/Users/birkberger/Documents/morningmoment/MorningMoment/MorningMoment/CDJournalPage+CoreDataClass.swift">
+   </FileRef>
+   <FileRef
+      location = "group:/Users/birkberger/Documents/morningmoment/MorningMoment/MorningMoment/CDJournalPage+CoreDataProperties.swift">
+   </FileRef>
+   <FileRef
+      location = "group:/Users/birkberger/Documents/morningmoment/MorningMoment/Presentation_MorningMoment.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:Pods/Pods.xcodeproj">
+   </FileRef>
+</Workspace>

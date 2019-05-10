@@ -17,13 +17,14 @@
 		0B6A18202279FD760099C22F /* MoodViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B6A181F2279FD760099C22F /* MoodViewController.swift */; };
 		0B6A18222279FD910099C22F /* ActivityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B6A18212279FD910099C22F /* ActivityViewController.swift */; };
 		0B6A18242279FDB00099C22F /* DeleteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B6A18232279FDB00099C22F /* DeleteViewController.swift */; };
-		0B6A1829227A70AE0099C22F /* CDJournalPage+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B6A1828227A70AE0099C22F /* CDJournalPage+CoreDataProperties.swift */; };
 		0B9A43E82277C2AB00288875 /* PersistanceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B9A43E72277C2AB00288875 /* PersistanceService.swift */; };
-		0B9A43EB2277C41200288875 /* CDJournalPage+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B9A43E92277C41200288875 /* CDJournalPage+CoreDataClass.swift */; };
 		0BAF7723225EB24100384645 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BAF7722225EB24100384645 /* AppDelegate.swift */; };
 		0BAF7725225EB24100384645 /* JournalPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BAF7724225EB24100384645 /* JournalPageViewController.swift */; };
 		0BAF772A225EB24200384645 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0BAF7729225EB24200384645 /* Assets.xcassets */; };
 		0BAF7738225EB24200384645 /* MorningMomentUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BAF7737225EB24200384645 /* MorningMomentUITests.swift */; };
+		0BFAF8BD2280AEB400777DDF /* CDJournalPage+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BFAF8BC2280AEB400777DDF /* CDJournalPage+CoreDataProperties.swift */; };
+		0BFAF8BE2280AEB400777DDF /* CDJournalPage+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BFAF8BB2280AEB400777DDF /* CDJournalPage+CoreDataClass.swift */; };
+		0BFAF8C022827BAE00777DDF /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0BFAF8BF22827BAE00777DDF /* Launch Screen.storyboard */; };
 		131B9947E26469EB8CF74AC2 /* Pods_MorningMoment.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23964C90727F8911AB6F98CE /* Pods_MorningMoment.framework */; };
 		52110791F2345A9065BD7FB4 /* Pods_MorningMomentUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC9B812B7CD0ADFC8D102BE8 /* Pods_MorningMomentUITests.framework */; };
 		EB2D541F227B65EB001DF223 /* SharePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB2D541E227B65EB001DF223 /* SharePageViewController.swift */; };
@@ -51,9 +52,7 @@
 		0B6A181F2279FD760099C22F /* MoodViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodViewController.swift; sourceTree = "<group>"; };
 		0B6A18212279FD910099C22F /* ActivityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityViewController.swift; sourceTree = "<group>"; };
 		0B6A18232279FDB00099C22F /* DeleteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteViewController.swift; sourceTree = "<group>"; };
-		0B6A1828227A70AE0099C22F /* CDJournalPage+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CDJournalPage+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		0B9A43E72277C2AB00288875 /* PersistanceService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistanceService.swift; sourceTree = "<group>"; };
-		0B9A43E92277C41200288875 /* CDJournalPage+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "CDJournalPage+CoreDataClass.swift"; path = "../CDJournalPage+CoreDataClass.swift"; sourceTree = "<group>"; };
 		0BAD300A227F87AC009C1508 /* Charts.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Charts.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0BAF771F225EB24100384645 /* MorningMoment.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MorningMoment.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0BAF7722225EB24100384645 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = ../AppDelegate.swift; sourceTree = "<group>"; };
@@ -63,6 +62,9 @@
 		0BAF7733225EB24200384645 /* MorningMomentUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MorningMomentUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0BAF7737225EB24200384645 /* MorningMomentUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MorningMomentUITests.swift; sourceTree = "<group>"; };
 		0BAF7739225EB24200384645 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0BFAF8BB2280AEB400777DDF /* CDJournalPage+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "CDJournalPage+CoreDataClass.swift"; path = "/Users/birkberger/Documents/morningmoment/MorningMoment/MorningMoment/CDJournalPage+CoreDataClass.swift"; sourceTree = "<absolute>"; };
+		0BFAF8BC2280AEB400777DDF /* CDJournalPage+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "CDJournalPage+CoreDataProperties.swift"; path = "/Users/birkberger/Documents/morningmoment/MorningMoment/MorningMoment/CDJournalPage+CoreDataProperties.swift"; sourceTree = "<absolute>"; };
+		0BFAF8BF22827BAE00777DDF /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		186EF43FE24827D3CB45A18D /* Pods-MorningMoment.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MorningMoment.debug.xcconfig"; path = "Target Support Files/Pods-MorningMoment/Pods-MorningMoment.debug.xcconfig"; sourceTree = "<group>"; };
 		23964C90727F8911AB6F98CE /* Pods_MorningMoment.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MorningMoment.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B449181BA386E90EC754916 /* Pods-MorningMomentUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MorningMomentUITests.debug.xcconfig"; path = "Target Support Files/Pods-MorningMomentUITests/Pods-MorningMomentUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -135,13 +137,14 @@
 			isa = PBXGroup;
 			children = (
 				0B6A18252279FDCD0099C22F /* ViewControllers */,
-				0B9A43E92277C41200288875 /* CDJournalPage+CoreDataClass.swift */,
-				0B6A1828227A70AE0099C22F /* CDJournalPage+CoreDataProperties.swift */,
 				0B9A43E72277C2AB00288875 /* PersistanceService.swift */,
+				0BFAF8BB2280AEB400777DDF /* CDJournalPage+CoreDataClass.swift */,
+				0BFAF8BC2280AEB400777DDF /* CDJournalPage+CoreDataProperties.swift */,
 				0BAF7722225EB24100384645 /* AppDelegate.swift */,
 				0B60CC5922791477004EC525 /* MorningMoment.xcdatamodeld */,
 				0BAF7729225EB24200384645 /* Assets.xcassets */,
 				0B6A1815227926B90099C22F /* Main.storyboard */,
+				0BFAF8BF22827BAE00777DDF /* Launch Screen.storyboard */,
 				0B16F685227918C900F0E51A /* Base.lproj */,
 				0BAF772E225EB24200384645 /* Info.plist */,
 			);
@@ -237,7 +240,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 0BAF771A225EB24100384645 /* Build configuration list for PBXProject "Alex_MorningMoment" */;
+			buildConfigurationList = 0BAF771A225EB24100384645 /* Build configuration list for PBXProject "Presentation_MorningMoment" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -263,6 +266,7 @@
 			files = (
 				0B6A1816227926C50099C22F /* Main.storyboard in Resources */,
 				0BAF772A225EB24200384645 /* Assets.xcassets in Resources */,
+				0BFAF8C022827BAE00777DDF /* Launch Screen.storyboard in Resources */,
 				0B16F686227918C900F0E51A /* Base.lproj in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -350,10 +354,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0B6A1829227A70AE0099C22F /* CDJournalPage+CoreDataProperties.swift in Sources */,
 				0BAF7725225EB24100384645 /* JournalPageViewController.swift in Sources */,
 				0B6A181E2279FD640099C22F /* SettingsViewController.swift in Sources */,
 				0B6A181C2279FD570099C22F /* ShareViewController.swift in Sources */,
+				0BFAF8BD2280AEB400777DDF /* CDJournalPage+CoreDataProperties.swift in Sources */,
 				EB2D5423227D1B26001DF223 /* ContactsViewController.swift in Sources */,
 				0BAF7723225EB24100384645 /* AppDelegate.swift in Sources */,
 				0B6A18202279FD760099C22F /* MoodViewController.swift in Sources */,
@@ -361,9 +365,9 @@
 				0B6A181A2279FD450099C22F /* AboutViewController.swift in Sources */,
 				0B6A18222279FD910099C22F /* ActivityViewController.swift in Sources */,
 				0B9A43E82277C2AB00288875 /* PersistanceService.swift in Sources */,
-				0B9A43EB2277C41200288875 /* CDJournalPage+CoreDataClass.swift in Sources */,
 				0B60CC5B22791477004EC525 /* MorningMoment.xcdatamodeld in Sources */,
 				0B6A18242279FDB00099C22F /* DeleteViewController.swift in Sources */,
+				0BFAF8BE2280AEB400777DDF /* CDJournalPage+CoreDataClass.swift in Sources */,
 				0B6A18182279EF400099C22F /* MenuViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -594,7 +598,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		0BAF771A225EB24100384645 /* Build configuration list for PBXProject "Alex_MorningMoment" */ = {
+		0BAF771A225EB24100384645 /* Build configuration list for PBXProject "Presentation_MorningMoment" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				0BAF773A225EB24200384645 /* Debug */,

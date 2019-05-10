@@ -1,9 +1,8 @@
 //
 //  CDJournalPage+CoreDataProperties.swift
-//  MorningMoment
+//  
 //
-//  Created by Thea Birk Berger on 4/29/19.
-//  Copyright © 2019 nyu.edu. All rights reserved.
+//  Created by Thea Birk Berger on 5/6/19.
 //
 //
 
@@ -17,13 +16,14 @@ extension CDJournalPage {
         return NSFetchRequest<CDJournalPage>(entityName: "CDJournalPage")
     }
 
-    @NSManaged public var let_go_text: String?
+    @NSManaged public var date_string: String?
+    @NSManaged public var focus_1_text: String?
+    @NSManaged public var focus_2_text: String?
     @NSManaged public var grateful_1_text: String?
     @NSManaged public var grateful_2_text: String?
     @NSManaged public var grateful_3_text: String?
-    @NSManaged public var focus_1_text: String?
-    @NSManaged public var focus_2_text: String?
-    @NSManaged public var day: String?
+    @NSManaged public var let_go_text: String?
     @NSManaged public var mood: Int16
+    @NSManaged public var date: NSDate?
 
 }

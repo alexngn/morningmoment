@@ -14,10 +14,13 @@ class JournalPageViewController: UIViewController, UITextFieldDelegate {
     // CLASS PROPERTIES
     var CDJournal: [CDJournalPage]!
     var journal_color: UIColor = UIColor.init(red: 0.8, green: 0.930, blue: 0.904, alpha: 1);
+    var today_color: UIColor = UIColor.init(red: 0.938, green: 0.822, blue: 0.882, alpha: 1);
     var current_page_index_shown = 0;
-    var todays_date: String!
+    var todays_date_string: String!
+    var todays_date: NSDate!
     var current_segmentedControlIndex = 1;
     var previous_segmentedControl = 1;
+    var journal_theme: Int!
     
     // labels
     @IBOutlet weak var let_go_label: UILabel!
@@ -64,6 +67,8 @@ class JournalPageViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var emoji_7: UIImageView!
     @IBOutlet weak var emoji_8: UIImageView!
     @IBOutlet weak var display_mood_emoji: UIImageView!
+    @IBOutlet weak var background_gradient: UIImageView!
+    
     
     
     // CLASS METHODS
@@ -88,9 +93,10 @@ class JournalPageViewController: UIViewController, UITextFieldDelegate {
         
         // update date
         let date = Date();
+        self.todays_date = date as NSDate
         let dateFormatter = DateFormatter();
         dateFormatter.dateFormat = "MM/dd/yyyy"
-        self.todays_date = dateFormatter.string(from: date);
+        self.todays_date_string = dateFormatter.string(from: date);
         
         // set initial segmented control
         segmentedControl.selectedSegmentIndex = 1;
@@ -101,7 +107,7 @@ class JournalPageViewController: UIViewController, UITextFieldDelegate {
         moodSlider.minimumValue = 0;
         moodSlider.maximumValue = 8;
         // if TODAY's journal entry has been made
-        if (CDJournal.count > 0 && CDJournal.last?.day?.elementsEqual(todays_date) ?? false) {
+        if (CDJournal.count > 0 && CDJournal.last?.date_string?.elementsEqual(todays_date_string) ?? false) {
             let journal_page = CDJournal.last
             moodSlider.value = Float(Int(journal_page!.mood))
         // otherwise place slider in center
@@ -110,15 +116,17 @@ class JournalPageViewController: UIViewController, UITextFieldDelegate {
             showEmojiWithNumber(number: 4)
         }
         
+        //hardCodeJournalEntries(perform: true)
+        journal_theme = 2
         self.limitTextFieldInputs()
     }
     
     
     /*
-     // clear CoreData
-     override func viewDidAppear(_ animated: Bool) {
-     self.deleteAllData("CDJournalPage")
-     }*/
+    // clear CoreData
+    override func viewDidAppear(_ animated: Bool) {
+        self.deleteAllData("CDJournalPage")
+    }*/
     
     // TODAY's journal entry has not yet been made
     func displayTemplatePage () {
@@ -137,7 +145,7 @@ class JournalPageViewController: UIViewController, UITextFieldDelegate {
         right_arrow.isEnabled = false;
         small_date_label.isHidden = true;
         large_date_label.isHidden = false;
-        large_date_label.text = todays_date;
+        large_date_label.text = todays_date_string;
         journal_empty_label.isHidden = true;
         journal_empty_label_2.isHidden = true;
         animatedArrow.isHidden = true;
@@ -158,8 +166,8 @@ class JournalPageViewController: UIViewController, UITextFieldDelegate {
         grateful_field_3.text = journal_page.grateful_3_text;
         focus_field_1.text = journal_page.focus_1_text;
         focus_field_2.text = journal_page.focus_2_text;
-        small_date_label.text = todays_date;
-        large_date_label.text = todays_date;
+        small_date_label.text = todays_date_string;
+        large_date_label.text = todays_date_string;
         
         submit_button.isHidden = false;
         submit_button.isEnabled = true;
@@ -202,8 +210,8 @@ class JournalPageViewController: UIViewController, UITextFieldDelegate {
             grateful_field_3.text = journal_page.grateful_3_text;
             focus_field_1.text = journal_page.focus_1_text;
             focus_field_2.text = journal_page.focus_2_text;
-            small_date_label.text = journal_page.day;
-            large_date_label.text = journal_page.day;
+            small_date_label.text = journal_page.date_string;
+            large_date_label.text = journal_page.date_string;
             
             submit_button.isHidden = true;
             submit_button.isEnabled = false;
@@ -256,7 +264,8 @@ class JournalPageViewController: UIViewController, UITextFieldDelegate {
         journal_page.grateful_3_text = grateful_field_3.text ?? "";
         journal_page.focus_1_text = focus_field_1.text ?? "";
         journal_page.focus_2_text = focus_field_2.text ?? "";
-        journal_page.day = todays_date;
+        journal_page.date_string = todays_date_string;
+        journal_page.date = todays_date;
         journal_page.mood = Int16(moodSlider.value)
         
         CDJournal.append(journal_page);
@@ -279,7 +288,7 @@ class JournalPageViewController: UIViewController, UITextFieldDelegate {
             let newest_journal_page = CDJournal[CDJournal.count - 1]
             
             // if "TODAY" has been pushed and today's entry has already been made
-            if (current_segmentedControlIndex == 1 && newest_journal_page.day == todays_date) {
+            if (current_segmentedControlIndex == 1 && newest_journal_page.date_string == todays_date_string) {
                 
                 switch (sender.tag) {
                     
@@ -308,6 +317,8 @@ class JournalPageViewController: UIViewController, UITextFieldDelegate {
     
     func performSegmentWithIndex (index: Int) {
         
+        setJournalTheme()
+        
         current_segmentedControlIndex = index
         
         // JOURNAL
@@ -335,9 +346,9 @@ class JournalPageViewController: UIViewController, UITextFieldDelegate {
                 // extract newest journal entry
                 let newest_journal_page = CDJournal[CDJournal.count - 1]
                 
-                if (newest_journal_page.day == todays_date) {
+                if (newest_journal_page.date_string == todays_date_string) {
                     
-                    createUserMessage(message: "You can edit your page until the end of the day", title: "You have already taken today's morning moment", buttonText: "Got it");
+                    createUserMessage(message: "But you can edit your page until the end of the day", title: "You have already taken today's morning moment", buttonText: "Got it");
                     
                     displayTodaysPage();
                     enableTextFields(b: true);
@@ -358,13 +369,14 @@ class JournalPageViewController: UIViewController, UITextFieldDelegate {
             previous_segmentedControl = current_segmentedControlIndex
         }
             
-            // MENU
+        // MENU
         else {
             
             performSegue(withIdentifier: "JournalToMenuSegue", sender:self)
             
             segmentedControl.selectedSegmentIndex = previous_segmentedControl
             performSegmentWithIndex(index: previous_segmentedControl)
+            setJournalTheme()
             
         }
     }
@@ -459,7 +471,7 @@ class JournalPageViewController: UIViewController, UITextFieldDelegate {
                 let newest_journal_page = CDJournal[CDJournal.count - 1]
                 
                 // if "TODAY" has been pushed and today's entry has already been made => update page mood
-                if (newest_journal_page.day == todays_date) {
+                if (newest_journal_page.date_string == todays_date_string) {
                     
                     newest_journal_page.mood = Int16(slider_value)
                     
@@ -472,8 +484,89 @@ class JournalPageViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
+    func setJournalTheme() {
+        
+        var image = UIImage(named: "default_theme");
+        let default_text_color = UIColor.init(red: 47/255.0, green: 113/255.0, blue: 118/255.0, alpha: 1);
+        let theme1_color = UIColor.init(red: 0/255.0, green: 136/255.0, blue: 179/255.0, alpha: 1);
+        let theme2_color = UIColor.init(red: 158/255.0, green: 81/255.0, blue: 0/255.0, alpha: 1);
+        let theme3_color = UIColor.init(red: 128/255.0, green: 89/255.0, blue: 108/255.0, alpha: 1);
+        let theme4_color = UIColor.init(red: 204/255.0, green: 103/255.0, blue: 10/255.0, alpha: 1);
+        let theme5_color = UIColor.init(red: 125/255.0, green: 92/255.0, blue: 153/255.0, alpha: 1);
+        
+        
+        switch (journal_theme) {
+            case 0: image = UIImage(named: "theme1");
+                    setJournalThemeTextColor(color: theme1_color)
+                    submit_button.backgroundColor = UIColor.init(red: 51/255.0, green: 207/255.0, blue: 255/255.0, alpha: 1);
+                    segmentedControl.backgroundColor = UIColor.white
+                    segmentedControl.tintColor = UIColor.init(red: 179/255.0, green: 98/255.0, blue: 18/255.0, alpha: 1);
+                    large_date_label.textColor = UIColor.init(red: 179/255.0, green: 98/255.0, blue: 18/255.0, alpha: 1);
+                    large_date_label.textColor = UIColor.init(red: 179/255.0, green: 98/255.0, blue: 18/255.0, alpha: 1);
+                    break;
+            case 1: image = UIImage(named: "theme2");
+                    setJournalThemeTextColor(color: theme2_color)
+                    submit_button.backgroundColor = UIColor.init(red: 89/255.0, green: 91/255.0, blue: 255/255.0, alpha: 1);
+                    segmentedControl.backgroundColor = UIColor.white
+                    segmentedControl.tintColor = UIColor.init(red: 89/255.0, green: 91/255.0, blue: 255/255.0, alpha: 1);
+                    large_date_label.textColor = UIColor.init(red: 158/255.0, green: 144/255.0, blue: 0/255.0, alpha: 1);
+                    large_date_label.textColor = UIColor.init(red: 158/255.0, green: 144/255.0, blue: 0/255.0, alpha: 1);
+                    break;
+            case 2: image = UIImage(named: "default_theme");
+                    setJournalThemeTextColor(color: default_text_color)
+                    submit_button.backgroundColor = UIColor.init(red: 100/255.0, green: 125/255.0, blue: 124/255.0, alpha: 1);
+                    segmentedControl.backgroundColor = UIColor.white
+                    segmentedControl.tintColor = UIColor.init(red: 136/255.0, green: 154/255.0, blue: 154/255.0, alpha: 1);
+                    large_date_label.textColor = UIColor.init(red: 145/255.0, green: 129/255.0, blue: 137/255.0, alpha: 1);
+                    large_date_label.textColor = UIColor.init(red: 145/255.0, green: 129/255.0, blue: 137/255.0, alpha: 1);
+                    break;
+            case 3: image =
+                    UIImage(named: "theme3");
+                    setJournalThemeTextColor(color: theme3_color)
+                    submit_button.backgroundColor = UIColor.init(red: 161/255.0, green: 204/255.0, blue: 61/255.0, alpha: 1);
+                    segmentedControl.backgroundColor = UIColor.white
+                    segmentedControl.tintColor = UIColor.init(red: 204/255.0, green: 82/255.0, blue: 143/255.0, alpha: 1);
+                    large_date_label.textColor = UIColor.init(red: 204/255.0, green: 82/255.0, blue: 143/255.0, alpha: 1);
+                    large_date_label.textColor = UIColor.init(red: 204/255.0, green: 82/255.0, blue: 143/255.0, alpha: 1);
+                    break;
+            case 4: image =
+                    UIImage(named: "theme4");
+                    setJournalThemeTextColor(color: theme4_color)
+                    submit_button.backgroundColor = UIColor.init(red: 204/255.0, green: 85/255.0, blue: 5/255.0, alpha: 1);
+                    segmentedControl.tintColor = UIColor.init(red: 204/255.0, green: 85/255.0, blue: 5/255.0, alpha: 1);
+                    large_date_label.textColor = UIColor.init(red: 204/255.0, green: 149/255.0, blue: 10/255.0, alpha: 1);
+                    large_date_label.textColor = UIColor.init(red: 204/255.0, green: 149/255.0, blue: 10/255.0, alpha: 1);
+                    break;
+            case 5: image =
+                    UIImage(named: "theme5");
+                    setJournalThemeTextColor(color: theme5_color)
+                    submit_button.backgroundColor = UIColor.init(red: 204/255.0, green: 134/255.0, blue: 20/255.0, alpha: 1);
+                    segmentedControl.tintColor = UIColor.init(red: 121/255.0, green: 20/255.0, blue: 204/255.0, alpha: 1);
+                    large_date_label.textColor = UIColor.init(red: 121/255.0, green: 20/255.0, blue: 204/255.0, alpha: 1);
+                    large_date_label.textColor = UIColor.init(red: 121/255.0, green: 20/255.0, blue: 204/255.0, alpha: 1);
+                    break;
+        default: break;
+        }
+        background_gradient.image = image;
+    }
     
-    func hardCodeJournalEntries () {
+    func setJournalThemeTextColor(color: UIColor) {
+        let_go_label.textColor = color
+        grateful_label.textColor = color
+        focus_label.textColor = color
+        bul11_label.textColor = color
+        bul12_label.textColor = color
+        bul13_label.textColor = color
+        bul21_label.textColor = color
+        bul22_label.textColor = color
+        current_mood_label.textColor = color
+    }
+    
+    
+    func hardCodeJournalEntries (perform: Bool) {
+        
+        let formatter = DateFormatter()
+        formatter.dateFormat = "MM/dd/yyyy"
         
         let journal_page_1 = CDJournalPage(context: PersistanceService.context)
         
@@ -483,9 +576,14 @@ class JournalPageViewController: UIViewController, UITextFieldDelegate {
         journal_page_1.grateful_3_text = "Blossoming trees";
         journal_page_1.focus_1_text = "Believing in myself";
         journal_page_1.focus_2_text = "Finishing math assignment 8";
-        journal_page_1.day = "04/5/2019";
+        journal_page_1.date_string = "03/04/2019";
+        journal_page_1.date = formatter.date(from: "03/04/2019") as NSDate?
+        journal_page_1.mood = Int16(3)
         
         CDJournal.append(journal_page_1);
+        if (perform) {
+        PersistanceService.saveContext()
+        }
         
         let journal_page_2 = CDJournalPage(context: PersistanceService.context)
         
@@ -495,9 +593,14 @@ class JournalPageViewController: UIViewController, UITextFieldDelegate {
         journal_page_2.grateful_3_text = "The Joe Rogan Experience";
         journal_page_2.focus_1_text = "Enjoying cheesecake";
         journal_page_2.focus_2_text = "Breathing";
-        journal_page_2.day = "04/10/2019";
+        journal_page_2.date_string = "03/05/2019";
+        journal_page_2.date = formatter.date(from: "03/05/2019") as NSDate?
+        journal_page_2.mood = Int16(7)
         
         CDJournal.append(journal_page_2);
+        if (perform) {
+            PersistanceService.saveContext()
+        }
         
         let journal_page_3 = CDJournalPage(context: PersistanceService.context)
         
@@ -507,11 +610,48 @@ class JournalPageViewController: UIViewController, UITextFieldDelegate {
         journal_page_3.grateful_3_text = "The man who sang \"Ain't no sunshine\" on the subway last night";
         journal_page_3.focus_1_text = "Letting the mess go";
         journal_page_3.focus_2_text = "Appreciate her person";
-        journal_page_3.day = "04/11/2019";
+        journal_page_3.date_string = "03/06/2019";
+        journal_page_3.date = formatter.date(from: "03/06/2019") as NSDate?
+        journal_page_3.mood = Int16(4)
         
         CDJournal.append(journal_page_3);
+        if (perform) {
+            PersistanceService.saveContext()
+        }
         
-        //PersistanceService.saveContext()
+        let journal_page_4 = CDJournalPage(context: PersistanceService.context)
+        
+        journal_page_4.let_go_text = "Not being recruited by the NBA";
+        journal_page_4.grateful_1_text = "Ma gals";
+        journal_page_4.grateful_2_text = "Marjane Satrapi";
+        journal_page_4.grateful_3_text = "Long walks in nyc rain";
+        journal_page_4.focus_1_text = "Reading more";
+        journal_page_4.focus_2_text = "Spending quality time with Spencer";
+        journal_page_4.date_string = "05/07/2019";
+        journal_page_4.date = formatter.date(from: "05/07/2019") as NSDate?
+        journal_page_4.mood = Int16(4)
+        
+        CDJournal.append(journal_page_4);
+        if (perform) {
+            PersistanceService.saveContext()
+        }
+        
+        let journal_page_5 = CDJournalPage(context: PersistanceService.context)
+        
+        journal_page_5.let_go_text = "The lost cookie recipe";
+        journal_page_5.grateful_1_text = "The smell of beach";
+        journal_page_5.grateful_2_text = "Deep convo with Dave today";
+        journal_page_5.grateful_3_text = "My bed";
+        journal_page_5.focus_1_text = "Meditating";
+        journal_page_5.focus_2_text = "Sleeping";
+        journal_page_5.date_string = "05/08/2019";
+        journal_page_5.date = formatter.date(from: "05/08/2019") as NSDate?
+        journal_page_5.mood = Int16(2)
+        
+        CDJournal.append(journal_page_5);
+        if (perform) {
+            PersistanceService.saveContext()
+        }
         
     }
     
@@ -656,9 +796,10 @@ class JournalPageViewController: UIViewController, UITextFieldDelegate {
     
     public override func prepare(for segue: UIStoryboardSegue, sender: (Any)?) {
         
-        let destination = segue.destination as? MenuViewController
-        
-        destination?.CDJournal = self.CDJournal
+        let menuVC = segue.destination as! MenuViewController
+        menuVC.CDJournal = self.CDJournal
+        menuVC.journal_theme = self.journal_theme
+        menuVC.JournalPageVC = self
         
     }
     

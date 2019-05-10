@@ -42,7 +42,7 @@ class DeleteViewController: UIViewController, UITableViewDataSource, UITableView
 	
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		let cell: UITableViewCell = tableView.dequeueReusableCell(withIdentifier: "cell")!
-		cell.textLabel?.text = CDJournal[indexPath.row].day
+		cell.textLabel?.text = CDJournal[indexPath.row].date_string
 		return cell
 	}
 	
