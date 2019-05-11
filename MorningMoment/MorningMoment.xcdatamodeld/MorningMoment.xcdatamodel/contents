@@ -11,7 +11,11 @@
         <attribute name="let_go_text" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="mood" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
     </entity>
+    <entity name="CDTheme" representedClassName=".CDTheme" syncable="YES">
+        <attribute name="theme_ID" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+    </entity>
     <elements>
         <element name="CDJournalPage" positionX="-63" positionY="-18" width="128" height="180"/>
+        <element name="CDTheme" positionX="-63" positionY="54" width="128" height="60"/>
     </elements>
 </model>

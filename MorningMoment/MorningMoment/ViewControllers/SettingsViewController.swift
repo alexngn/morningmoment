@@ -33,7 +33,7 @@ class SettingsViewController: UIViewController {
         // set slider properties
         colorSlider.minimumValue = 0;
         colorSlider.maximumValue = 5;
-        colorSlider.value = Float(journal_theme);
+        colorSlider.value = Float(journal_theme ?? 2);
         colorSlider.makeVertical()
         updateThemeView()
         
@@ -42,7 +42,8 @@ class SettingsViewController: UIViewController {
     @IBAction func sliderChanged(_ sender: UISlider) {
         
         self.journal_theme = Int(sender.value)
-        JournalPageVC.journal_theme = self.journal_theme;
+        JournalPageVC.theme_array[0].theme_ID = Int16(sender.value)
+        PersistanceService.saveContext()
         updateThemeView()
     }
     

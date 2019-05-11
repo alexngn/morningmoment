@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		0B16F686227918C900F0E51A /* Base.lproj in Resources */ = {isa = PBXBuildFile; fileRef = 0B16F685227918C900F0E51A /* Base.lproj */; };
+		0B1EE25B2286279000617E8A /* CDTheme+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B1EE2592286279000617E8A /* CDTheme+CoreDataClass.swift */; };
+		0B1EE25C2286279000617E8A /* CDTheme+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B1EE25A2286279000617E8A /* CDTheme+CoreDataProperties.swift */; };
 		0B60CC5B22791477004EC525 /* MorningMoment.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0B60CC5922791477004EC525 /* MorningMoment.xcdatamodeld */; };
 		0B6A1816227926C50099C22F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0B6A1815227926B90099C22F /* Main.storyboard */; };
 		0B6A18182279EF400099C22F /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B6A18172279EF400099C22F /* MenuViewController.swift */; };
@@ -43,6 +45,8 @@
 
 /* Begin PBXFileReference section */
 		0B16F685227918C900F0E51A /* Base.lproj */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Base.lproj; sourceTree = SOURCE_ROOT; };
+		0B1EE2592286279000617E8A /* CDTheme+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "CDTheme+CoreDataClass.swift"; path = "/Users/birkberger/Documents/morningmoment/MorningMoment/MorningMoment/CDTheme+CoreDataClass.swift"; sourceTree = "<absolute>"; };
+		0B1EE25A2286279000617E8A /* CDTheme+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "CDTheme+CoreDataProperties.swift"; path = "/Users/birkberger/Documents/morningmoment/MorningMoment/MorningMoment/CDTheme+CoreDataProperties.swift"; sourceTree = "<absolute>"; };
 		0B60CC5A22791477004EC525 /* MorningMoment.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MorningMoment.xcdatamodel; sourceTree = "<group>"; };
 		0B6A1815227926B90099C22F /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		0B6A18172279EF400099C22F /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
@@ -138,6 +142,8 @@
 			children = (
 				0B6A18252279FDCD0099C22F /* ViewControllers */,
 				0B9A43E72277C2AB00288875 /* PersistanceService.swift */,
+				0B1EE2592286279000617E8A /* CDTheme+CoreDataClass.swift */,
+				0B1EE25A2286279000617E8A /* CDTheme+CoreDataProperties.swift */,
 				0BFAF8BB2280AEB400777DDF /* CDJournalPage+CoreDataClass.swift */,
 				0BFAF8BC2280AEB400777DDF /* CDJournalPage+CoreDataProperties.swift */,
 				0BAF7722225EB24100384645 /* AppDelegate.swift */,
@@ -240,7 +246,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 0BAF771A225EB24100384645 /* Build configuration list for PBXProject "Presentation_MorningMoment" */;
+			buildConfigurationList = 0BAF771A225EB24100384645 /* Build configuration list for PBXProject "MorningMoment" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -354,10 +360,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0B1EE25C2286279000617E8A /* CDTheme+CoreDataProperties.swift in Sources */,
+				0B1EE25B2286279000617E8A /* CDTheme+CoreDataClass.swift in Sources */,
 				0BAF7725225EB24100384645 /* JournalPageViewController.swift in Sources */,
+				0BFAF8BD2280AEB400777DDF /* CDJournalPage+CoreDataProperties.swift in Sources */,
+				0BFAF8BE2280AEB400777DDF /* CDJournalPage+CoreDataClass.swift in Sources */,
 				0B6A181E2279FD640099C22F /* SettingsViewController.swift in Sources */,
 				0B6A181C2279FD570099C22F /* ShareViewController.swift in Sources */,
-				0BFAF8BD2280AEB400777DDF /* CDJournalPage+CoreDataProperties.swift in Sources */,
 				EB2D5423227D1B26001DF223 /* ContactsViewController.swift in Sources */,
 				0BAF7723225EB24100384645 /* AppDelegate.swift in Sources */,
 				0B6A18202279FD760099C22F /* MoodViewController.swift in Sources */,
@@ -367,7 +376,6 @@
 				0B9A43E82277C2AB00288875 /* PersistanceService.swift in Sources */,
 				0B60CC5B22791477004EC525 /* MorningMoment.xcdatamodeld in Sources */,
 				0B6A18242279FDB00099C22F /* DeleteViewController.swift in Sources */,
-				0BFAF8BE2280AEB400777DDF /* CDJournalPage+CoreDataClass.swift in Sources */,
 				0B6A18182279EF400099C22F /* MenuViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -598,7 +606,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		0BAF771A225EB24100384645 /* Build configuration list for PBXProject "Presentation_MorningMoment" */ = {
+		0BAF771A225EB24100384645 /* Build configuration list for PBXProject "MorningMoment" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				0BAF773A225EB24200384645 /* Debug */,

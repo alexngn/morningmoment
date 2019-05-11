@@ -2,10 +2,10 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:MorningMoment/CDTheme+CoreDataClass.swift">
+      location = "group:/Users/birkberger/Documents/morningmoment/MorningMoment/MorningMoment/CDTheme+CoreDataClass.swift">
    </FileRef>
    <FileRef
-      location = "group:MorningMoment/CDTheme+CoreDataProperties.swift">
+      location = "group:/Users/birkberger/Documents/morningmoment/MorningMoment/MorningMoment/CDTheme+CoreDataProperties.swift">
    </FileRef>
    <FileRef
       location = "group:/Users/birkberger/Documents/morningmoment/MorningMoment/MorningMoment/CDJournalPage+CoreDataClass.swift">
@@ -14,7 +14,7 @@
       location = "group:/Users/birkberger/Documents/morningmoment/MorningMoment/MorningMoment/CDJournalPage+CoreDataProperties.swift">
    </FileRef>
    <FileRef
-      location = "group:/Users/birkberger/Documents/morningmoment/MorningMoment/Presentation_MorningMoment.xcodeproj">
+      location = "group:/Users/birkberger/Documents/morningmoment/MorningMoment/MorningMoment.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:Pods/Pods.xcodeproj">

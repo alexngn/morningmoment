@@ -13,6 +13,8 @@ class JournalPageViewController: UIViewController, UITextFieldDelegate {
     
     // CLASS PROPERTIES
     var CDJournal: [CDJournalPage]!
+    var theme_array: [CDTheme]!
+    var current_theme_ID: Int!
     var journal_color: UIColor = UIColor.init(red: 0.8, green: 0.930, blue: 0.904, alpha: 1);
     var today_color: UIColor = UIColor.init(red: 0.938, green: 0.822, blue: 0.882, alpha: 1);
     var current_page_index_shown = 0;
@@ -20,7 +22,7 @@ class JournalPageViewController: UIViewController, UITextFieldDelegate {
     var todays_date: NSDate!
     var current_segmentedControlIndex = 1;
     var previous_segmentedControl = 1;
-    var journal_theme: Int!
+    //var journal_theme: Int!
     
     // labels
     @IBOutlet weak var let_go_label: UILabel!
@@ -69,18 +71,19 @@ class JournalPageViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var display_mood_emoji: UIImageView!
     @IBOutlet weak var background_gradient: UIImageView!
     
-    
-    
     // CLASS METHODS
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // set up CoreData: Create array of CoreData journal pages
         let fetchRequest: NSFetchRequest<CDJournalPage> = CDJournalPage.fetchRequest()
+        let fetchRequest2: NSFetchRequest<CDTheme> = CDTheme.fetchRequest()
         
         do {
             let CDJournal = try PersistanceService.context.fetch(fetchRequest)
             self.CDJournal = CDJournal //as! NSMutableArray
+            let theme_array = try PersistanceService.context.fetch(fetchRequest2)
+            self.theme_array = theme_array
         } catch{}
         
         // set textfield tags
@@ -99,9 +102,8 @@ class JournalPageViewController: UIViewController, UITextFieldDelegate {
         self.todays_date_string = dateFormatter.string(from: date);
         
         // set initial segmented control
-        segmentedControl.selectedSegmentIndex = 1;
-        performSegmentWithIndex(index: 1)
-        //self.segmentedControlValueChanged(sender: segmentedControl);
+        segmentedControl.selectedSegmentIndex = previous_segmentedControl
+        performSegmentWithIndex(index: previous_segmentedControl)
         
         // set slider properties
         moodSlider.minimumValue = 0;
@@ -116,11 +118,24 @@ class JournalPageViewController: UIViewController, UITextFieldDelegate {
             showEmojiWithNumber(number: 4)
         }
         
+        if (theme_array.count == 0) {
+            let theme = CDTheme(context: PersistanceService.context)
+            theme.theme_ID = 2
+            theme_array.append(theme)
+            current_theme_ID = 2
+        } else {
+            current_theme_ID = Int(theme_array[0].theme_ID)
+        }
+        
         //hardCodeJournalEntries(perform: true)
-        journal_theme = 2
+        setJournalTheme()
         self.limitTextFieldInputs()
     }
     
+    /*
+    override func viewDidAppear(_ animated: Bool) {
+        self.deleteAllData("CDTheme")
+    }*/
     
     /*
     // clear CoreData
@@ -373,10 +388,10 @@ class JournalPageViewController: UIViewController, UITextFieldDelegate {
         else {
             
             performSegue(withIdentifier: "JournalToMenuSegue", sender:self)
-            
-            segmentedControl.selectedSegmentIndex = previous_segmentedControl
-            performSegmentWithIndex(index: previous_segmentedControl)
-            setJournalTheme()
+            self.viewDidLoad()
+        
+            //performSegmentWithIndex(index: previous_segmentedControl)
+            //setJournalTheme()
             
         }
     }
@@ -494,8 +509,7 @@ class JournalPageViewController: UIViewController, UITextFieldDelegate {
         let theme4_color = UIColor.init(red: 204/255.0, green: 103/255.0, blue: 10/255.0, alpha: 1);
         let theme5_color = UIColor.init(red: 125/255.0, green: 92/255.0, blue: 153/255.0, alpha: 1);
         
-        
-        switch (journal_theme) {
+        switch (current_theme_ID) {
             case 0: image = UIImage(named: "theme1");
                     setJournalThemeTextColor(color: theme1_color)
                     submit_button.backgroundColor = UIColor.init(red: 51/255.0, green: 207/255.0, blue: 255/255.0, alpha: 1);
@@ -798,18 +812,23 @@ class JournalPageViewController: UIViewController, UITextFieldDelegate {
         
         let menuVC = segue.destination as! MenuViewController
         menuVC.CDJournal = self.CDJournal
-        menuVC.journal_theme = self.journal_theme
+        menuVC.journal_theme = current_theme_ID
         menuVC.JournalPageVC = self
         
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        
         let fetchRequest: NSFetchRequest<CDJournalPage> = CDJournalPage.fetchRequest()
+        //let fetchRequest2: NSFetchRequest<CDTheme> = CDTheme.fetchRequest()
         
         do {
             let CDJournal = try PersistanceService.context.fetch(fetchRequest)
             self.CDJournal = CDJournal //as! NSMutableArray
+            //let theme_array = try PersistanceService.context.fetch(fetchRequest2)
+            //self.theme_array = theme_array
         } catch{}
+        
     }
     
 }
