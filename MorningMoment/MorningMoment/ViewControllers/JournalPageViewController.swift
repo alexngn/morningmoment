@@ -101,10 +101,6 @@ class JournalPageViewController: UIViewController, UITextFieldDelegate {
         dateFormatter.dateFormat = "MM/dd/yyyy"
         self.todays_date_string = dateFormatter.string(from: date);
         
-        // set initial segmented control
-        segmentedControl.selectedSegmentIndex = previous_segmentedControl
-        performSegmentWithIndex(index: previous_segmentedControl)
-        
         // set slider properties
         moodSlider.minimumValue = 0;
         moodSlider.maximumValue = 8;
@@ -127,8 +123,15 @@ class JournalPageViewController: UIViewController, UITextFieldDelegate {
             current_theme_ID = Int(theme_array[0].theme_ID)
         }
         
-        //hardCodeJournalEntries(perform: true)
+        print("here\n")
         setJournalTheme()
+        
+        // set initial segmented control
+        segmentedControl.selectedSegmentIndex = previous_segmentedControl
+        performSegmentWithIndex(index: previous_segmentedControl)
+        
+        //hardCodeJournalEntries(perform: true)
+        
         self.limitTextFieldInputs()
     }
     
@@ -363,7 +366,9 @@ class JournalPageViewController: UIViewController, UITextFieldDelegate {
                 
                 if (newest_journal_page.date_string == todays_date_string) {
                     
-                    createUserMessage(message: "But you can edit your page until the end of the day", title: "You have already taken today's morning moment", buttonText: "Got it");
+                    if (previous_segmentedControl == 0) {
+                        createUserMessage(message: "But you can edit your page until the end of the day", title: "You have already taken today's morning moment", buttonText: "Got it");
+                    }
                     
                     displayTodaysPage();
                     enableTextFields(b: true);
@@ -388,10 +393,6 @@ class JournalPageViewController: UIViewController, UITextFieldDelegate {
         else {
             
             performSegue(withIdentifier: "JournalToMenuSegue", sender:self)
-            self.viewDidLoad()
-        
-            //performSegmentWithIndex(index: previous_segmentedControl)
-            //setJournalTheme()
             
         }
     }
@@ -828,6 +829,8 @@ class JournalPageViewController: UIViewController, UITextFieldDelegate {
             //let theme_array = try PersistanceService.context.fetch(fetchRequest2)
             //self.theme_array = theme_array
         } catch{}
+        
+        self.viewDidLoad()
         
     }
     

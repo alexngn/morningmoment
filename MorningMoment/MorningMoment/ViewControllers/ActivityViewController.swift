@@ -162,7 +162,7 @@ class ActivityViewController: UIViewController {
         barChartView.xAxis.axisMaximum = Double(x_values.count) - 0.5
         barChartView.xAxis.labelCount = x_values.count
         barChartView.xAxis.labelPosition = XAxis.LabelPosition.bottom
-        barChartView.xAxis.valueFormatter = IndexAxisValueFormatter(values: Array(x_values[start_index...(x_values.count-1)]))
+        barChartView.xAxis.valueFormatter = IndexAxisValueFormatter(values: Array(x_values[start_index..<x_values.count]))
         barChartView.xAxis.labelRotationAngle = -45
         barChartView.xAxis.labelFont = UIFont(name: "SinhalaSangamMN", size: 15)!
         barChartView.xAxis.labelTextColor = UIColor.init(red: 47/255.0, green: 113/255.0, blue: 118/255.0, alpha: 1);
