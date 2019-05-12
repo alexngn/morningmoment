@@ -247,7 +247,7 @@
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YCy-ir-NMq">
                                 <rect key="frame" x="270" y="740" width="35" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button" image="leftArrow"/>
+                                <state key="normal" title="Button" image="L_default"/>
                                 <connections>
                                     <action selector="leftArrowPushedWithSender:" destination="BYZ-38-t0r" eventType="touchUpInside" id="KoC-vt-ftI"/>
                                 </connections>
@@ -255,7 +255,7 @@
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SjU-bZ-yIs">
                                 <rect key="frame" x="341" y="740" width="35" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button" image="rightArrow"/>
+                                <state key="normal" title="Button" image="R_default"/>
                                 <connections>
                                     <action selector="rightArrowPushedWithSender:" destination="BYZ-38-t0r" eventType="touchUpInside" id="74z-Eh-UXE"/>
                                 </connections>
@@ -1140,15 +1140,15 @@
         <image name="6_emoji" width="123" height="123"/>
         <image name="7_emoji" width="123" height="123"/>
         <image name="8_emoji" width="123" height="123"/>
+        <image name="L_default" width="207" height="238"/>
+        <image name="R_default" width="206" height="239"/>
         <image name="about_gradient" width="291" height="611"/>
         <image name="backArrow" width="200" height="309"/>
         <image name="color-wheel" width="82" height="962"/>
         <image name="default_theme" width="291" height="591"/>
         <image name="drawnArrow" width="1136" height="1221"/>
-        <image name="leftArrow" width="207" height="238"/>
         <image name="menu_gradient" width="291" height="591"/>
         <image name="mood_graph_gradient" width="291" height="591"/>
-        <image name="rightArrow" width="206" height="239"/>
         <image name="settings_gradient" width="311" height="661"/>
         <image name="share_gradient" width="421" height="231"/>
         <image name="wheel_border" width="716" height="1470"/>

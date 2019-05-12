@@ -123,24 +123,27 @@ class JournalPageViewController: UIViewController, UITextFieldDelegate {
             current_theme_ID = Int(theme_array[0].theme_ID)
         }
         
-        print("here\n")
         setJournalTheme()
+        
+        /* uncomment to input 5 hardcoded journal entries
+        if (CDJournal.count == 0) {
+            hardCodeJournalEntries(perform: true)
+        }*/
+        
+        self.limitTextFieldInputs()
         
         // set initial segmented control
         segmentedControl.selectedSegmentIndex = previous_segmentedControl
         performSegmentWithIndex(index: previous_segmentedControl)
         
-        //hardCodeJournalEntries(perform: true)
-        
-        self.limitTextFieldInputs()
     }
     
-    /*
+    /* remove theme from core data
     override func viewDidAppear(_ animated: Bool) {
         self.deleteAllData("CDTheme")
     }*/
     
-    /*
+    /* remove journal entries from core data
     // clear CoreData
     override func viewDidAppear(_ animated: Bool) {
         self.deleteAllData("CDJournalPage")
@@ -503,6 +506,9 @@ class JournalPageViewController: UIViewController, UITextFieldDelegate {
     func setJournalTheme() {
         
         var image = UIImage(named: "default_theme");
+        var L_arrow_image = UIImage(named: "L_default");
+        var R_arrow_image = UIImage(named: "R_default");
+        
         let default_text_color = UIColor.init(red: 47/255.0, green: 113/255.0, blue: 118/255.0, alpha: 1);
         let theme1_color = UIColor.init(red: 0/255.0, green: 136/255.0, blue: 179/255.0, alpha: 1);
         let theme2_color = UIColor.init(red: 158/255.0, green: 81/255.0, blue: 0/255.0, alpha: 1);
@@ -512,6 +518,8 @@ class JournalPageViewController: UIViewController, UITextFieldDelegate {
         
         switch (current_theme_ID) {
             case 0: image = UIImage(named: "theme1");
+                    L_arrow_image = UIImage(named: "L_theme0");
+                    R_arrow_image = UIImage(named: "R_theme0");
                     setJournalThemeTextColor(color: theme1_color)
                     submit_button.backgroundColor = UIColor.init(red: 51/255.0, green: 207/255.0, blue: 255/255.0, alpha: 1);
                     segmentedControl.backgroundColor = UIColor.white
@@ -520,6 +528,8 @@ class JournalPageViewController: UIViewController, UITextFieldDelegate {
                     large_date_label.textColor = UIColor.init(red: 179/255.0, green: 98/255.0, blue: 18/255.0, alpha: 1);
                     break;
             case 1: image = UIImage(named: "theme2");
+                    L_arrow_image = UIImage(named: "L_theme1");
+                    R_arrow_image = UIImage(named: "R_theme1");
                     setJournalThemeTextColor(color: theme2_color)
                     submit_button.backgroundColor = UIColor.init(red: 89/255.0, green: 91/255.0, blue: 255/255.0, alpha: 1);
                     segmentedControl.backgroundColor = UIColor.white
@@ -528,6 +538,8 @@ class JournalPageViewController: UIViewController, UITextFieldDelegate {
                     large_date_label.textColor = UIColor.init(red: 158/255.0, green: 144/255.0, blue: 0/255.0, alpha: 1);
                     break;
             case 2: image = UIImage(named: "default_theme");
+                    L_arrow_image = UIImage(named: "L_default");
+                    R_arrow_image = UIImage(named: "R_default");
                     setJournalThemeTextColor(color: default_text_color)
                     submit_button.backgroundColor = UIColor.init(red: 100/255.0, green: 125/255.0, blue: 124/255.0, alpha: 1);
                     segmentedControl.backgroundColor = UIColor.white
@@ -537,6 +549,8 @@ class JournalPageViewController: UIViewController, UITextFieldDelegate {
                     break;
             case 3: image =
                     UIImage(named: "theme3");
+                    L_arrow_image = UIImage(named: "L_theme3");
+                    R_arrow_image = UIImage(named: "R_theme3");
                     setJournalThemeTextColor(color: theme3_color)
                     submit_button.backgroundColor = UIColor.init(red: 161/255.0, green: 204/255.0, blue: 61/255.0, alpha: 1);
                     segmentedControl.backgroundColor = UIColor.white
@@ -546,6 +560,8 @@ class JournalPageViewController: UIViewController, UITextFieldDelegate {
                     break;
             case 4: image =
                     UIImage(named: "theme4");
+                    L_arrow_image = UIImage(named: "L_theme4");
+                    R_arrow_image = UIImage(named: "R_theme4");
                     setJournalThemeTextColor(color: theme4_color)
                     submit_button.backgroundColor = UIColor.init(red: 204/255.0, green: 85/255.0, blue: 5/255.0, alpha: 1);
                     segmentedControl.tintColor = UIColor.init(red: 204/255.0, green: 85/255.0, blue: 5/255.0, alpha: 1);
@@ -554,6 +570,8 @@ class JournalPageViewController: UIViewController, UITextFieldDelegate {
                     break;
             case 5: image =
                     UIImage(named: "theme5");
+                    L_arrow_image = UIImage(named: "L_theme3");
+                    R_arrow_image = UIImage(named: "R_theme3");
                     setJournalThemeTextColor(color: theme5_color)
                     submit_button.backgroundColor = UIColor.init(red: 204/255.0, green: 134/255.0, blue: 20/255.0, alpha: 1);
                     segmentedControl.tintColor = UIColor.init(red: 121/255.0, green: 20/255.0, blue: 204/255.0, alpha: 1);
@@ -562,7 +580,9 @@ class JournalPageViewController: UIViewController, UITextFieldDelegate {
                     break;
         default: break;
         }
-        background_gradient.image = image;
+        background_gradient.image = image
+        left_arrow.setImage(L_arrow_image, for: UIControl.State.normal)
+        right_arrow.setImage(R_arrow_image, for: UIControl.State.normal)
     }
     
     func setJournalThemeTextColor(color: UIColor) {
