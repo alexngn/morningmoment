@@ -2,12 +2,13 @@
 //  MenuViewController.swift
 //  MorningMoment
 //
-//  Created by Owner on 4/22/19.
+//  Created by Thea Birk Berger on 4/22/19.
 //  Copyright © 2019 nyu.edu. All rights reserved.
 //
 
 import Foundation
 import UIKit
+import CoreData
 
 protocol MenuViewControllerDelegate: class {
     func MenuViewControllerDidBack();
@@ -28,7 +29,6 @@ public class MenuViewController: UIViewController{
     @IBOutlet weak var about_button: UIButton!
     @IBOutlet weak var settings_button: UIButton!
     var CDJournal: [CDJournalPage]!
-    var journal_theme: Int!
     
     override public func viewDidLoad() {
         super.viewDidLoad()
@@ -43,13 +43,13 @@ public class MenuViewController: UIViewController{
         self.settings_button.tag = 5;
     }
     
-    
-    
+    // back button clicked: return to journal
     @IBAction func backButtonClicked (sender: Any) {
         
         self.dismiss(animated: true, completion: self.delegate?.MenuViewControllerDidBack);
     }
     
+    // menu option clicked: perform corresponding segue
     @IBAction func menuOptionClicked(_ sender: AnyObject) {
         
         switch (sender.tag) {
@@ -68,10 +68,9 @@ public class MenuViewController: UIViewController{
         break;
         default: break;
         }
-        
-        
     }
     
+    // when a segue is performed to another view: transfer some data from menu
     override public func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "ShareJournalSegue"{
             let ShareJournalMC = segue.destination as! ShareViewController
@@ -91,9 +90,23 @@ public class MenuViewController: UIViewController{
         }
         else if segue.identifier == "SettingsSegue"{
             let SettingsMC = segue.destination as! SettingsViewController
-            SettingsMC.journal_theme = self.journal_theme
+            //SettingsMC.journal_theme = self.journal_theme
             SettingsMC.JournalPageVC = self.JournalPageVC
         }
     }
+    
+    override public func viewWillAppear(_ animated: Bool) {
+        
+        // extract journal from CoreData
+        let fetchRequest: NSFetchRequest<CDJournalPage> = CDJournalPage.fetchRequest()
+        
+        // update the local journal object with the CoreData journal
+        do {
+            let CDJournal = try PersistanceService.context.fetch(fetchRequest)
+            self.CDJournal = CDJournal
+        } catch{}
+        
+    }
+    
 }
 

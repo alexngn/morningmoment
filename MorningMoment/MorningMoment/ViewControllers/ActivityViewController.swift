@@ -168,6 +168,7 @@ class ActivityViewController: UIViewController {
         barChartView.xAxis.labelTextColor = UIColor.init(red: 47/255.0, green: 113/255.0, blue: 118/255.0, alpha: 1);
         barChartView.leftAxis.labelFont = UIFont(name: "SinhalaSangamMN", size: 15)!
         barChartView.leftAxis.labelTextColor = UIColor.init(red: 47/255.0, green: 113/255.0, blue: 118/255.0, alpha: 1);
+        barChartView.animate(yAxisDuration: 1.5)
         barChartView.notifyDataSetChanged()
        
     }

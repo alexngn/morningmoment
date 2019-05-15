@@ -30,6 +30,8 @@ class SettingsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        journal_theme = JournalPageVC.current_theme_ID
+        
         // set slider properties
         colorSlider.minimumValue = 0;
         colorSlider.maximumValue = 5;

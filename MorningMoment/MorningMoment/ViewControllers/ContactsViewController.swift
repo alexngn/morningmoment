@@ -2,7 +2,7 @@
 //  ContactsViewController.swift
 //  MorningMoment
 //
-//  Created by Owner on 5/3/19.
+//  Created by Alex Nguyen on 5/3/19.
 //  Copyright © 2019 nyu.edu. All rights reserved.
 //
 

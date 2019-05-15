@@ -1,7 +1,5 @@
 //
 //  CDJournalPage+CoreDataProperties.swift
-//  
-//
 //  Created by Thea Birk Berger on 5/6/19.
 //
 //

@@ -6,7 +6,7 @@
 //  Copyright © 2019 nyu.edu. All rights reserved.
 //
 //  keep the device working according to apple device standards
-//  fx: pause app when phone is ringing
+//  fx: pauses app when phone is ringing
 
 import UIKit
 import CoreData

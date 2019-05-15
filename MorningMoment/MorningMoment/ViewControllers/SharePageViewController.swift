@@ -2,7 +2,7 @@
 //  SharePageViewController.swift
 //  MorningMoment
 //
-//  Created by Owner on 5/2/19.
+//  Created by Alex Nguyen on 5/2/19.
 //  Copyright © 2019 nyu.edu. All rights reserved.
 //
 
@@ -96,6 +96,7 @@ class SharePageViewController: UIViewController {
 	
 
 	@IBAction func screenShotClicked(_ sender: Any) {
+        
 		//Create the UIImage
 		UIGraphicsBeginImageContextWithOptions(view.frame.size, true, 0)
 		guard let context = UIGraphicsGetCurrentContext() else { return }
@@ -135,9 +136,10 @@ class SharePageViewController: UIViewController {
 		let ContactsVC:ContactsViewController = segue.destination as! ContactsViewController
 		ContactsVC.image = image
 	}
-   
+
     @IBAction func backButtonClicked(_ sender: Any) {
         self.dismiss(animated: true, completion: self.delegate?.SharePageViewControllerDidBack);
     }
+    
 }
 

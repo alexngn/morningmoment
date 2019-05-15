@@ -2,7 +2,7 @@
 //  DeletePagesViewController.swift
 //  MorningMoment
 //
-//  Created by Thea Birk Berger on 5/1/19.
+//  Created by Alex Nguyen on 5/1/19.
 //  Copyright © 2019 nyu.edu. All rights reserved.
 //
 
@@ -50,15 +50,6 @@ class DeleteViewController: UIViewController, UITableViewDataSource, UITableView
 		super.setEditing(editing, animated: animated)
 		table.setEditing(editing, animated: animated)
 	}
-    
-    /*
-    // change default delete label color
-    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
-        
-        let delete_label = UITableViewRowAction(style: .destructive, title: "Delete") { (action, indexPath) in }
-        delete_label.backgroundColor = UIColor.init(red: 179/255.0, green: 155/255.0, blue: 169/255.0, alpha: 1);
-        return [delete_label]
-    }*/
     
 	
 	func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {

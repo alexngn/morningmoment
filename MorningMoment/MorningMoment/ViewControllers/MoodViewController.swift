@@ -16,7 +16,7 @@ protocol MoodViewControllerDelegate: class {
 }
 
 
-public class MoodViewController: UIViewController {
+public class MoodViewController: UIViewController, ChartViewDelegate {
     
     // CLASS PROPERTIES
     weak var delegate: MoodViewControllerDelegate?
@@ -70,6 +70,7 @@ public class MoodViewController: UIViewController {
             if (mood_freq > 0 && CDJournal.count > 0) {
                 percentage = Int(mood_freq/Double(CDJournal.count) * 100.0)
                 dataEntry = PieChartDataEntry(value: mood_freq, label: String(percentage) + "%")
+                dataEntry.x = Double(i)
             } else {
                 dataEntry = PieChartDataEntry(value: mood_freq, label: "")
             }
@@ -83,11 +84,13 @@ public class MoodViewController: UIViewController {
         pieChartDataSet.colors = [emoji_8_col, emoji_7_col, emoji_6_col, emoji_5_col, emoji_4_col, emoji_3_col, emoji_2_col, emoji_1_col, emoji_0_col]
         pieChartDataSet.entryLabelColor = UIColor.init(red: 34/255.0, green: 83/255.0, blue: 91/255.0, alpha: 1);
         pieChartDataSet.drawValuesEnabled = false
+        
+        pieChartView.delegate = self
         pieChartView.holeColor = UIColor(white: 1, alpha: 0.0)
         pieChartView.chartDescription?.enabled = false
-        pieChartView.rotationAngle = 0
         pieChartView.rotationEnabled = false
-        pieChartView.isUserInteractionEnabled = false
+        pieChartView.isUserInteractionEnabled = true
+        pieChartView.highlightPerTapEnabled = true
         pieChartView.legend.enabled = false
         pieChartView.data = pieChartData
         
@@ -104,8 +107,9 @@ public class MoodViewController: UIViewController {
         
         let lineChartDataSet = LineChartDataSet(entries: dataEntries, label: nil)
         let lineChartData = LineChartData(dataSet: lineChartDataSet)
-        
+
         // set chart layout
+        lineChartDataSet.lineWidth = 2.0
         lineChartView.data = lineChartData
         lineChartView.rightAxis.axisMinimum = 0
         lineChartView.rightAxis.axisMaximum = 8
@@ -125,6 +129,7 @@ public class MoodViewController: UIViewController {
         lineChartView.xAxis.drawGridLinesEnabled = false
         lineChartView.drawBordersEnabled = true
         lineChartView.borderColor =  UIColor.init(red: 169/255.0, green: 169/255.0, blue: 169/255.0, alpha: 1);
+        lineChartView.animate(yAxisDuration: 1.5, easingOption: .easeOutSine)
         lineChartView.notifyDataSetChanged()
     }
     
@@ -136,5 +141,44 @@ public class MoodViewController: UIViewController {
     }
     
     
+    
+    public func chartValueSelected(_ chartView: ChartViewBase, entry: ChartDataEntry, highlight: Highlight) {
+        
+        let emoji_image = getSliceEmojiWithID(number: Int(entry.x))
+        let emoji_pos_x = chartView.getMarkerPosition(highlight: highlight).x + 25
+        let emoji_pos_y = chartView.getMarkerPosition(highlight: highlight).y + 610
+        
+        let emoji_view: UIImageView!
+        emoji_view = UIImageView(frame:CGRect(x: Int(emoji_pos_x), y: Int(emoji_pos_y), width:33, height:33))
+        emoji_view.image = emoji_image
+        
+        self.view.addSubview(emoji_view)
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            UIView.transition(with: self.view, duration: 0.3, options: [.transitionCrossDissolve], animations:
+               {emoji_view.removeFromSuperview()}, completion: nil)
+        }
+    }
+    
+    
+    
+    func getSliceEmojiWithID(number: Int) -> UIImage {
+        
+        var image = UIImage(named: "0_emoji");
+        
+        switch (number) {
+        case 1: image = UIImage(named: "1_emoji"); break;
+        case 2: image = UIImage(named: "2_emoji"); break;
+        case 3: image = UIImage(named: "3_emoji"); break;
+        case 4: image = UIImage(named: "4_emoji"); break;
+        case 5: image = UIImage(named: "5_emoji"); break;
+        case 6: image = UIImage(named: "6_emoji"); break;
+        case 7: image = UIImage(named: "7_emoji"); break;
+        case 8: image = UIImage(named: "8_emoji"); break;
+        default: break;
+        }
+        
+        return image!
+    }
 }
 
