@@ -28,10 +28,10 @@ public class MoodViewController: UIViewController, ChartViewDelegate {
     override public func viewDidLoad() {
         super.viewDidLoad()
         
-        var mood: [Double] = []
-        var mood_frequency = Array(repeating: 0.0, count: 9)
+        var mood: [Double] = []                              // every mood (int value) input in the journal
+        var mood_frequency = Array(repeating: 0.0, count: 9) // number of times each mood type (0..8) has been input in the journal
         
-        // for each journal page: Input mood as y-value and keep track of mood type frequency
+        // for each journal page: Input mood value in mood array and keep track of mood type frequency
         for page_index in 0..<CDJournal.count {
             let journal_page = CDJournal[page_index]
             mood.append(Double(journal_page.mood))
@@ -44,7 +44,7 @@ public class MoodViewController: UIViewController, ChartViewDelegate {
         view.sendSubviewToBack(background_image)
     }
     
-    
+    // set pie chart properties
     func setPieChart(frequencies: [Double]) {
         
         // set emoji/mood colors
@@ -60,17 +60,22 @@ public class MoodViewController: UIViewController, ChartViewDelegate {
         
         var dataEntries: [ChartDataEntry] = []
         
-        // set data entries: Mood type frequency relative to all input moods in journal
+        // set data entries
         for i in 0..<frequencies.count {
             
             let dataEntry: ChartDataEntry!
             let mood_freq = frequencies[i]
             var percentage = 100
             
+            // input y values as percentage of mood type frequency relative to all input moods in journal
             if (mood_freq > 0 && CDJournal.count > 0) {
+                
                 percentage = Int(mood_freq/Double(CDJournal.count) * 100.0)
                 dataEntry = PieChartDataEntry(value: mood_freq, label: String(percentage) + "%")
+                // set mood type as x value
                 dataEntry.x = Double(i)
+            
+                // ensure that 0 frequencies have no label and will appear in the pie chart
             } else {
                 dataEntry = PieChartDataEntry(value: mood_freq, label: "")
             }
@@ -80,11 +85,13 @@ public class MoodViewController: UIViewController, ChartViewDelegate {
         let pieChartDataSet = PieChartDataSet(entries: dataEntries, label: nil)
         let pieChartData = PieChartData(dataSet: pieChartDataSet)
         
-        // set chart layout
+        // attach a color to every y value (each representing a mood type)
         pieChartDataSet.colors = [emoji_8_col, emoji_7_col, emoji_6_col, emoji_5_col, emoji_4_col, emoji_3_col, emoji_2_col, emoji_1_col, emoji_0_col]
+        // set percentage label color
         pieChartDataSet.entryLabelColor = UIColor.init(red: 34/255.0, green: 83/255.0, blue: 91/255.0, alpha: 1);
         pieChartDataSet.drawValuesEnabled = false
         
+        // set pie chart layout
         pieChartView.delegate = self
         pieChartView.holeColor = UIColor(white: 1, alpha: 0.0)
         pieChartView.chartDescription?.enabled = false
@@ -96,10 +103,12 @@ public class MoodViewController: UIViewController, ChartViewDelegate {
         
     }
     
+    // set line chart properties
     func setLineChart(y_values: [Double]) {
         
         var dataEntries: [ChartDataEntry] = []
         
+        // set data entries: every mood that has been input in the journal
         for i in 0..<y_values.count {
             let dataEntry = ChartDataEntry(x: Double(i), y: y_values[i])
             dataEntries.append(dataEntry)
@@ -133,6 +142,7 @@ public class MoodViewController: UIViewController, ChartViewDelegate {
         lineChartView.notifyDataSetChanged()
     }
     
+    // back button clicked: return to menu
     @IBAction func backButtonClicked (sender: Any) {
         
         // ensure to not rerun viewDidLoad upon return to ViewController
@@ -140,28 +150,31 @@ public class MoodViewController: UIViewController, ChartViewDelegate {
         
     }
     
-    
-    
+    // pie chart slice clicked: show corresponding emoji on slice
     public func chartValueSelected(_ chartView: ChartViewBase, entry: ChartDataEntry, highlight: Highlight) {
         
+        // use entry x value (mood type) to identify mood being clicked on: set corresponding emoji image
         let emoji_image = getSliceEmojiWithID(number: Int(entry.x))
+        // user marker position to set emoji image position
         let emoji_pos_x = chartView.getMarkerPosition(highlight: highlight).x + 25
         let emoji_pos_y = chartView.getMarkerPosition(highlight: highlight).y + 610
         
+        // set emoji image size and position
         let emoji_view: UIImageView!
         emoji_view = UIImageView(frame:CGRect(x: Int(emoji_pos_x), y: Int(emoji_pos_y), width:33, height:33))
         emoji_view.image = emoji_image
         
+        // add emoji image to view
         self.view.addSubview(emoji_view)
         
+        // delay 1 second and fade emoji image out for 0.3 seconds
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
             UIView.transition(with: self.view, duration: 0.3, options: [.transitionCrossDissolve], animations:
                {emoji_view.removeFromSuperview()}, completion: nil)
         }
     }
     
-    
-    
+    // return emoji image with the argument ID
     func getSliceEmojiWithID(number: Int) -> UIImage {
         
         var image = UIImage(named: "0_emoji");

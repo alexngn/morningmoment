@@ -17,20 +17,18 @@ protocol AboutViewControllerDelegate: class {
 
 class AboutViewController: UIViewController {
     
-    // CLASS PROPERTIES
+    // CLASS PROPERTY
     weak var delegate: AboutViewControllerDelegate?
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
     }
     
-    
+    // back button clicked: return to menu
     @IBAction func backButtonClicked (sender: Any) {
         
         // ensure to not rerun viewDidLoad upon return to ViewController
         self.dismiss(animated: true, completion: self.delegate?.AboutViewControllerDidBack);
         
     }
-    
 }

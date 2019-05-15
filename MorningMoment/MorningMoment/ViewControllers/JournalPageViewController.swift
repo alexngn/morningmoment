@@ -717,7 +717,7 @@ class JournalPageViewController: UIViewController, UITextFieldDelegate {
         journal_page_6.focus_2_text = "This string constitutes the longest possible text field input";
         journal_page_6.date_string = "05/14/2019";
         journal_page_6.date = dateFormatter.date(from: "05/14/2019") as NSDate?
-        journal_page_6.mood = Int16(3)
+        journal_page_6.mood = Int16(8)
         
         CDJournal.append(journal_page_6);
         // update core data

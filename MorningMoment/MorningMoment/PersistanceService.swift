@@ -19,7 +19,6 @@ class PersistanceService {
     
     
     // MARK: - Core Data stack
-    
     static var persistentContainer: NSPersistentContainer = {
         /*
          The persistent container for the application. This implementation

@@ -507,7 +507,7 @@
                                 <color key="minimumTrackTintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="maximumTrackTintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
-                                    <action selector="sliderChanged:" destination="oC5-MM-wGz" eventType="valueChanged" id="ifZ-NX-ubP"/>
+                                    <action selector="sliderPulled:" destination="oC5-MM-wGz" eventType="valueChanged" id="ifZ-NX-ubP"/>
                                 </connections>
                             </slider>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="FRESHEN UP YOUR JOURNAL LOOK BY PICKING ONE OF THE AVAILABLE THEMES" textAlignment="center" lineBreakMode="clip" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qod-DG-VPy">
@@ -524,7 +524,7 @@
                     <connections>
                         <outlet property="colorSlider" destination="hnv-Vr-Xxo" id="OZI-Y1-1oB"/>
                         <outlet property="colorWheel" destination="TDT-Cu-euY" id="kTr-4D-QOJ"/>
-                        <outlet property="selectedThemeView" destination="wAe-gg-Cpr" id="lFn-3g-sX7"/>
+                        <outlet property="themePreviewImage" destination="wAe-gg-Cpr" id="lFn-3g-sX7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZIe-Ir-Paa" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -620,7 +620,7 @@
                                     <action selector="backButtonClickedWithSender:" destination="2fc-pL-cbI" eventType="touchUpInside" id="jEm-cW-vaF"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="PICK THE JOURNAL PAGES YOU WISH TO DELETE " textAlignment="center" lineBreakMode="clip" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ihB-1J-HiP">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="CLICK ON THE JOURNAL PAGES YOU WISH TO DELETE " textAlignment="center" lineBreakMode="clip" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ihB-1J-HiP">
                                 <rect key="frame" x="20" y="160" width="374" height="53"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="SinhalaSangamMN" family="Sinhala Sangam MN" pointSize="19"/>
